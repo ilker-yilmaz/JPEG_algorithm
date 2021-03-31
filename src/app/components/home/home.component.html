@@ -15,6 +15,7 @@
               id="file"
               accept="image/*"
               ref="input"
+              multiple
           /></label>
         </div>
       </div>
@@ -215,7 +216,7 @@
               :download="input.name"
               :href="inputURL"
               title="Download the compressed image"
-              >Download</a
+              >İndir</a
             >
           </h5>
           <div class="card-body">
@@ -227,11 +228,10 @@
                 <div v-else class="w-100 bg-light"></div>
               </div>
               <div class="col-md-8">
-                    
                 <dl class="row">
-                  <dt class="col-5">Son değişiklik:</dt>
+                  <dt class="col-5">son değişiklik:</dt>
                   <dd class="col-7"></dd>
-                  <dt class="col-5">Son değişiklik tarihi:</dt>
+                  <dt class="col-5">son değişiklik tarihi:</dt>
                   <dd class="col-7"></dd>
                   <dt class="col-5">isim:</dt>
                   <dd class="col-7"></dd>
@@ -244,21 +244,23 @@
             </div>
           </div>
         </div>
-  
+
         <div class="card">
           <h5
             class="card-header d-flex align-items-center justify-content-between"
           >
             <span
               >Çıktı Görüntüsü
-              <small class="text-secondary">(sıkıştırılmış görüntü)</small></span
+              <small class="text-secondary"
+                >(sıkıştırılmış görüntü)</small
+              ></span
             >
             <a
               class="btn btn-sm btn-blocks btn-outline-primary"
               :download="output.name"
               :href="outputURL"
               title="Download the compressed image"
-              >Download</a
+              >indir</a
             >
           </h5>
           <div class="card-body">
@@ -271,7 +273,7 @@
               </div>
               <div class="col-md-8">
                 <dl class="row">
-                  <dt class="col-5">Son değişiklik:</dt>
+                  <dt class="col-5">son değişiklik:</dt>
                   <dd class="col-7"></dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
                   <dd class="col-7"></dd>
@@ -289,18 +291,13 @@
           </div>
         </div>
       </div>
-
     </div>
-
-    
   </div>
 
   <hr />
 
   <div class="card" v-if="inputURL && outputURL">
-    <h4 class="card-header">Comparing images</h4>
-    <div class="card-body">
-        
-    </div>
+    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+    <div class="card-body"></div>
   </div>
 </body>
