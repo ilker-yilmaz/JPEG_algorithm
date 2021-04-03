@@ -1,5 +1,9 @@
 <body>
-  <div>
+  <div class="container">
+    <h3>Sıkıştırma Alanı</h3>
+    <hr />
+    <div id="app" v-cloak></div>
+
     <div class="card bg-light mb-4">
       <div class="card-body">
         <div class="p-5 text-center">
@@ -196,11 +200,107 @@
           </div>
         </div>
       </div>
+
+      <div class="col-lg-8 mb-4">
+        <div class="card mb-4">
+          <h5
+            class="card-header d-flex align-items-center justify-content-between"
+          >
+            <span
+              >Giriş Görüntüsü
+              <small class="text-secondary">(orijinal görüntü)</small></span
+            >
+            <a
+              class="btn btn-sm btn-blocks btn-outline-primary"
+              :download="input.name"
+              :href="inputURL"
+              title="Download the compressed image"
+              >Download</a
+            >
+          </h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 d-flex mb-3">
+                <div class="w-100 text-center" v-if="inputURL">
+                  <img class="mw-100" :src="inputURL" :alt="input.name" />
+                </div>
+                <div v-else class="w-100 bg-light"></div>
+              </div>
+              <div class="col-md-8">
+                    
+                <dl class="row">
+                  <dt class="col-5">Son değişiklik:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">Son değişiklik tarihi:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">isim:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">türü:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">boyut:</dt>
+                  <dd class="col-7"></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card">
+          <h5
+            class="card-header d-flex align-items-center justify-content-between"
+          >
+            <span
+              >Çıktı Görüntüsü
+              <small class="text-secondary">(sıkıştırılmış görüntü)</small></span
+            >
+            <a
+              class="btn btn-sm btn-blocks btn-outline-primary"
+              :download="output.name"
+              :href="outputURL"
+              title="Download the compressed image"
+              >Download</a
+            >
+          </h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 d-flex mb-3">
+                <div class="w-100 text-center" v-if="outputURL">
+                  <img class="mw-100" :src="outputURL" :alt="output.name" />
+                </div>
+                <div v-else class="w-100 bg-light"></div>
+              </div>
+              <div class="col-md-8">
+                <dl class="row">
+                  <dt class="col-5">Son değişiklik:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">son değişiklik tarihi:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">isim:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">türü:</dt>
+                  <dd class="col-7"></dd>
+                  <dt class="col-5">boyut:</dt>
+                  <dd class="col-7">
+                    <span v-if="output.size"></span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="card" v-if="inputURL && outputURL">
-      <h4 class="card-header">Comparing images</h4>
-      <div class="card-body"></div>
+    
+  </div>
+
+  <hr />
+
+  <div class="card" v-if="inputURL && outputURL">
+    <h4 class="card-header">Comparing images</h4>
+    <div class="card-body">
+        
     </div>
   </div>
 </body>
