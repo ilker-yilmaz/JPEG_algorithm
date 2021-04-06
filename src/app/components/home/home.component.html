@@ -15,6 +15,7 @@
               id="file"
               accept="image/*"
               ref="input"
+              multiple
           /></label>
         </div>
       </div>
@@ -214,8 +215,8 @@
               class="btn btn-sm btn-blocks btn-outline-primary"
               :download="input.name"
               :href="inputURL"
-              title="Download the compressed image"
-              >Download</a
+              title="yüklenen görüntüyü indir"
+              >İndir</a
             >
           </h5>
           <div class="card-body">
@@ -229,9 +230,9 @@
               <div class="col-md-8">
                     
                 <dl class="row">
-                  <dt class="col-5">Son değişiklik:</dt>
+                  <dt class="col-5">son değişiklik:</dt>
                   <dd class="col-7"></dd>
-                  <dt class="col-5">Son değişiklik tarihi:</dt>
+                  <dt class="col-5">son değişiklik tarihi:</dt>
                   <dd class="col-7"></dd>
                   <dt class="col-5">isim:</dt>
                   <dd class="col-7"></dd>
@@ -257,8 +258,8 @@
               class="btn btn-sm btn-blocks btn-outline-primary"
               :download="output.name"
               :href="outputURL"
-              title="Download the compressed image"
-              >Download</a
+              title="sıkıştırılmış görüntüyü indir"
+              >İndir</a
             >
           </h5>
           <div class="card-body">
@@ -271,7 +272,7 @@
               </div>
               <div class="col-md-8">
                 <dl class="row">
-                  <dt class="col-5">Son değişiklik:</dt>
+                  <dt class="col-5">son değişiklik:</dt>
                   <dd class="col-7"></dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
                   <dd class="col-7"></dd>
@@ -297,10 +298,22 @@
 
   <hr />
 
+  
+
   <div class="card" v-if="inputURL && outputURL">
-    <h4 class="card-header">Comparing images</h4>
+    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
     <div class="card-body">
         
+      <!-- <div style="text-align: center">
+        <h1>deneme</h1>
+        <button (click)="ngOnInit()" class="btn btn-primary">deneme</button>
+      </div> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
+  
+ 
+
+  
+
 </body>
