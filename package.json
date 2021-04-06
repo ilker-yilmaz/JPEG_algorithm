@@ -24,6 +24,8 @@
     "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "vue-compare-image": "^0.2.0",
+    "vue-image-compare2": "^1.0.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -31,7 +33,8 @@
     "@angular/cli": "~11.2.4",
     "@angular/compiler-cli": "~11.2.5",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.11.1" ,
+     
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
