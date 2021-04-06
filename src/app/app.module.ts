@@ -7,10 +7,18 @@ import { NaviComponent } from './components/navi/navi.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ComparingComponent } from './components/comparing/comparing.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
-  declarations: [AppComponent, NaviComponent, HomeComponent, SettingsComponent, ComparingComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    
+    AppComponent,
+    NaviComponent,
+    HomeComponent,
+    SettingsComponent,
+    ComparingComponent,
+  ],
+  imports: [NgImageSliderModule, BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

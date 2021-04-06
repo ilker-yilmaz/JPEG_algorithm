@@ -215,7 +215,7 @@
               class="btn btn-sm btn-blocks btn-outline-primary"
               :download="input.name"
               :href="inputURL"
-              title="Download the compressed image"
+              title="yüklenen görüntüyü indir"
               >İndir</a
             >
           </h5>
@@ -258,7 +258,7 @@
               class="btn btn-sm btn-blocks btn-outline-primary"
               :download="output.name"
               :href="outputURL"
-              title="Download the compressed image"
+              title="sıkıştırılmış görüntüyü indir"
               >İndir</a
             >
           </h5>
@@ -298,11 +298,22 @@
 
   <hr />
 
+  
+
   <div class="card" v-if="inputURL && outputURL">
     <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
     <div class="card-body">
-      
+        
+      <!-- <div style="text-align: center">
+        <h1>deneme</h1>
+        <button (click)="ngOnInit()" class="btn btn-primary">deneme</button>
+      </div> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
+  
  
+
+  
+
 </body>

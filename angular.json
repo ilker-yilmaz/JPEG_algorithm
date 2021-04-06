@@ -35,8 +35,11 @@
               "src/styles.css" 
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/jquery/dist/jquery.min.js", 
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/compressor.js"
+
              ]
           },
           "configurations": {
