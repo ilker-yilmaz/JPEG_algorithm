@@ -1,50 +1,130 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener('DOMContentLoaded', function () {
   var Vue = window.Vue;
   var URL = window.URL || window.webkitURL;
   var XMLHttpRequest = window.XMLHttpRequest;
   var Compressor = window.Compressor;
 
-  console.log("DOM fully loaded and parsed");
-});
+  Vue.component('VueCompareImage', window.vueCompareImage);
 
+  new Vue({
+    el: '#app',
 
-function myTest() {
-  var vm = this;
-  alert("HOŞGELDİNİZ, çok yakında...");
-  return {
-    options: {
-      strict: true,
-      checkOrientation: true,
-      maxWidth: undefined,
-      maxHeight: undefined,
-      minWidth: 0,
-      minHeight: 0,
-      width: undefined,
-      height: undefined,
-      quality: 0.8,
-      mimeType: "",
-      convertSize: 5000000,
-      success: function (result) {
-        console.log("Output: ", result);
+    data: function () {
+      var vm = this;
 
-        if (URL) {
-          vm.outputURL = URL.createObjectURL(result);
+      return {
+        options: {
+          strict: true,
+          checkOrientation: true,
+          maxWidth: undefined,
+          maxHeight: undefined,
+          minWidth: 0,
+          minHeight: 0,
+          width: undefined,
+          height: undefined,
+          quality: 0.8,
+          mimeType: '',
+          convertSize: 5000000,
+          success: function (result) {
+            console.log('Output: ', result);
+
+            if (URL) {
+              vm.outputURL = URL.createObjectURL(result);
+            }
+
+            vm.output = result;
+            vm.$refs.input.value = '';
+          },
+          error: function (err) {
+            window.alert(err.message);
+          },
+        },
+        inputURL: '',
+        outputURL: '',
+        input: {},
+        output: {},
+      };
+    },
+
+    filters: {
+      prettySize: function (size) {
+        var kilobyte = 1024;
+        var megabyte = kilobyte * kilobyte;
+
+        if (size > megabyte) {
+          return (size / megabyte).toFixed(2) + ' MB';
+        } else if (size > kilobyte) {
+          return (size / kilobyte).toFixed(2) + ' KB';
+        } else if (size >= 0) {
+          return size + ' B';
         }
 
-        vm.output = result;
-        vm.$refs.input.value = "";
-      },
-      error: function (err) {
-        window.alert(err.message);
+        return 'N/A';
       },
     },
-    inputURL: "",
-    outputURL: "",
-    input: {},
-    output: {},
-  };
-}
 
-$(function () {
-  alert("HOŞGELDİNİZ, çok yakında...");
+    methods: {
+      compress: function (file) {
+        if (!file) {
+          return;
+        }
+
+        console.log('Input: ', file);
+
+        if (URL) {
+          this.inputURL = URL.createObjectURL(file);
+        }
+
+        this.input = file;
+        new Compressor(file, this.options);
+      },
+
+      change: function (e) {
+        console.log("change çalıştı");
+        this.compress(e.target.files ? e.target.files[0] : null);
+      },
+
+      dragover: function(e) {
+        console.log("change çalıştı");
+        e.preventDefault();
+      },
+
+      drop: function(e) {
+        console.log("drop çalıştı");
+        e.preventDefault();
+        this.compress(e.dataTransfer.files ? e.dataTransfer.files[0] : null);
+      },
+    },
+
+    watch: {
+      options: {
+        deep: true,
+        handler: function () {
+          this.compress(this.input);
+        },
+      },
+    },
+
+    mounted: function () {
+      if (!XMLHttpRequest) {
+        return;
+      }
+
+      var vm = this;
+      var xhr = new XMLHttpRequest();
+
+      xhr.onload = function () {
+        var blob = xhr.response;
+        var date = new Date();
+
+        blob.lastModified = date.getTime();
+        blob.lastModifiedDate = date;
+        blob.name = 'picture.jpg';
+        vm.compress(blob);
+      };
+      xhr.open('GET', 'images/picture.jpg');
+      xhr.responseType = 'blob';
+      xhr.send();
+    },
+  });
 });
