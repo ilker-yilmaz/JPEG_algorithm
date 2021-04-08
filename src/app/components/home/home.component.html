@@ -1,5 +1,70 @@
 <body>
   <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://jpeg-algorithm.vercel.app/"
+          >Jpeg Compressor</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="https://jpeg-algorithm.vercel.app/"
+                >Ana Sayfa</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">RAPORLAR</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Aksiyon</a></li>
+                <li>
+                  <a class="dropdown-item" href="https://ilker-blog.vercel.app/"
+                    >Hakkında</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Diğerleri</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Disabled</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <h3>Sıkıştırma Alanı</h3>
     <hr />
     <div id="app" v-cloak></div>
@@ -8,7 +73,8 @@
       <div class="card-body">
         <div class="p-5 text-center">
           Buraya Sürükleyin ya da
-          <label class="text-primary">
+          <label class="text-primary" style="cursor: pointer"
+            >dosya gezgini ...
             <input
               type="file"
               class="sr-only"
@@ -54,7 +120,7 @@
             </fieldset>
             <div class="form-group row">
               <label for="inputMaxWidth" class="col-5 col-form-label"
-                >maximum genişlik</label
+                >max genişlik</label
               >
               <div class="col-7">
                 <input
@@ -69,7 +135,7 @@
             </div>
             <div class="form-group row">
               <label for="inputMaxHeight" class="col-5 col-form-label"
-                >maximum yükseklik</label
+                >max yükseklik</label
               >
               <div class="col-7">
                 <input
@@ -84,7 +150,7 @@
             </div>
             <div class="form-group row">
               <label for="inputMinWidth" class="col-5 col-form-label"
-                >minimum genişlik</label
+                >min genişlik</label
               >
               <div class="col-7">
                 <input
@@ -99,7 +165,7 @@
             </div>
             <div class="form-group row">
               <label for="inputMinHeight" class="col-5 col-form-label"
-                >minimum yükseklik</label
+                >min yükseklik</label
               >
               <div class="col-7">
                 <input
@@ -228,7 +294,6 @@
                 <div v-else class="w-100 bg-light"></div>
               </div>
               <div class="col-md-8">
-                    
                 <dl class="row">
                   <dt class="col-5">son değişiklik:</dt>
                   <dd class="col-7"></dd>
@@ -245,14 +310,16 @@
             </div>
           </div>
         </div>
-  
+
         <div class="card">
           <h5
             class="card-header d-flex align-items-center justify-content-between"
           >
             <span
               >Çıktı Görüntüsü
-              <small class="text-secondary">(sıkıştırılmış görüntü)</small></span
+              <small class="text-secondary"
+                >(sıkıştırılmış görüntü)</small
+              ></span
             >
             <a
               class="btn btn-sm btn-blocks btn-outline-primary"
@@ -290,30 +357,16 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    
-  </div>
+    <div class="card" v-if="inputURL && outputURL">
+      <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+      <div class="card-body">
 
-  <hr />
-
-  
-
-  <div class="card" v-if="inputURL && outputURL">
-    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
-    <div class="card-body">
+        <app-comparing></app-comparing>
         
-      <!-- <div style="text-align: center">
-        <h1>deneme</h1>
-        <button (click)="ngOnInit()" class="btn btn-primary">deneme</button>
-      </div> -->
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
-  
- 
-
-  
-
 </body>

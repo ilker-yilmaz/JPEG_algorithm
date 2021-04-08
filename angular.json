@@ -38,7 +38,17 @@
               "./node_modules/jquery/dist/jquery.min.js", 
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/main.js",
-              "src/assets/js/compressor.js"
+              "src/assets/js/compressor.js",
+              "src/assets/js/compressor.js.map",
+              "src/assets/dist/compressor.common.js",
+              "src/assets/dist/compressor.common.js.map",
+              "src/assets/dist/compressor.esm.js",
+              "src/assets/dist/compressor.esm.js.map",
+              "src/assets/dist/compressor.js",
+              "src/assets/dist/compressor.js.map",
+              "src/assets/dist/compressor.min.js"
+
+
 
              ]
           },
