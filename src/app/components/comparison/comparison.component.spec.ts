@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComparingSliderComponent } from './comparing-slider.component';
+import { ComparisonComponent } from './comparison.component';
 
-describe('ComparingSliderComponent', () => {
-  let component: ComparingSliderComponent;
-  let fixture: ComponentFixture<ComparingSliderComponent>;
+describe('ComparisonComponent', () => {
+  let component: ComparisonComponent;
+  let fixture: ComponentFixture<ComparisonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComparingSliderComponent ]
+      declarations: [ ComparisonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComparingSliderComponent);
+    fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

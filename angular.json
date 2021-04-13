@@ -46,11 +46,7 @@
               "src/assets/dist/compressor.esm.js.map",
               "src/assets/dist/compressor.js",
               "src/assets/dist/compressor.js.map",
-              "src/assets/dist/compressor.min.js"
-
-
-
-             ]
+              "src/assets/dist/compressor.min.js"             ]
           },
           "configurations": {
             "production": {
