@@ -9,9 +9,11 @@ window.addEventListener('DOMContentLoaded', function () {
   new Vue({
     el: '#app',
 
+   
+
     data: function () {
       var vm = this;
-
+ alert("merhaba vue");
       return {
         options: {
           strict: true,
@@ -85,7 +87,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
 
       dragover: function(e) {
-        console.log("change çalıştı");
+        console.log("dragover çalıştı");
         e.preventDefault();
       },
 

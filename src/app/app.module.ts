@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { NgImageSliderModule } from 'ng-image-slider';
-import { from } from 'rxjs';
-import { ComparingComponent } from './components/comparing/comparing.component';
-import { ComparingSliderComponent } from './components/comparing-slider/comparing-slider.component';
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ComparisonComponent } from './components/comparison/comparison.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SettingsComponent, ComparingComponent, ComparingSliderComponent],
-  imports: [NgImageSliderModule, BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, HomeComponent, ComparisonComponent],
+  imports: [BrowserModule,FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
