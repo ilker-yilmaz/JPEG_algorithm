@@ -77,6 +77,7 @@
             >dosya gezgini ...
             <input
               type="file"
+              name="myFile"
               class="sr-only"
               id="file"
               accept="image/*"
@@ -289,9 +290,9 @@
             <div class="row">
               <div class="col-md-4 d-flex mb-3">
                 <div class="w-100 text-center" v-if="inputURL">
-                  <img class="mw-100" :src="inputURL" :alt="input.name" />
+                  <img class="mw-100" :src="/assets/img/after.jpg" alt="image" />
                 </div>
-                <div v-else class="w-100 bg-light"></div>
+                <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
               <div class="col-md-8">
                 <dl class="row">
@@ -333,9 +334,9 @@
             <div class="row">
               <div class="col-md-4 d-flex mb-3">
                 <div class="w-100 text-center" v-if="outputURL">
-                  <img class="mw-100" :src="outputURL" :alt="output.name" />
+                  <img class="mw-100" :src="/assets/img/before.jpg" alt="image" />
                 </div>
-                <div v-else class="w-100 bg-light"></div>
+                <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
               <div class="col-md-8">
                 <dl class="row">
@@ -362,9 +363,12 @@
     <div class="card" v-if="inputURL && outputURL">
       <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
       <div class="card-body">
+        
         <app-comparison></app-comparison>
-        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
+
+
+
 </body>
