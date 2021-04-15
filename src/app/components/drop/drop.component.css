@@ -1,5 +1,5 @@
 .drop-zone {
-    max-width: 200px;
+    max-width: 1150px;
     height: 200px;
     padding: 25px;
     display: flex;
@@ -13,6 +13,7 @@
     color: #cccccc;
     border: 4px dashed #009578;
     border-radius: 10px;
+    
   }
   
   .drop-zone--over {
