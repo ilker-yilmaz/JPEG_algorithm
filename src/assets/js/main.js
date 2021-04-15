@@ -4,129 +4,129 @@ window.addEventListener('DOMContentLoaded', function () {
   var XMLHttpRequest = window.XMLHttpRequest;
   var Compressor = window.Compressor;
 
-  Vue.component('VueCompareImage', window.vueCompareImage);
+  // Vue.component('VueCompareImage', window.vueCompareImage);
 
-  new Vue({
-    el: '#app',
+//   new Vue({
+//     el: '#app',
 
    
 
-    data: function () {
-      var vm = this;
- alert("merhaba vue");
-      return {
-        options: {
-          strict: true,
-          checkOrientation: true,
-          maxWidth: undefined,
-          maxHeight: undefined,
-          minWidth: 0,
-          minHeight: 0,
-          width: undefined,
-          height: undefined,
-          quality: 0.8,
-          mimeType: '',
-          convertSize: 5000000,
-          success: function (result) {
-            console.log('Output: ', result);
+//     data: function () {
+//       var vm = this;
+//  alert("merhaba vue");
+//       return {
+//         options: {
+//           strict: true,
+//           checkOrientation: true,
+//           maxWidth: undefined,
+//           maxHeight: undefined,
+//           minWidth: 0,
+//           minHeight: 0,
+//           width: undefined,
+//           height: undefined,
+//           quality: 0.8,
+//           mimeType: '',
+//           convertSize: 5000000,
+//           success: function (result) {
+//             console.log('Output: ', result);
 
-            if (URL) {
-              vm.outputURL = URL.createObjectURL(result);
-            }
+//             if (URL) {
+//               vm.outputURL = URL.createObjectURL(result);
+//             }
 
-            vm.output = result;
-            vm.$refs.input.value = '';
-          },
-          error: function (err) {
-            window.alert(err.message);
-          },
-        },
-        inputURL: '',
-        outputURL: '',
-        input: {},
-        output: {},
-      };
-    },
+//             vm.output = result;
+//             vm.$refs.input.value = '';
+//           },
+//           error: function (err) {
+//             window.alert(err.message);
+//           },
+//         },
+//         inputURL: '',
+//         outputURL: '',
+//         input: {},
+//         output: {},
+//       };
+//     },
 
-    filters: {
-      prettySize: function (size) {
-        var kilobyte = 1024;
-        var megabyte = kilobyte * kilobyte;
+//     filters: {
+//       prettySize: function (size) {
+//         var kilobyte = 1024;
+//         var megabyte = kilobyte * kilobyte;
 
-        if (size > megabyte) {
-          return (size / megabyte).toFixed(2) + ' MB';
-        } else if (size > kilobyte) {
-          return (size / kilobyte).toFixed(2) + ' KB';
-        } else if (size >= 0) {
-          return size + ' B';
-        }
+//         if (size > megabyte) {
+//           return (size / megabyte).toFixed(2) + ' MB';
+//         } else if (size > kilobyte) {
+//           return (size / kilobyte).toFixed(2) + ' KB';
+//         } else if (size >= 0) {
+//           return size + ' B';
+//         }
 
-        return 'N/A';
-      },
-    },
+//         return 'N/A';
+//       },
+//     },
 
-    methods: {
-      compress: function (file) {
-        if (!file) {
-          return;
-        }
+//     methods: {
+//       compress: function (file) {
+//         if (!file) {
+//           return;
+//         }
 
-        console.log('Input: ', file);
+//         console.log('Input: ', file);
 
-        if (URL) {
-          this.inputURL = URL.createObjectURL(file);
-        }
+//         if (URL) {
+//           this.inputURL = URL.createObjectURL(file);
+//         }
 
-        this.input = file;
-        new Compressor(file, this.options);
-      },
+//         this.input = file;
+//         new Compressor(file, this.options);
+//       },
 
-      change: function (e) {
-        console.log("change çalıştı");
-        this.compress(e.target.files ? e.target.files[0] : null);
-      },
+//       change: function (e) {
+//         console.log("change çalıştı");
+//         this.compress(e.target.files ? e.target.files[0] : null);
+//       },
 
-      dragover: function(e) {
-        console.log("dragover çalıştı");
-        e.preventDefault();
-      },
+//       dragover: function(e) {
+//         console.log("dragover çalıştı");
+//         e.preventDefault();
+//       },
 
-      drop: function(e) {
-        console.log("drop çalıştı");
-        e.preventDefault();
-        this.compress(e.dataTransfer.files ? e.dataTransfer.files[0] : null);
-      },
-    },
+//       drop: function(e) {
+//         console.log("drop çalıştı");
+//         e.preventDefault();
+//         this.compress(e.dataTransfer.files ? e.dataTransfer.files[0] : null);
+//       },
+//     },
 
-    watch: {
-      options: {
-        deep: true,
-        handler: function () {
-          this.compress(this.input);
-        },
-      },
-    },
+//     watch: {
+//       options: {
+//         deep: true,
+//         handler: function () {
+//           this.compress(this.input);
+//         },
+//       },
+//     },
 
-    mounted: function () {
-      if (!XMLHttpRequest) {
-        return;
-      }
+//     mounted: function () {
+//       if (!XMLHttpRequest) {
+//         return;
+//       }
 
-      var vm = this;
-      var xhr = new XMLHttpRequest();
+//       var vm = this;
+//       var xhr = new XMLHttpRequest();
 
-      xhr.onload = function () {
-        var blob = xhr.response;
-        var date = new Date();
+//       xhr.onload = function () {
+//         var blob = xhr.response;
+//         var date = new Date();
 
-        blob.lastModified = date.getTime();
-        blob.lastModifiedDate = date;
-        blob.name = 'picture.jpg';
-        vm.compress(blob);
-      };
-      xhr.open('GET', 'images/picture.jpg');
-      xhr.responseType = 'blob';
-      xhr.send();
-    },
-  });
+//         blob.lastModified = date.getTime();
+//         blob.lastModifiedDate = date;
+//         blob.name = 'picture.jpg';
+//         vm.compress(blob);
+//       };
+//       xhr.open('GET', 'images/picture.jpg');
+//       xhr.responseType = 'blob';
+//       xhr.send();
+//     },
+//   });
 });

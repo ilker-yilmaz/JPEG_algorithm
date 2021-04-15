@@ -7,9 +7,11 @@ import { HomeComponent } from './components/home/home.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ComparisonComponent } from './components/comparison/comparison.component';
+import { DropComponent } from './components/drop/drop.component';
+import { AnimationsComponent } from './components/animations/animations.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ComparisonComponent],
+  declarations: [AppComponent, HomeComponent, ComparisonComponent, DropComponent, AnimationsComponent],
   imports: [BrowserModule,FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
