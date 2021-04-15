@@ -67,9 +67,13 @@
 
     <h3>Sıkıştırma Alanı</h3>
     <hr />
+
+    <app-drop></app-drop>
+    <br>
+
     <div id="app" v-cloak></div>
 
-    <div class="card bg-light mb-4">
+    <!-- <div class="card bg-light mb-4">
       <div class="card-body">
         <div class="p-5 text-center">
           Buraya Sürükleyin ya da
@@ -86,7 +90,7 @@
           /></label>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="col-lg-4 mb-4">
@@ -290,7 +294,11 @@
             <div class="row">
               <div class="col-md-4 d-flex mb-3">
                 <div class="w-100 text-center" v-if="inputURL">
-                  <img class="mw-100" :src="/assets/img/after.jpg" alt="image" />
+                  <img
+                    class="mw-100"
+                    :src="/assets/img/after.jpg"
+                    alt="image"
+                  />
                 </div>
                 <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
@@ -334,7 +342,11 @@
             <div class="row">
               <div class="col-md-4 d-flex mb-3">
                 <div class="w-100 text-center" v-if="outputURL">
-                  <img class="mw-100" :src="/assets/img/before.jpg" alt="image" />
+                  <img
+                    class="mw-100"
+                    :src="/assets/img/before.jpg"
+                    alt="image"
+                  />
                 </div>
                 <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
@@ -363,12 +375,8 @@
     <div class="card" v-if="inputURL && outputURL">
       <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
       <div class="card-body">
-        
         <app-comparison></app-comparison>
       </div>
     </div>
   </div>
-
-
-
 </body>

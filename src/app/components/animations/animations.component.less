@@ -1,0 +1,269 @@
+// COLORS
+@black: #000000;
+@grey-dark: #333333;
+@grey-light: #cccccc;
+@blue: #9c9cf7;
+
+.pos-r {
+  position: relative;
+}
+.fw {
+  width: 100%;
+}
+.clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.before-after-handler {
+  content: "";
+  position: absolute;
+}
+/* RESETS & DEFAULTS  */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: @grey-dark;
+  height: 100vh;
+  font-family: 'Arial';
+}
+
+a{
+  text-decoration: none;
+  color: fade(@blue, 60%);
+}
+
+.compressor {
+  .clearfix();
+  margin: 32px auto;
+  width: 230px;
+  .pos-r();
+
+  .holder {
+    float: left;
+    .fw();
+    height: 32px;
+    background-color: @grey-light;
+    border: 4px solid @black;
+    .pos-r();
+
+    &:before,
+    &:after {
+      .before-after-handler();
+      bottom: -4px;
+    }
+
+    &:before {
+      left: 12px;
+      width: 100px;
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-bottom: 16px solid @black;
+    }
+
+    &:after {
+      left: 18px;
+      width: 88px;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 12px solid @grey-dark;
+    }
+
+    &.flip-up {
+      transform: rotate(180deg) scaleX(-1);
+      z-index: -1;
+    }
+  }
+}
+
+.thread-wrapper {
+  .clearfix();
+  .fw();
+  animation: crush 3s infinite 0s linear;
+
+  .rod {
+    float: right;
+    margin-right: 16px;
+    width: 30px;
+    height: 212px;
+    border: 4px solid @black;
+    border-top: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      @grey-light,
+      @grey-light 5px,
+      @black 5px,
+      @black 10px
+    );
+  }
+
+  .paper {
+    float: left;
+    width: 88px;
+    height: 100px;
+    line-height: 92px;
+    background-color: #ffffff;
+    margin-left: 22px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: @black;
+    .pos-r();
+    animation: paper-scale 3s infinite 0s linear;
+    z-index: 1;
+    box-shadow: 0 0 0 3px @black;
+
+    &:after {
+      .before-after-handler();
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background-color: @blue;
+    }
+
+    .curl {
+      position: absolute;
+      display: block;
+      width: 12px;
+      height: 12px;
+      right: -4px;
+      top: -4px;
+      z-index: 3;
+
+      &:before,
+      &:after {
+        .before-after-handler();
+        width: 0;
+        height: 0;
+        border-style: solid;
+        display: block;
+      }
+
+      &:before {
+        border-width: 12px 0 0 12px;
+        border-color: @grey-dark transparent transparent @black;
+        left: 0;
+        top: 0;
+        z-index: 4;
+      }
+
+      &:after {
+        border-width: 5px 0 0 5px;
+        border-color: transparent transparent transparent @blue;
+        left: 2px;
+        top: 5px;
+        z-index: 5;
+      }
+    }
+  }
+}
+
+.holder-bottom {
+  position: absolute;
+  top: 140px;
+  width: 100%;
+  min-height: 40px;
+  padding-top: 4px;
+
+  .holder {
+    border-right: 0;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0px;
+    height: 40px;
+    width: 64px;
+    background-color: @grey-light;
+    border: 4px solid @black;
+    border-radius: 8px;
+  }
+
+  .handle {
+    float: right;
+
+    .handle-holder {
+      float: left;
+      width: 32px;
+      height: 17px;
+      background-color: @grey-light;
+      border: 4px solid @black;
+      border-radius: 8px;
+      margin-right: -16px;
+      .pos-r();
+      margin-top: 4px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        border-radius: 100%;
+        border: 4px solid @black;
+        top: -7px;
+        left: -16px;
+        background-color: @grey-light;
+      }
+
+      &:last-child {
+        transform: scaleX(-1);
+        margin-left: -16px;
+      }
+    }
+
+    i {
+      float: left;
+      width: 64px;
+      height: 24px;
+      background-color: @grey-light;
+      border: 4px solid @black;
+      border-radius: 8px;
+    }
+  }
+}
+
+// COPYNOTE
+.copynote{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+
+// ANIMATIONS
+@keyframes crush {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes paper-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
