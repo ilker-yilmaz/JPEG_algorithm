@@ -3,7 +3,7 @@ var XMLHttpRequest = window.XMLHttpRequest;
 
 function data() {
   var vm = this;
-prettySize();
+  prettySize();
   // console.log("data fonksiyonu çalıştı");
 
   return {
@@ -40,21 +40,6 @@ prettySize();
   };
 }
 
-function prettySize(size) {
-  var kilobyte = 1024;
-  var megabyte = kilobyte * kilobyte;
-
-  if (size > megabyte) {
-    return (size / megabyte).toFixed(2) + " MB";
-  } else if (size > kilobyte) {
-    return (size / kilobyte).toFixed(2) + " KB";
-  } else if (size >= 0) {
-    return size + " B";
-  }
-
-  return "N/A";
-}
-
 function compress(file) {
   if (!file) {
     return;
@@ -85,7 +70,6 @@ function handler() {
 }
 
 function mounted() {
-  
   if (!XMLHttpRequest) {
     return;
   }

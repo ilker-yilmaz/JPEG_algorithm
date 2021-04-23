@@ -1,8 +1,5 @@
-var fileSize = e.dataTransfer.files[0].size;
-
-function dropdrag() {
-prettySize();
-console.log(fileSize);
+ 
+function dropdrag() {  
 
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -43,8 +40,7 @@ console.log(fileSize);
 
       dropZoneElement.classList.remove("drop-zone--over");
     });
-  });
-  prettySize(fileSize); 
+  }); 
 }
 
 /**
@@ -96,16 +92,16 @@ function updateThumbnail(dropZoneElement, file) {
 }
 
 
-function prettySize(fileSize) {
+function prettySize(size) {
   var kilobyte = 1024;
   var megabyte = kilobyte * kilobyte;
 
-  if (fileSize > megabyte) {
-    return (fileSize / megabyte).toFixed(2) + " MB";
-  } else if (fileSize > kilobyte) {
-    return (fileSize / kilobyte).toFixed(2) + " KB";
-  } else if (fileSize >= 0) {
-    return fileSize + " B";
+  if (size > megabyte) {
+    return (size / megabyte).toFixed(2) + " MB";
+  } else if (size > kilobyte) {
+    return (size / kilobyte).toFixed(2) + " KB";
+  } else if (size >= 0) {
+    return size + " B";
   }
 
   return "N/A";

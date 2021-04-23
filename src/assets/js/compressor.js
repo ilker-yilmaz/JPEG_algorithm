@@ -1,13 +1,3 @@
-/*!
- * Compressor.js v1.0.7
- * https://fengyuanchen.github.io/compressorjs
- *
- * Copyright 2018-present Chen Fengyuan
- * Released under the MIT license
- *
- * Date: 2021-04-05T16:35:53.555Z
- */
-
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
