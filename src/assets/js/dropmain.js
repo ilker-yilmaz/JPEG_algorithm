@@ -28,7 +28,7 @@ function dropdrag() {
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
       console.log("sürüklendi");
-      
+
       if (e.dataTransfer.files.length) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
@@ -48,9 +48,8 @@ function dropdrag() {
  * @param {File} file
  */
 function updateThumbnail(dropZoneElement, file) {
-
   console.log(dropZoneElement);
-  console.log(file);
+  console.log("updateThumbnail çalıştı");
 
   let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
@@ -61,19 +60,23 @@ function updateThumbnail(dropZoneElement, file) {
 
   // First time - there is no thumbnail element, so lets create it
   if (!thumbnailElement) {
+    console.log("ilk şart sağlandı");
     thumbnailElement = document.createElement("div");
     thumbnailElement.classList.add("drop-zone__thumb");
     dropZoneElement.appendChild(thumbnailElement);
   }
 
-  console.log("dosya adı: "+file.name);
+  console.log("dosya adı: " + file.name);
   thumbnailElement.dataset.label = file.name;
 
-  // Show thumbnail for image files
+  // resim dosyaları için küçük resim göster
   if (file.type.startsWith("image/")) {
+    console.log("resim dosyaları için küçük resim göster çalıştı");
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
+      console.log("reader onload çalıştı");
+
       thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
     };
   } else {

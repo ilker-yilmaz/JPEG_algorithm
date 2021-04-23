@@ -35,7 +35,13 @@
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/main.js",
-              "src/assets/js/dropmain.js"
+              "src/assets/js/dropmain.js",
+              "./node_modules/jpeg-js/lib/decoder.js",
+              "./node_modules/jpeg-js/lib/encoder.js",
+              "./node_modules/jpeg-js/index.js",
+              "./node_modules/png-js/png.js",
+              "./node_modules/png-js/png-node.js",
+              "./node_modules/png-js/zlib.js"
             ]
           },
           "configurations": {
