@@ -1,4 +1,9 @@
+var fileSize = e.dataTransfer.files[0].size;
+
 function dropdrag() {
+prettySize();
+console.log(fileSize);
+
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -8,8 +13,8 @@ function dropdrag() {
 
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
-        console.log("uzunluk var.");
-        console.log(inputElement.files);
+        // console.log("uzunluk var.");
+         console.log(inputElement.files);
         updateThumbnail(dropZoneElement, inputElement.files[0]);
       }
     });
@@ -27,18 +32,19 @@ function dropdrag() {
 
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
-      console.log("sürüklendi");
+      // console.log("sürüklendi");
 
       if (e.dataTransfer.files.length) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
-        console.log(inputElement.files);
+        // console.log(inputElement.files);
         updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
       }
 
       dropZoneElement.classList.remove("drop-zone--over");
     });
   });
+  prettySize(fileSize); 
 }
 
 /**
@@ -48,8 +54,8 @@ function dropdrag() {
  * @param {File} file
  */
 function updateThumbnail(dropZoneElement, file) {
-  console.log(dropZoneElement);
-  console.log("updateThumbnail çalıştı");
+  // console.log(dropZoneElement);
+  //console.log("updateThumbnail çalıştı");
 
   let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
@@ -60,26 +66,47 @@ function updateThumbnail(dropZoneElement, file) {
 
   // First time - there is no thumbnail element, so lets create it
   if (!thumbnailElement) {
-    console.log("ilk şart sağlandı");
+    //console.log("ilk şart sağlandı");
     thumbnailElement = document.createElement("div");
     thumbnailElement.classList.add("drop-zone__thumb");
     dropZoneElement.appendChild(thumbnailElement);
   }
 
-  console.log("dosya adı: " + file.name);
+  console.log("son değişiklik: " + file.lastModified);
+  console.log("son değişiklik tarihi: " + file.lastModifiedDate);
+  console.log("isim: " + file.name);
+  console.log("türü: " + file.type);
+  console.log("boyut: " + prettySize(file.size));
+
   thumbnailElement.dataset.label = file.name;
 
   // resim dosyaları için küçük resim göster
   if (file.type.startsWith("image/")) {
-    console.log("resim dosyaları için küçük resim göster çalıştı");
+    // console.log("resim dosyaları için küçük resim göster çalıştı");
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log("reader onload çalıştı");
+      // console.log("reader onload çalıştı");
 
       thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
     };
   } else {
     thumbnailElement.style.backgroundImage = null;
   }
+}
+
+
+function prettySize(fileSize) {
+  var kilobyte = 1024;
+  var megabyte = kilobyte * kilobyte;
+
+  if (fileSize > megabyte) {
+    return (fileSize / megabyte).toFixed(2) + " MB";
+  } else if (fileSize > kilobyte) {
+    return (fileSize / kilobyte).toFixed(2) + " KB";
+  } else if (fileSize >= 0) {
+    return fileSize + " B";
+  }
+
+  return "N/A";
 }
