@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jpeg-algorithm": {
+      "hosting": {
+        "jpegAlgorithm": [
+          "jpeg-algorithm"
+        ]
+      }
+    }
+  }
+}

@@ -1,18 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
- import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ComparisonComponent } from './components/comparison/comparison.component';
 import { DropComponent } from './components/drop/drop.component';
 import { AnimationsComponent } from './components/animations/animations.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ComparisonComponent, DropComponent, AnimationsComponent],
-  imports: [BrowserModule,FormsModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ComparisonComponent,
+    DropComponent,
+    AnimationsComponent,
+  ],
+  imports: [
+    BrowserModule, 
+    FormsModule, 
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

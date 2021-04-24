@@ -18,6 +18,7 @@ function dropdrag() {
 
     dropZoneElement.addEventListener("dragover", (e) => {
       e.preventDefault();
+      
       dropZoneElement.classList.add("drop-zone--over");
     });
 
