@@ -3,8 +3,8 @@ var XMLHttpRequest = window.XMLHttpRequest;
 
 function data() {
   var vm = this;
-  prettySize();
-  // console.log("data fonksiyonu çalıştı");
+  
+   console.log("data fonksiyonu çalıştı");
 
   return {
     options: {
@@ -24,6 +24,7 @@ function data() {
 
         if (URL) {
           vm.outputURL = URL.createObjectURL(result);
+          console.log("URL:"+vm.outputURL);
         }
 
         vm.output = result;
@@ -62,6 +63,7 @@ function dragover(e) {
 }
 function drop() {
   e.preventDefault();
+  console.log(e.dataTransfer.files);
   this.compress(e.dataTransfer.files ? e.dataTransfer.files[0] : null);
 }
 

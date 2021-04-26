@@ -1,6 +1,4 @@
- 
-function dropdrag() {  
-
+function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -11,14 +9,14 @@ function dropdrag() {
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
         // console.log("uzunluk var.");
-         console.log(inputElement.files);
+        console.log(inputElement.files);
         updateThumbnail(dropZoneElement, inputElement.files[0]);
       }
     });
 
     dropZoneElement.addEventListener("dragover", (e) => {
       e.preventDefault();
-      
+
       dropZoneElement.classList.add("drop-zone--over");
     });
 
@@ -41,7 +39,7 @@ function dropdrag() {
 
       dropZoneElement.classList.remove("drop-zone--over");
     });
-  }); 
+  });
 }
 
 /**
@@ -92,7 +90,6 @@ function updateThumbnail(dropZoneElement, file) {
   }
 }
 
-
 function prettySize(size) {
   var kilobyte = 1024;
   var megabyte = kilobyte * kilobyte;
@@ -106,4 +103,9 @@ function prettySize(size) {
   }
 
   return "N/A";
+}
+
+function beforeAfter() {
+  document.getElementById("separador").style.width =
+    document.getElementById("deslizador").value + "%";
 }

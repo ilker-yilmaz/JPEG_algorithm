@@ -13,6 +13,7 @@ import { DropComponent } from './components/drop/drop.component';
 import { AnimationsComponent } from './components/animations/animations.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { ImagecomparisonComponent } from './components/imagecomparison/imagecomparison.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AngularFireModule } from '@angular/fire';
     ComparisonComponent,
     DropComponent,
     AnimationsComponent,
+    ImagecomparisonComponent,
   ],
   imports: [
     BrowserModule, 

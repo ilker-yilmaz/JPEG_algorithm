@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 declare const data:any
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
