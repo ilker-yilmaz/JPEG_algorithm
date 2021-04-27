@@ -14,6 +14,7 @@ import { AnimationsComponent } from './components/animations/animations.componen
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { ImagecomparisonComponent } from './components/imagecomparison/imagecomparison.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ImagecomparisonComponent } from './components/imagecomparison/imagecomp
     DropComponent,
     AnimationsComponent,
     ImagecomparisonComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule, 

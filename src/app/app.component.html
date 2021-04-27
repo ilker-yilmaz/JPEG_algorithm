@@ -1,6 +1,25 @@
 <div class="container">
-  <app-home></app-home>
+  <app-navbar></app-navbar>
+
+  <h3>Sıkıştırma Alanı</h3>
+  <hr />
+  <app-drop></app-drop>
+
   <br />
-  <!-- <app-imagecomparison></app-imagecomparison> -->
+
+  <app-home></app-home>
+
+  <body>
+    <div class="card" v-if="inputURL && outputURL">
+    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+    <div class="card-body">
+      <!-- <app-comparison></app-comparison> -->
+      <app-imagecomparison></app-imagecomparison>
+    </div>
+  </div>
+  </body>
+  
+
+  <br />
   <router-outlet></router-outlet>
 </div>
