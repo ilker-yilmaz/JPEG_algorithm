@@ -1,6 +1,12 @@
 body {
 	margin:0;
 }
+.vci-container{
+	box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 
 #contenedor { 
   background:url(https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg)no-repeat center center;/*fondo*/

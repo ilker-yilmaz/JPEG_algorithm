@@ -5,7 +5,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.vci-container{
+	box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 .left-side {
   display: block;
   height: "device.height";
