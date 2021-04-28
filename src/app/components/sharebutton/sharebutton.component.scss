@@ -1,0 +1,104 @@
+.share {
+    --twitter: #1da1f2;
+    --instagram: #c13584;
+    --youtube: #ff0000;
+    --dark-gray: #272727;
+    --orange: #ff652f;
+  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+    text-align: center;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
+  .share-btn {
+    position: relative;
+    z-index: 1000;
+  }
+  #share {
+    display: none;
+  }
+  .share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--dark-gray);
+    cursor: pointer;
+    transition: border-color 0.5s ease, background 0.3s ease;
+  }
+  .logo-cs {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .logo-c {
+    fill: var(--dark-gray);
+    transition: fill 0.5s ease;
+  }
+  .logo-s {
+    fill: var(--orange);
+  }
+  .share-btn:hover {
+    background: var(--dark-gray);
+    border-color: var(--orange);
+  }
+  .share-btn:hover .logo-c {
+    fill: white;
+  }
+  .share-btns a span {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    background: #16a085;
+    z-index: 999;
+    opacity: 0;
+    border: 1px solid;
+    border-radius: 50%;
+    color: white;
+    pointer-events: none;
+    transition: transform 0.2s ease-out, opacity 0.3s ease, color 0.5s ease,
+      background 0.5s ease;
+  }
+  #share:checked + .share-btns a span {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #share:checked + .share-btns .fa-twitter {
+    background: var(--twitter);
+    transform: translate(-5.5rem, 0.5rem);
+  }
+  #share:checked + .share-btns .fa-instagram {
+    background: var(--instagram);
+    transform: translate(-5rem, -2.7rem);
+    transition: transform 0.2s ease-out 0.1s, opacity 0.3s ease, color 0.5s ease,
+      background 0.5s ease;
+  }
+  #share:checked + .share-btns .fa-youtube {
+    background: var(--youtube);
+    transform: translate(-2.7rem, -5rem);
+    transition: transform 0.2s ease-out 0.2s, opacity 0.3s ease, color 0.5s ease,
+      background 0.5s ease;
+  }
+  #share:checked + .share-btns .fa-globe {
+    background: var(--dark-gray);
+    transform: translate(0.5rem, -5.5rem);
+    transition: transform 0.2s ease-out 0.3s, opacity 0.3s ease, color 0.5s ease,
+      background 0.5s ease;
+  }
+  #share:checked + .share-btns a span:hover {
+    background: white;
+    color: var(--dark-gray);
+  }
+  

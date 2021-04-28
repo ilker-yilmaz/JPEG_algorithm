@@ -4,21 +4,20 @@
   <h3>Sıkıştırma Alanı</h3>
   <hr />
   <app-drop></app-drop>
-
+  <!-- <app-sharebutton></app-sharebutton> -->
   <br />
 
   <app-home></app-home>
 
   <body>
     <div class="card" v-if="inputURL && outputURL">
-    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
-    <div class="card-body">
-      <!-- <app-comparison></app-comparison> -->
-      <app-imagecomparison></app-imagecomparison>
+      <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+      <div class="card-body">
+        <!-- <app-comparison></app-comparison> -->
+        <app-imagecomparison></app-imagecomparison>
+      </div>
     </div>
-  </div>
   </body>
-  
 
   <br />
   <router-outlet></router-outlet>

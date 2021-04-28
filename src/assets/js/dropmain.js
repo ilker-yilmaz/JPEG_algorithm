@@ -109,3 +109,17 @@ function beforeAfter() {
   document.getElementById("separador").style.width =
     document.getElementById("deslizador").value + "%";
 }
+
+function changeBeforeAfter(){
+  console.log("changeBeforeAfter çalıştı");
+  try {
+    var background = document.getElementById("seperador").getAttribute("backgroundImage");
+    
+    document.getElementById("seperador").style.backgroundImage = "url('https://cdn.chip.gen.tr/images/content/20090329231925.jpg')";
+
+  } catch (error) {
+    console.log(error);
+  }
+
+  
+}
