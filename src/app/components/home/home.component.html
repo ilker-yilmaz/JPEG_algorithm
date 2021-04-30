@@ -21,7 +21,6 @@
       </div>
     </div> -->
 
-    
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -233,17 +232,19 @@
                 <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
               <div class="col-md-8">
-                <dl class="row">
+                <dl class="row" *ngFor="let character of fileInputs">
                   <dt class="col-5">son değişiklik:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.lastModified }}</dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">
+                    <td>{{ character.lastModifiedDate }}</td>
+                  </dd>
                   <dt class="col-5">isim:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.name }}</dd>
                   <dt class="col-5">türü:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.type }}</dd>
                   <dt class="col-5">boyut:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.size }}</dd>
                 </dl>
               </div>
             </div>
@@ -282,17 +283,20 @@
                 <!-- <div v-else class="w-100 bg-light"></div> -->
               </div>
               <div class="col-md-8">
-                <dl class="row">
+                <dl class="row" *ngFor="let character of fileInputs">
                   <dt class="col-5">son değişiklik:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.lastModified }}</dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">
+                    <td>{{ character.lastModifiedDate }}</td>
+                  </dd>
                   <dt class="col-5">isim:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.name }}</dd>
                   <dt class="col-5">türü:</dt>
-                  <dd class="col-7"></dd>
+                  <dd class="col-7">{{ character.type }}</dd>
                   <dt class="col-5">boyut:</dt>
                   <dd class="col-7">
+                    {{ character.size }}
                     <span v-if="output.size"></span>
                   </dd>
                 </dl>
@@ -302,8 +306,6 @@
         </div>
       </div>
     </div>
-
-    
 
     <!-- <app-animations></app-animations> -->
   </div>

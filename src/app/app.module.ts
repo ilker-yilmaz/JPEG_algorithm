@@ -40,3 +40,4 @@ import { SharebuttonComponent } from './components/sharebutton/sharebutton.compo
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
+

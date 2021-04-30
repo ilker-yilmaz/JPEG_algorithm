@@ -14,5 +14,7 @@ export class DropComponent implements OnInit {
   ngOnInit(): void {
     dropdrag();
     changeBeforeAfter();
+    
+    
   }
 }

@@ -1,3 +1,9 @@
+var lastModified = file.lastModified;
+var lastModifiedDate = file.lastModifiedDate;
+var name = file.name;
+var size = prettySize(file.size);
+var type = file.type;
+
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -71,7 +77,7 @@ function updateThumbnail(dropZoneElement, file) {
   console.log("son değişiklik tarihi: " + file.lastModifiedDate);
   console.log("isim: " + file.name);
   console.log("türü: " + file.type);
-  console.log("boyut: " + prettySize(file.size));
+  console.log("boyut: " + file.size);
 
   thumbnailElement.dataset.label = file.name;
 
@@ -110,16 +116,16 @@ function beforeAfter() {
     document.getElementById("deslizador").value + "%";
 }
 
-function changeBeforeAfter(){
+function changeBeforeAfter() {
   console.log("changeBeforeAfter çalıştı");
   try {
-    var background = document.getElementById("seperador").getAttribute("backgroundImage");
-    
-    document.getElementById("seperador").style.backgroundImage = "url('https://cdn.chip.gen.tr/images/content/20090329231925.jpg')";
+    var background = document
+      .getElementById("seperador")
+      .getAttribute("backgroundImage");
 
+    document.getElementById("seperador").style.backgroundImage =
+      "url('https://cdn.chip.gen.tr/images/content/20090329231925.jpg')";
   } catch (error) {
     console.log(error);
   }
-
-  
 }
