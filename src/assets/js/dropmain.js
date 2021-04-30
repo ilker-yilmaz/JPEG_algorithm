@@ -73,7 +73,7 @@ function updateThumbnail(dropZoneElement, file) {
     dropZoneElement.appendChild(thumbnailElement);
   }
 
-  console.log("son değişiklik: " + file.lastModified);
+  console.log("son değişiklik: " + lastModified);
   console.log("son değişiklik tarihi: " + file.lastModifiedDate);
   console.log("isim: " + file.name);
   console.log("türü: " + file.type);
@@ -129,3 +129,5 @@ function changeBeforeAfter() {
     console.log(error);
   }
 }
+
+
