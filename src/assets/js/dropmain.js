@@ -1,8 +1,3 @@
-var lastModified = file.lastModified;
-var lastModifiedDate = file.lastModifiedDate;
-var name = file.name;
-var size = prettySize(file.size);
-var type = file.type;
 
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
@@ -17,6 +12,9 @@ function dropdrag() {
         // console.log("uzunluk var.");
         console.log(inputElement.files);
         updateThumbnail(dropZoneElement, inputElement.files[0]);
+
+        //write to console information of file (image)
+        writeConsole(inputElement.files[0]);
       }
     });
 
@@ -73,12 +71,6 @@ function updateThumbnail(dropZoneElement, file) {
     dropZoneElement.appendChild(thumbnailElement);
   }
 
-  console.log("son değişiklik: " + lastModified);
-  console.log("son değişiklik tarihi: " + file.lastModifiedDate);
-  console.log("isim: " + file.name);
-  console.log("türü: " + file.type);
-  console.log("boyut: " + file.size);
-
   thumbnailElement.dataset.label = file.name;
 
   // resim dosyaları için küçük resim göster
@@ -130,4 +122,16 @@ function changeBeforeAfter() {
   }
 }
 
+function writeConsole(file) {
+  var fileLastModified = file.lastModified;
+  var fileLastModifiedDate = file.lastModifiedDate;
+  var fileName = file.name;
+  var fileSize = prettySize(file.size);
+  var fileType = file.type;
 
+  console.log("son değişiklik: " + fileLastModified);
+  console.log("son değişiklik tarihi: " + fileLastModifiedDate);
+  console.log("isim: " + fileName);
+  console.log("türü: " + fileType);
+  console.log("boyut: " + fileSize);
+}

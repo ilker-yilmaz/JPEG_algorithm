@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 declare const dropdrag: any;
 declare const changeBeforeAfter: any;
 
@@ -13,7 +14,7 @@ export class DropComponent implements OnInit {
 
   ngOnInit(): void {
     dropdrag();
-    changeBeforeAfter();
+    //changeBeforeAfter();
     
     
   }
