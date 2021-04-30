@@ -11,10 +11,17 @@ function dropdrag() {
       if (inputElement.files.length) {
         // console.log("uzunluk var.");
         console.log(inputElement.files);
-        updateThumbnail(dropZoneElement, inputElement.files[0]);
+        var file =inputElement.files[0];
+        updateThumbnail(dropZoneElement, file);
 
+        // var result = new HomeComponent();
+        //  result.fileLastModified=file.lastModified;
+        //  result.fileLastModifiedDate=file.lastModifiedDate;
+        //  result.fileName=file.name;
+        //  result.fileType=file.type;
+        //  result.fileSize=prettySize(file.size);
         //write to console information of file (image)
-        writeConsole(inputElement.files[0]);
+        writeConsole(file);
       }
     });
 
