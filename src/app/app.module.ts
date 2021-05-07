@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { ImagecomparisonComponent } from './components/imagecomparison/imagecomparison.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharebuttonComponent } from './components/sharebutton/sharebutton.component';
+import { DeadlineanimationComponent } from './components/deadlineanimation/deadlineanimation.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SharebuttonComponent } from './components/sharebutton/sharebutton.compo
     ImagecomparisonComponent,
     NavbarComponent,
     SharebuttonComponent,
+    DeadlineanimationComponent,
   ],
   imports: [
     BrowserModule, 

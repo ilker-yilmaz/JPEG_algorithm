@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 declare const dropdrag: any;
-declare const changeBeforeAfter: any;
+//declare const changeBeforeAfter: any;
 
 @Component({
   selector: 'app-drop',

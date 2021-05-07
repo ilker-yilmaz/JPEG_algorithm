@@ -14,14 +14,15 @@ function dropdrag() {
         var file =inputElement.files[0];
         updateThumbnail(dropZoneElement, file);
 
-        // var result = new HomeComponent();
-        //  result.fileLastModified=file.lastModified;
-        //  result.fileLastModifiedDate=file.lastModifiedDate;
-        //  result.fileName=file.name;
-        //  result.fileType=file.type;
-        //  result.fileSize=prettySize(file.size);
-        //write to console information of file (image)
-        writeConsole(file);
+        //console.log(document.getElementById("outputName")) 
+        writeInputFileInformation(file);
+        writeOutputFileInformation(file);
+        // document.getElementById("inputName").innerHTML=file.name;
+        // document.getElementById("inputLastModified").innerHTML=file.lastModified;
+        // document.getElementById("inputLastModifiedDate").innerHTML=file.lastModifiedDate;
+        // document.getElementById("inputType").innerHTML=file.type;
+        // document.getElementById("inputSize").innerHTML=prettySize(file.size);
+        //writeConsole(file);
       }
     });
 
@@ -45,10 +46,14 @@ function dropdrag() {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
         // console.log(inputElement.files);
+        writeInputFileInformation(e.dataTransfer.files[0]);
+        writeOutputFileInformation(e.dataTransfer.files[0]);
         updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
       }
 
       dropZoneElement.classList.remove("drop-zone--over");
+
+      
     });
   });
 }
@@ -129,16 +134,34 @@ function changeBeforeAfter() {
   }
 }
 
-function writeConsole(file) {
-  var fileLastModified = file.lastModified;
-  var fileLastModifiedDate = file.lastModifiedDate;
-  var fileName = file.name;
-  var fileSize = prettySize(file.size);
-  var fileType = file.type;
-
-  console.log("son değişiklik: " + fileLastModified);
-  console.log("son değişiklik tarihi: " + fileLastModifiedDate);
-  console.log("isim: " + fileName);
-  console.log("türü: " + fileType);
-  console.log("boyut: " + fileSize);
+function writeInputFileInformation(file){
+  document.getElementById("inputName").innerHTML=file.name;
+  document.getElementById("inputLastModified").innerHTML=file.lastModified;
+  document.getElementById("inputLastModifiedDate").innerHTML=file.lastModifiedDate;
+  document.getElementById("inputType").innerHTML=file.type;
+  document.getElementById("inputSize").innerHTML=prettySize(file.size);
 }
+
+function writeOutputFileInformation(file){
+  document.getElementById("outputName").innerHTML=file.name;
+  document.getElementById("outputLastModified").innerHTML=file.lastModified;
+  document.getElementById("outputLastModifiedDate").innerHTML=file.lastModifiedDate;
+  document.getElementById("outputType").innerHTML=file.type;
+  document.getElementById("outputSize").innerHTML=prettySize(file.size);
+}
+
+
+//  function writeConsole(file) {
+//   var fileLastModified = file.lastModified;
+//   var fileLastModifiedDate = file.lastModifiedDate;
+//   var fileName = file.name;
+//   var fileSize = prettySize(file.size);
+//   var fileType = file.type;
+
+//   console.log("son değişiklik: " + fileLastModified);
+//   console.log("son değişiklik tarihi: " + fileLastModifiedDate);
+//   console.log("isim: " + fileName);
+//   console.log("türü: " + fileType);
+//   console.log("boyut: " + fileSize);
+// }
+

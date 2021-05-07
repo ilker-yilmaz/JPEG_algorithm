@@ -39,6 +39,7 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/main.js",
               "src/assets/js/dropmain.js",
+              "src/assets/js/deadline.js",
               "./node_modules/jpeg-js/lib/decoder.js",
               "./node_modules/jpeg-js/lib/encoder.js",
               "./node_modules/jpeg-js/index.js",

@@ -234,17 +234,17 @@
               <div class="col-md-8">
                 <dl class="row" *ngFor="let character of fileInputs">
                   <dt class="col-5">son değişiklik:</dt>
-                  <dd class="col-7">{{ character.lastModified }}</dd>
+                  <dd class="col-7" id="inputLastModified">{{ character.lastModified }}</dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
-                  <dd class="col-7">
+                  <dd class="col-7" id="inputLastModifiedDate">
                     <td>{{ character.lastModifiedDate }}</td>
                   </dd>
                   <dt class="col-5">isim:</dt>
-                  <dd class="col-7">{{ character.name }}</dd>
+                  <dd class="col-7" id="inputName">{{ character.name }}</dd>
                   <dt class="col-5">türü:</dt>
-                  <dd class="col-7">{{ character.type }}</dd>
+                  <dd class="col-7" id="inputType">{{ character.type }}</dd>
                   <dt class="col-5">boyut:</dt>
-                  <dd class="col-7">{{ character.size }}</dd>
+                  <dd class="col-7" id="inputSize">{{ character.size }}</dd>
                 </dl>
               </div>
             </div>
@@ -276,8 +276,8 @@
                 <div class="w-100 text-center" v-if="outputURL">
                   <img
                     class="mw-100"
-                    :src="/assets/img/afterimg.jpg"
-                    alt="image"
+                    :src="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
+                    alt="picture.jpg"
                   />
                 </div>
                 <!-- <div v-else class="w-100 bg-light"></div> -->
@@ -285,17 +285,17 @@
               <div class="col-md-8">
                 <dl class="row" *ngFor="let character of resultFileOutputs">
                   <dt class="col-5">son değişiklik:</dt>
-                  <dd class="col-7">{{ character.lastModified }}</dd>
+                  <dd class="col-7"  id="outputLastModified">{{ character.lastModified }}</dd>
                   <dt class="col-5">son değişiklik tarihi:</dt>
                   <dd class="col-7">
-                    <td>{{ character.lastModifiedDate }}</td>
+                    <td  id="outputLastModifiedDate">{{ character.lastModifiedDate }}</td>
                   </dd>
-                  <dt class="col-5">isim:</dt>
-                  <dd class="col-7">{{ character.name }}</dd>
+                  <dt class="col-5"> isim: </dt>
+                  <dd class="col-7" id="outputName">{{ character.name }}</dd>
                   <dt class="col-5">türü:</dt>
-                  <dd class="col-7">{{ character.type }}</dd>
+                  <dd class="col-7" id="outputType">{{ character.type }}</dd>
                   <dt class="col-5">boyut:</dt>
-                  <dd class="col-7">{{ character.size }}</dd>
+                  <dd class="col-7" id="outputSize">{{ character.size }}</dd>
                 </dl>
               </div>
             </div>
@@ -306,4 +306,5 @@
 
     <!-- <app-animations></app-animations> -->
   </div>
+  
 </body>
