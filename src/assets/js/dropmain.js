@@ -10,7 +10,7 @@ function dropdrag() {
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
         // console.log("uzunluk var.");
-        console.log(inputElement.files);
+        //console.log(inputElement.files);
         var file =inputElement.files[0];
         updateThumbnail(dropZoneElement, file);
 
@@ -134,6 +134,8 @@ function changeBeforeAfter() {
   }
 }
 
+var date = new Date();
+
 function writeInputFileInformation(file){
   document.getElementById("inputName").innerHTML=file.name;
   document.getElementById("inputLastModified").innerHTML=file.lastModified;
@@ -144,8 +146,8 @@ function writeInputFileInformation(file){
 
 function writeOutputFileInformation(file){
   document.getElementById("outputName").innerHTML=file.name;
-  document.getElementById("outputLastModified").innerHTML=file.lastModified;
-  document.getElementById("outputLastModifiedDate").innerHTML=file.lastModifiedDate;
+  document.getElementById("outputLastModified").innerHTML=date.getTime();
+  document.getElementById("outputLastModifiedDate").innerHTML=new Date();
   document.getElementById("outputType").innerHTML=file.type;
   document.getElementById("outputSize").innerHTML=prettySize(file.size);
 }

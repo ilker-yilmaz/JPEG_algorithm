@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       (this.fileInputs[0].name = 'before.png'),
       (this.fileInputs[0].size = '5545'),
       (this.fileInputs[0].type = 'image/png');
-    console.log(this.fileInputs[0]);
+    //console.log(this.fileInputs[0]);
   }
 
   getResultFileInformation(file: object) {
