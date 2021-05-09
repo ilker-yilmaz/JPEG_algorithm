@@ -216,6 +216,7 @@
               :download="after.jpg"
               :href="https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg"
               title="yüklenen görüntüyü indir"
+              id="inputImageDownload"
               >İndir</a
             >
           </h5>
@@ -227,6 +228,7 @@
                     class="mw-100"
                     :src="/assets/img/beforeimg.jpg"
                     alt="image"
+                    id="inputImage"
                   />
                 </div>
                 <!-- <div v-else class="w-100 bg-light"></div> -->
@@ -278,7 +280,7 @@
                     class="mw-100"
                     :src="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
                     alt="picture.jpg"
-                    id="inputImage"
+                    id="outputImage"
                   />
                 </div>
                 <!-- <div v-else class="w-100 bg-light"></div> -->

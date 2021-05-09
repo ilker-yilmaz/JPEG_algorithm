@@ -37,21 +37,22 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   getFileInformation(file: object) {
-    this.fileInputs[0].lastModified = 65342515243;
+    this.fileInputs[0].lastModified = 1619199497885;
     (this.fileInputs[0].lastModifiedDate = new Date()),
       (this.fileInputs[0].name = 'before.png'),
-      (this.fileInputs[0].size = '5545'),
+      (this.fileInputs[0].size = '611.72 KB'),
       (this.fileInputs[0].type = 'image/png');
     //console.log(this.fileInputs[0]);
   }
 
   getResultFileInformation(file: object) {
-    this.resultFileOutputs[0].lastModified = 43434343434;
-    (this.resultFileOutputs[0].lastModifiedDate = new Date()),
+    var date = new Date();
+    this.resultFileOutputs[0].lastModified = date.getTime();
+    (this.resultFileOutputs[0].lastModifiedDate = date),
       (this.resultFileOutputs[0].name = 'after.jpg'),
       (this.resultFileOutputs[0].size = '6547'),
       (this.resultFileOutputs[0].type = 'image/jpeg');
-    console.log(file);
+    //console.log(file);
   }
 
   ngOnInit(): void {

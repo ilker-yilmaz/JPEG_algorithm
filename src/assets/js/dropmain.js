@@ -142,7 +142,7 @@ function writeInputFileInformation(file){
   document.getElementById("inputLastModifiedDate").innerHTML=file.lastModifiedDate;
   document.getElementById("inputType").innerHTML=file.type;
   document.getElementById("inputSize").innerHTML=prettySize(file.size);
-}
+  }
 
 function writeOutputFileInformation(file){
   document.getElementById("outputName").innerHTML=file.name;
@@ -150,6 +150,7 @@ function writeOutputFileInformation(file){
   document.getElementById("outputLastModifiedDate").innerHTML=new Date();
   document.getElementById("outputType").innerHTML=file.type;
   document.getElementById("outputSize").innerHTML=prettySize(file.size);
+  //console.log(document.getElementById("outputImage"));
 }
 
 
