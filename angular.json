@@ -41,7 +41,7 @@
               "src/assets/js/dropmain.js",
               "src/assets/js/deadline.js",
               "src/assets/js/encoder.js",
-              " src/assets/js/decoder.js",
+              "src/assets/js/decoder.js",
               "./node_modules/jpeg-js/index.js",
               "./node_modules/png-js/png.js",
               "./node_modules/png-js/png-node.js",

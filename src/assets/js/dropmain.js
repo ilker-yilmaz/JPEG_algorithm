@@ -1,6 +1,4 @@
-
 function dropdrag() {
-
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -10,8 +8,7 @@ function dropdrag() {
 
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
-
-        var file =inputElement.files[0];
+        var file = inputElement.files[0];
         updateThumbnail(dropZoneElement, file);
 
         writeInputFileInformation(file);
@@ -49,8 +46,6 @@ function dropdrag() {
       }
 
       dropZoneElement.classList.remove("drop-zone--over");
-
-      
     });
   });
 }
@@ -62,7 +57,6 @@ function dropdrag() {
  * @param {File} file
  */
 function updateThumbnail(dropZoneElement, file) {
-
   let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
   // First time - remove the prompt
@@ -85,7 +79,6 @@ function updateThumbnail(dropZoneElement, file) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-
       thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
     };
   } else {
@@ -129,25 +122,27 @@ function changeBeforeAfter() {
 
 var date = new Date();
 
-function writeInputFileInformation(file){
-  document.getElementById("inputName").innerHTML=file.name;
-  document.getElementById("inputLastModified").innerHTML=file.lastModified;
-  document.getElementById("inputLastModifiedDate").innerHTML=file.lastModifiedDate;
-  document.getElementById("inputType").innerHTML=file.type;
-  document.getElementById("inputSize").innerHTML=prettySize(file.size);
-  }
-
-function writeOutputFileInformation(file){
-  document.getElementById("outputName").innerHTML=file.name;
-  document.getElementById("outputLastModified").innerHTML=date.getTime();
-  document.getElementById("outputLastModifiedDate").innerHTML=new Date();
-  document.getElementById("outputType").innerHTML=file.type;
-  document.getElementById("outputSize").innerHTML=prettySize(file.size);
+function writeInputFileInformation(file) {
+  document.getElementById("inputName").innerHTML = file.name;
+  document.getElementById("inputLastModified").innerHTML = file.lastModified;
+  document.getElementById("inputLastModifiedDate").innerHTML =
+    file.lastModifiedDate;
+  document.getElementById("inputType").innerHTML = file.type;
+  document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
-function fileAndSettingsSendToEncode(file){
-  var quality=document.getElementById("inputQuality");
-        var selectedQuality = quality.options[quality.selectedIndex].value;
-        console.log("seçilen kalite: "+selectedQuality);
-        encode(file,selectedQuality);
+function writeOutputFileInformation(file) {
+  document.getElementById("outputName").innerHTML = file.name;
+  document.getElementById("outputLastModified").innerHTML = date.getTime();
+  document.getElementById("outputLastModifiedDate").innerHTML = new Date();
+  document.getElementById("outputType").innerHTML = file.type;
+  document.getElementById("outputSize").innerHTML = prettySize(file.size);
+}
+
+function fileAndSettingsSendToEncode(file) {
+  var quality = document.getElementById("inputQuality");
+  var selectedQuality = quality.options[quality.selectedIndex].value;
+  console.log("seçilen kalite: " + selectedQuality);
+  var imageData = encode(file, selectedQuality);
+  console.log(imageData)
 }
