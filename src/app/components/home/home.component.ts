@@ -3,6 +3,7 @@ import fileInformation from 'src/app/fileInformation';
 
 //declare const JPEGEncoder:any;
 //declare const jpegImage:any;
+//declare const encode:any;
 declare var require:any;
 declare const Buffer:any;
 @Component({
@@ -12,7 +13,6 @@ declare const Buffer:any;
 })
 export class HomeComponent implements OnInit {
   date = new Date();
-
 
   fileInputs: fileInformation[] = [
     {
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     this.resultFileOutputs[0].lastModified = date.getTime();
     (this.resultFileOutputs[0].lastModifiedDate = date),
       (this.resultFileOutputs[0].name = 'after.jpg'),
-      (this.resultFileOutputs[0].size = '6547'),
+      (this.resultFileOutputs[0].size = '284.45 KB'),
       (this.resultFileOutputs[0].type = 'image/jpeg');
     //console.log(file);
   }
@@ -61,5 +61,6 @@ export class HomeComponent implements OnInit {
     this.getResultFileInformation(this.resultFileOutputs);
     //JPEGEncoder(5);
     //jpegImage();
+    //encode(this.fileInputs,30)
   }
 }

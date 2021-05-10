@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare const beforeAfter:any
+//declare const beforeAfter:any
 
 @Component({
   selector: 'app-imagecomparison',
@@ -12,7 +12,7 @@ export class ImagecomparisonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    beforeAfter();
+    //beforeAfter();
   }
 
 }

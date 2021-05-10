@@ -1,5 +1,5 @@
-
 function dropdrag() {
+
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -9,20 +9,17 @@ function dropdrag() {
 
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
-        // console.log("uzunluk var.");
-        //console.log(inputElement.files);
+
         var file =inputElement.files[0];
         updateThumbnail(dropZoneElement, file);
 
-        //console.log(document.getElementById("outputName")) 
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
-        // document.getElementById("inputName").innerHTML=file.name;
-        // document.getElementById("inputLastModified").innerHTML=file.lastModified;
-        // document.getElementById("inputLastModifiedDate").innerHTML=file.lastModifiedDate;
-        // document.getElementById("inputType").innerHTML=file.type;
-        // document.getElementById("inputSize").innerHTML=prettySize(file.size);
-        //writeConsole(file);
+
+        var quality=document.getElementById("inputQuality");
+        var selectedQuality = quality.options[quality.selectedIndex].value;
+        console.log("seçilen kalite: "+selectedQuality);
+        encode(file,selectedQuality);
       }
     });
 
@@ -40,12 +37,11 @@ function dropdrag() {
 
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
-      // console.log("sürüklendi");
 
       if (e.dataTransfer.files.length) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
-        // console.log(inputElement.files);
+
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
         updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
@@ -65,8 +61,6 @@ function dropdrag() {
  * @param {File} file
  */
 function updateThumbnail(dropZoneElement, file) {
-  // console.log(dropZoneElement);
-  //console.log("updateThumbnail çalıştı");
 
   let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
@@ -87,11 +81,9 @@ function updateThumbnail(dropZoneElement, file) {
 
   // resim dosyaları için küçük resim göster
   if (file.type.startsWith("image/")) {
-    // console.log("resim dosyaları için küçük resim göster çalıştı");
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      // console.log("reader onload çalıştı");
 
       thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
     };
@@ -150,21 +142,4 @@ function writeOutputFileInformation(file){
   document.getElementById("outputLastModifiedDate").innerHTML=new Date();
   document.getElementById("outputType").innerHTML=file.type;
   document.getElementById("outputSize").innerHTML=prettySize(file.size);
-  //console.log(document.getElementById("outputImage"));
 }
-
-
-//  function writeConsole(file) {
-//   var fileLastModified = file.lastModified;
-//   var fileLastModifiedDate = file.lastModifiedDate;
-//   var fileName = file.name;
-//   var fileSize = prettySize(file.size);
-//   var fileType = file.type;
-
-//   console.log("son değişiklik: " + fileLastModified);
-//   console.log("son değişiklik tarihi: " + fileLastModifiedDate);
-//   console.log("isim: " + fileName);
-//   console.log("türü: " + fileType);
-//   console.log("boyut: " + fileSize);
-// }
-
