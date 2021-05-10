@@ -17,10 +17,7 @@ function dropdrag() {
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
-        var quality=document.getElementById("inputQuality");
-        var selectedQuality = quality.options[quality.selectedIndex].value;
-        console.log("seçilen kalite: "+selectedQuality);
-        encode(file,selectedQuality);
+        fileAndSettingsSendToEncode(file);
       }
     });
 
@@ -42,6 +39,9 @@ function dropdrag() {
       if (e.dataTransfer.files.length) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
+
+        var file = e.dataTransfer.files[0];
+        fileAndSettingsSendToEncode(file);
 
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
@@ -143,4 +143,11 @@ function writeOutputFileInformation(file){
   document.getElementById("outputLastModifiedDate").innerHTML=new Date();
   document.getElementById("outputType").innerHTML=file.type;
   document.getElementById("outputSize").innerHTML=prettySize(file.size);
+}
+
+function fileAndSettingsSendToEncode(file){
+  var quality=document.getElementById("inputQuality");
+        var selectedQuality = quality.options[quality.selectedIndex].value;
+        console.log("seçilen kalite: "+selectedQuality);
+        encode(file,selectedQuality);
 }

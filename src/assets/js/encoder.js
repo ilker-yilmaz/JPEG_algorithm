@@ -748,7 +748,7 @@ function JPEGEncoder(quality) {
 
 			var duration = new Date().getTime() - time_start;
 			document.getElementById("encodingTime").innerHTML = duration + ' ms';
-    		//console.log('Encoding time: '+ duration + 'ms');
+    		console.log('Encoding time: '+ duration + 'ms');
 
 			if (typeof module === 'undefined') return new Uint8Array(byteout);
       return Buffer.from(byteout);
@@ -814,6 +814,7 @@ if (typeof module !== 'undefined') {
 
 function encode(imgData, qu) {
 
+	console.log("ENCODE ÇALIŞTI...")
   if (typeof qu === 'undefined') qu = 50;
   var encoder = new JPEGEncoder(qu);
 	var data = encoder.encode(imgData, qu);

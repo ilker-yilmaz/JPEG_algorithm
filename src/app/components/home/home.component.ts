@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
       name: '1.png',
       size: '1161',
       type: 'image/png',
-      encodingTime:'35 ms'
+      encodingTime:'2 ms'
     },
   ];
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       name: 'after.jpg',
       size: '1161',
       type: 'image/jpeg',
-      encodingTime: '5 ms'
+      encodingTime: '2 ms'
     },
   ];
 
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
       (this.resultFileOutputs[0].name = 'after.jpg'),
       (this.resultFileOutputs[0].size = '284.45 KB'),
       (this.resultFileOutputs[0].type = 'image/jpeg');
-      (this.resultFileOutputs[0].encodingTime='5 ms');
+      (this.resultFileOutputs[0].encodingTime='2 ms');
     //console.log(file);
   }
 
