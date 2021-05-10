@@ -5,4 +5,5 @@ export default class fileInformation {
     name: String | undefined;
     size: String | undefined;
     type: String | undefined ;
+    encodingTime: String | undefined;
 }
