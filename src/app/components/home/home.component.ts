@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   getResultFileInformation(file: object) {
-    this.toastrService.success("Hoşgeldiniz...")
+    this.toastrService.success("Hoşgeldiniz.")
     var date = new Date();
     this.resultFileOutputs[0].lastModified = date.getTime();
     (this.resultFileOutputs[0].lastModifiedDate = date),
