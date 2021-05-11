@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
@@ -17,6 +18,8 @@ import { ImagecomparisonComponent } from './components/imagecomparison/imagecomp
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharebuttonComponent } from './components/sharebutton/sharebutton.component';
 import { DeadlineanimationComponent } from './components/deadlineanimation/deadlineanimation.component';
+
+import {ToastrModule} from "ngx-toastr"
 
 @NgModule({
   declarations: [
@@ -36,6 +39,10 @@ import { DeadlineanimationComponent } from './components/deadlineanimation/deadl
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

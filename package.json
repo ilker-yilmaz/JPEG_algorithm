@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.5",
+    "@angular/animations": "^11.2.13",
     "@angular/common": "~11.2.5",
     "@angular/compiler": "~11.2.5",
     "@angular/core": "~11.2.5",
@@ -29,6 +29,7 @@
     "jpeg-js": "^0.4.3",
     "jquery": "^3.6.0",
     "ng-image-slider": "^2.6.4",
+    "ngx-toastr": "^13.2.1",
     "png-js": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

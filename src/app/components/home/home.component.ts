@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import fileInformation from 'src/app/fileInformation';
 
 //declare const JPEGEncoder:any;
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private toastrService:ToastrService) {}
 
   getFileInformation(file: object) {
     this.fileInputs[0].lastModified = 1619199497885;
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   getResultFileInformation(file: object) {
+    this.toastrService.success("başarılı")
     var date = new Date();
     this.resultFileOutputs[0].lastModified = date.getTime();
     (this.resultFileOutputs[0].lastModifiedDate = date),
@@ -62,6 +64,9 @@ export class HomeComponent implements OnInit {
     
     this.getFileInformation(this.fileInputs);
     this.getResultFileInformation(this.resultFileOutputs);
+
+    
+
     //JPEGEncoder(5);
     //jpegImage();
     //encode(this.fileInputs,30)

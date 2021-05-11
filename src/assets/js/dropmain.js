@@ -14,6 +14,9 @@ function dropdrag() {
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
+        //ToastrService.success("tamamlandı");
+        //ToastrService.error("dosya seçildi ve sıkıştırıldı");
+
         fileAndSettingsSendToEncode(file);
       }
     });
@@ -139,26 +142,21 @@ function writeOutputFileInformation(file) {
   document.getElementById("outputSize").innerHTML = prettySize(file.size);
 }
 
-
-
 function fileAndSettingsSendToEncode(file) {
+
   var quality = document.getElementById("inputQuality");
   var selectedQuality = quality.options[quality.selectedIndex].value;
- // console.log("seçilen kalite: " + selectedQuality);
+  // console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
-  console.log(imageData)
-  
-  quality.addEventListener('change', function(){
-  var quality = document.getElementById("inputQuality");
-  //var selectedQuality = quality.options[quality.selectedIndex].value;
-  var newSelectedQuality = quality.selectedIndex * 10;
-  console.log("seçilen kalite: " + newSelectedQuality);
+  console.log(imageData);
 
-  var imageData = encode(file, newSelectedQuality);
-  console.log(imageData)
-})
+  quality.addEventListener("change", function () {
+    var quality = document.getElementById("inputQuality");
+    //var selectedQuality = quality.options[quality.selectedIndex].value;
+    var newSelectedQuality = quality.selectedIndex * 10;
+    console.log("seçilen kalite: " + newSelectedQuality);
+
+    var imageData = encode(file, newSelectedQuality);
+    console.log(imageData);
+  });
 }
-
-
-
-
