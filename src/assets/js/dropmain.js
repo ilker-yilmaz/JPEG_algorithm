@@ -39,7 +39,7 @@ function dropdrag() {
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
 
-      if (e.dataTransfer.files.length) {
+      if (e.dataTransfer.files.length && e.dataTransfer.files[0].type.startsWith("image/")) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
 
@@ -49,6 +49,11 @@ function dropdrag() {
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
         updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+      }
+      else{
+        window.alert("Lütfen geçerli dosya tipini seçiniz...")
+      dropZoneElement.classList.remove("drop-zone--over");
+
       }
 
       dropZoneElement.classList.remove("drop-zone--over");
