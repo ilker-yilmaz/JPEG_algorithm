@@ -1,3 +1,6 @@
+const { Toast } = require("bootstrap");
+const { ToastrService } = require("ngx-toastr");
+
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -7,17 +10,17 @@ function dropdrag() {
     });
 
     inputElement.addEventListener("change", (e) => {
-      if (inputElement.files.length) {
+      if (inputElement.files.length && inputElement.files[0].type.startsWith("image/")) {
         var file = inputElement.files[0];
         updateThumbnail(dropZoneElement, file);
 
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
-        //ToastrService.success("tamamlandı");
-        //ToastrService.error("dosya seçildi ve sıkıştırıldı");
-
         fileAndSettingsSendToEncode(file);
+      }
+      else{
+        window.alert("Lütfen geçerli dosya tipini seçiniz...")
       }
     });
 
