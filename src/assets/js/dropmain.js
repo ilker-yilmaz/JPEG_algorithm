@@ -12,7 +12,7 @@ function dropdrag() {
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length && inputElement.files[0].type.startsWith("image/")) {
         var file = inputElement.files[0];
-        updateThumbnail(dropZoneElement, file);
+        //updateThumbnail(dropZoneElement, file);
 
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
@@ -21,6 +21,7 @@ function dropdrag() {
       }
       else{
         window.alert("Lütfen geçerli dosya tipini seçiniz...")
+        dropZoneElement.classList.remove("drop-zone--over");
       }
     });
 
@@ -48,7 +49,9 @@ function dropdrag() {
 
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
-        updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+        //updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+
+        dropZoneElement.classList.remove("drop-zone--over");
       }
       else{
         window.alert("Lütfen geçerli dosya tipini seçiniz...")
@@ -136,15 +139,14 @@ var date = new Date();
 function writeInputFileInformation(file) {
   document.getElementById("inputName").innerHTML = file.name;
   document.getElementById("inputLastModified").innerHTML = file.lastModified;
-  document.getElementById("inputLastModifiedDate").innerHTML =
-    file.lastModifiedDate;
+  document.getElementById("inputLastModifiedDate").innerHTML = file.lastModifiedDate;
   document.getElementById("inputType").innerHTML = file.type;
   document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
 function writeOutputFileInformation(file) {
   document.getElementById("outputName").innerHTML = file.name;
-  document.getElementById("outputLastModified").innerHTML = date.getTime();
+  document.getElementById("outputLastModified").innerHTML = (new Date()).getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
   document.getElementById("outputSize").innerHTML = prettySize(file.size);
