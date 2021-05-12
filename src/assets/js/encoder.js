@@ -710,7 +710,9 @@ function JPEGEncoder(quality) {
         u = 255;
       }
       UVTable[ZigZag[j]] = u;
+	  //console.log(UVTable[ZigZag[j]])
     }
+
     var aasf = [
       1.0,
       1.387039845,
@@ -727,8 +729,10 @@ function JPEGEncoder(quality) {
         fdtbl_Y[k] = 1.0 / (YTable[ZigZag[k]] * aasf[row] * aasf[col] * 8.0);
         fdtbl_UV[k] = 1.0 / (UVTable[ZigZag[k]] * aasf[row] * aasf[col] * 8.0);
         k++;
+		//console.log(k)
       }
     }
+	//console.log(YQT)
   }
 
   //huffman tablolarını hesapla
@@ -747,6 +751,13 @@ function JPEGEncoder(quality) {
       }
       codevalue *= 2;
     }
+
+	// console.log("nrcodes: "+nrcodes)
+	// console.log(std_table)
+	// console.log("codevalue: "+codevalue)
+	// console.log("pos_in_table: "+pos_in_table)
+	// console.log(HT)
+
     return HT;
   }
 
@@ -769,6 +780,7 @@ function JPEGEncoder(quality) {
       std_ac_chrominance_nrcodes,
       std_ac_chrominance_values
     );
+	//console.log(YDC_HT)
   }
 
   //kategori numarasını başlat
@@ -793,6 +805,13 @@ function JPEGEncoder(quality) {
       }
       nrlower <<= 1;
       nrupper <<= 1;
+
+	//   console.log("nrlower:")
+	//   console.log(nrlower)
+	//   console.log("nrupper:")
+	//   console.log(nrupper)
+
+
     }
   }
 
@@ -808,7 +827,11 @@ function JPEGEncoder(quality) {
       RGB_YUV_TABLE[(i + 1280) >> 0] = 32768 * i + 0x807fff;
       RGB_YUV_TABLE[(i + 1536) >> 0] = -27439 * i;
       RGB_YUV_TABLE[(i + 1792) >> 0] = -5329 * i;
+
+	  //console.log(RGB_YUV_TABLE)
     }
+	// console.log("RGB_YUV_TABLE")
+	// console.log(RGB_YUV_TABLE)
   }
 
   // IO functions
@@ -1168,7 +1191,9 @@ function JPEGEncoder(quality) {
     for (var i = 0; i < 256; i++) {
       ///// ACHTUNG // 255
       clt[i] = sfcc(i);
+	  //console.log(clt[i])
     }
+	
   }
 
   this.encode = function (
@@ -1178,6 +1203,7 @@ function JPEGEncoder(quality) {
     console.log("this.encode = function(image,quality)");
     var time_start = new Date().getTime();
 
+	
     if (quality) setQuality(quality);
 
     // Initialize bit writer
@@ -1207,6 +1233,8 @@ function JPEGEncoder(quality) {
     var imageData = image.data;
     var width = image.width;
     var height = image.height;
+
+	
 
     var quadWidth = width * 4;
     var tripleWidth = width * 3;
@@ -1297,6 +1325,7 @@ function JPEGEncoder(quality) {
     console.log(jpegDataUri);
     
 	
+	
     if (typeof module === "undefined") return new Uint8Array(byteout);
     return Buffer.from(byteout);
 
@@ -1320,13 +1349,15 @@ function JPEGEncoder(quality) {
       quality = 100;
     }
 
-    if (currentQuality == quality) return; // don't recalc if unchanged
+    if (currentQuality == quality) return; // değişmemişse yeniden hesaplama (don't recalc if unchanged)
 
     var sf = 0;
     if (quality < 50) {
       sf = Math.floor(5000 / quality);
+	  console.log("kalite 50'den küçükse sf: "+sf)
     } else {
       sf = Math.floor(200 - quality * 2);
+	  console.log("kalite 50'den büyükse sf: "+sf)
     }
 
     initQuantTables(sf);
@@ -1365,8 +1396,9 @@ function encode(imgData, qu) {
   var data = encoder.encode(imgData, qu);
 
   //sonradan eklendi
-  console.log(imgData);
+  //console.log(imgData);
   console.log("kalite kaybı: %" + qu);
+  console.log(encoder)
   console.log(data);
   
   var dataSize = data.size;
