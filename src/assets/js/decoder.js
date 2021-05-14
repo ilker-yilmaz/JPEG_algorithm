@@ -1089,6 +1089,8 @@ if (typeof module !== 'undefined') {
 }
 
 function decode(jpegData, userOpts = {}) {
+  console.log(jpegData.Uint8Array)
+  console.log(userOpts)
   var defaultOpts = {
     // "undefined" means "Choose whether to transform colors based on the image’s color model."
     colorTransform: undefined,
@@ -1133,6 +1135,8 @@ function decode(jpegData, userOpts = {}) {
   }
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
+
+  console.log(image)
 
   return image;
 }

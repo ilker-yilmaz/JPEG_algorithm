@@ -1,5 +1,3 @@
-const { Toast } = require("bootstrap");
-const { ToastrService } = require("ngx-toastr");
 
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
@@ -13,10 +11,12 @@ function dropdrag() {
       if (inputElement.files.length && inputElement.files[0].type.startsWith("image/")) {
         var file = inputElement.files[0];
         //updateThumbnail(dropZoneElement, file);
-
+        
+        changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
+        
         fileAndSettingsSendToEncode(file);
       }
       else{
@@ -45,6 +45,7 @@ function dropdrag() {
         inputElement.files = e.dataTransfer.files;
 
         var file = e.dataTransfer.files[0];
+        changeInputImage(file);
         fileAndSettingsSendToEncode(file);
 
         writeInputFileInformation(e.dataTransfer.files[0]);
@@ -120,9 +121,6 @@ function beforeAfter() {
     document.getElementById("deslizador").value + "%";
 }
 
-
-
-
 function writeInputFileInformation(file) {
   document.getElementById("inputName").innerHTML = file.name;
   document.getElementById("inputLastModified").innerHTML = file.lastModified;
@@ -141,11 +139,13 @@ function writeOutputFileInformation(file) {
 
 function fileAndSettingsSendToEncode(file) {
 
+
   var quality = document.getElementById("inputQuality");
   var selectedQuality = quality.options[quality.selectedIndex].value;
   // console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
   console.log(imageData);
+
 
   quality.addEventListener("change", function () {
     var quality = document.getElementById("inputQuality");
@@ -155,5 +155,17 @@ function fileAndSettingsSendToEncode(file) {
 
     var imageData = encode(file, newSelectedQuality);
     console.log(imageData);
+
   });
+}
+
+function changeInputImage(file){
+  var img = document.getElementById("inputImage");
+        img.src="/assets/img/"+file.name
+        
+        img.src=URL.createObjectURL(file);
+        console.log(img.src)
+       
+        console.log(img.clientWidth);
+        console.log(img.clientHeight);
 }

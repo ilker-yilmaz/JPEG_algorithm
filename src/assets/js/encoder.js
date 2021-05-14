@@ -35,6 +35,7 @@ JPEG encoder ported to JavaScript and optimized by Andreas Ritter, www.bytestrom
 Basic GUI blocking jpeg encoder
 */
 
+
 var btoa =
   btoa ||
   function (buf) {
@@ -1395,12 +1396,13 @@ function encode(imgData, qu) {
   var encoder = new JPEGEncoder(qu);
   var data = encoder.encode(imgData, qu);
 
+  //console.log(decode(imgData,data))
   //sonradan eklendi
   //console.log(imgData);
   console.log("kalite kaybı: %" + qu);
   console.log(encoder)
   console.log(data);
-  
+ 
   var dataSize = data.size;
   console.log(dataSize);
   //document.getElementById("uint8Array(611)").innerHTML=data;
