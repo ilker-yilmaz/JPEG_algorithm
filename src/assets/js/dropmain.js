@@ -160,12 +160,14 @@ function fileAndSettingsSendToEncode(file) {
 }
 
 function changeInputImage(file){
-  var img = document.getElementById("inputImage");
-        img.src="/assets/img/"+file.name
+  var inputImage = document.getElementById("inputImage");
+  var outputImage = document.getElementById("outputImage");
+        //img.src="/assets/img/"+file.name
         
-        img.src=URL.createObjectURL(file);
-        console.log(img.src)
+        inputImage.src=URL.createObjectURL(file);
+        outputImage.src=URL.createObjectURL(file);
+        //console.log(inputImage.src)
        
-        console.log(img.clientWidth);
-        console.log(img.clientHeight);
+        console.log(inputImage.clientWidth);
+        console.log(inputImage.clientHeight);
 }
