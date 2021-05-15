@@ -213,9 +213,10 @@
             >
             <a
               class="btn btn-sm btn-blocks btn-outline-primary"
-              :download="after.jpg"
-              :href="https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg"
+              download="after.jpg"
+              href="https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg"
               title="yüklenen görüntüyü indir"
+              id="downloadInputImage"
               >İndir</a
             >
           </h5>
@@ -265,9 +266,10 @@
             <app-sharebutton></app-sharebutton>
             <a
               class="btn btn-sm btn-blocks btn-outline-primary"
-              :download="before.jpg"
-              :href="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
+              download="before.jpg"
+              href="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
               title="sıkıştırılmış görüntüyü indir"
+              id="downloadOutputImage"
               >İndir</a
             >
           </h5>

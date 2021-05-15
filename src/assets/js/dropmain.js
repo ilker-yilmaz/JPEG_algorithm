@@ -1,4 +1,3 @@
-
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -8,19 +7,20 @@ function dropdrag() {
     });
 
     inputElement.addEventListener("change", (e) => {
-      if (inputElement.files.length && inputElement.files[0].type.startsWith("image/")) {
+      if (
+        inputElement.files.length &&
+        inputElement.files[0].type.startsWith("image/")
+      ) {
         var file = inputElement.files[0];
         //updateThumbnail(dropZoneElement, file);
-        
+
         changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
-        
         fileAndSettingsSendToEncode(file);
-      }
-      else{
-        window.alert("Lütfen geçerli dosya tipini seçiniz...")
+      } else {
+        window.alert("Lütfen geçerli dosya tipini seçiniz...");
         dropZoneElement.classList.remove("drop-zone--over");
       }
     });
@@ -40,7 +40,10 @@ function dropdrag() {
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
 
-      if (e.dataTransfer.files.length && e.dataTransfer.files[0].type.startsWith("image/")) {
+      if (
+        e.dataTransfer.files.length &&
+        e.dataTransfer.files[0].type.startsWith("image/")
+      ) {
         console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
 
@@ -53,11 +56,9 @@ function dropdrag() {
         //updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
 
         dropZoneElement.classList.remove("drop-zone--over");
-      }
-      else{
-        window.alert("Lütfen geçerli dosya tipini seçiniz...")
-      dropZoneElement.classList.remove("drop-zone--over");
-
+      } else {
+        window.alert("Lütfen geçerli dosya tipini seçiniz...");
+        dropZoneElement.classList.remove("drop-zone--over");
       }
 
       dropZoneElement.classList.remove("drop-zone--over");
@@ -124,28 +125,28 @@ function beforeAfter() {
 function writeInputFileInformation(file) {
   document.getElementById("inputName").innerHTML = file.name;
   document.getElementById("inputLastModified").innerHTML = file.lastModified;
-  document.getElementById("inputLastModifiedDate").innerHTML = file.lastModifiedDate;
+  document.getElementById("inputLastModifiedDate").innerHTML =
+    file.lastModifiedDate;
   document.getElementById("inputType").innerHTML = file.type;
   document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
 function writeOutputFileInformation(file) {
   document.getElementById("outputName").innerHTML = file.name;
-  document.getElementById("outputLastModified").innerHTML = (new Date()).getTime();
+  document.getElementById(
+    "outputLastModified"
+  ).innerHTML = new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
   document.getElementById("outputSize").innerHTML = prettySize(file.size);
 }
 
 function fileAndSettingsSendToEncode(file) {
-
-
   var quality = document.getElementById("inputQuality");
   var selectedQuality = quality.options[quality.selectedIndex].value;
   // console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
   console.log(imageData);
-
 
   quality.addEventListener("change", function () {
     var quality = document.getElementById("inputQuality");
@@ -155,19 +156,27 @@ function fileAndSettingsSendToEncode(file) {
 
     var imageData = encode(file, newSelectedQuality);
     console.log(imageData);
-
   });
 }
 
-function changeInputImage(file){
+function changeInputImage(file) {
   var inputImage = document.getElementById("inputImage");
   var outputImage = document.getElementById("outputImage");
-        //img.src="/assets/img/"+file.name
-        
-        inputImage.src=URL.createObjectURL(file);
-        outputImage.src=URL.createObjectURL(file);
-        //console.log(inputImage.src)
-       
-        console.log(inputImage.clientWidth);
-        console.log(inputImage.clientHeight);
+  var downloadInputImage = document.getElementById("downloadInputImage");
+  var downloadOutputImage = document.getElementById("downloadOutputImage");
+  
+
+  inputImage.src = URL.createObjectURL(file);
+  outputImage.src = URL.createObjectURL(file);
+  console.log( URL.createObjectURL(file))
+  //console.log(inputImage.src)
+  downloadInputImage.setAttribute("href",inputImage.src)
+  downloadOutputImage.setAttribute("href",inputImage.src)
+
+  downloadInputImage.setAttribute("download",file.name)
+  downloadOutputImage.setAttribute("download",file.name)
+
+  console.log(downloadInputImage)
+  console.log(inputImage.clientWidth);
+  console.log(inputImage.clientHeight);
 }

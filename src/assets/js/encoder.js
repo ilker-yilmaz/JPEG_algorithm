@@ -1396,6 +1396,7 @@ function encode(imgData, qu) {
   var encoder = new JPEGEncoder(qu);
   var data = encoder.encode(imgData, qu);
 
+  
   //console.log(decode(imgData,data))
   //sonradan eklendi
   //console.log(imgData);
