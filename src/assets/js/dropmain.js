@@ -164,19 +164,24 @@ function changeInputImage(file) {
   var outputImage = document.getElementById("outputImage");
   var downloadInputImage = document.getElementById("downloadInputImage");
   var downloadOutputImage = document.getElementById("downloadOutputImage");
-  
+  var imageComparisonSeparador = document.getElementById("separador");
+  var imageComparisonContenedor = document.getElementById("contenedor")
 
   inputImage.src = URL.createObjectURL(file);
   outputImage.src = URL.createObjectURL(file);
   console.log( URL.createObjectURL(file))
-  //console.log(inputImage.src)
+  
   downloadInputImage.setAttribute("href",inputImage.src)
   downloadOutputImage.setAttribute("href",inputImage.src)
 
   downloadInputImage.setAttribute("download",file.name)
-  downloadOutputImage.setAttribute("download",file.name)
+  downloadOutputImage.setAttribute("download",file.name + "-compressed")
 
-  console.log(downloadInputImage)
+  imageComparisonSeparador.style.backgroundImage = "url("+inputImage.src+")"
+  imageComparisonContenedor.style.backgroundImage = "url("+inputImage.src+")"
+
+  console.log(imageComparisonContenedor)
+  
   console.log(inputImage.clientWidth);
   console.log(inputImage.clientHeight);
 }
