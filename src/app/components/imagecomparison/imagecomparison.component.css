@@ -9,7 +9,7 @@ body {
 }
 
 #contenedor { 
-  background:url(https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg)no-repeat center center;
+  background:url(https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg)no-repeat center center; 
 	height: 73.5vw;
 	margin: 1vw auto;
 	max-height: 750px;
@@ -18,7 +18,7 @@ body {
 	width: 98vw;
 }
 #contenedor figure { 
-	background-image: url(https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg); /*output Image*/
+	background-image: url(https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg); /*output Image */
 	background-size: cover;
 	font-size: 0;
 	height: 100%;

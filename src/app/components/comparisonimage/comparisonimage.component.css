@@ -1,0 +1,11 @@
+img-comparison-slider {
+    --divider-width: 1px;
+    --divider-color: #c0c0c0;
+    --handle-opacity: 0.4;
+  }
+  .vci-container{
+	box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}

@@ -5,8 +5,7 @@ import fileInformation from 'src/app/fileInformation';
 //declare const JPEGEncoder:any;
 //declare const jpegImage:any;
 //declare const encode:any;
-declare var require:any;
-declare const Buffer:any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -14,11 +14,14 @@ function dropdrag() {
         var file = inputElement.files[0];
         //updateThumbnail(dropZoneElement, file);
 
+        
+
         changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
         fileAndSettingsSendToEncode(file);
+        
       } else {
         window.alert("Lütfen geçerli dosya tipini seçiniz...");
         dropZoneElement.classList.remove("drop-zone--over");
@@ -162,26 +165,25 @@ function fileAndSettingsSendToEncode(file) {
 function changeInputImage(file) {
   var inputImage = document.getElementById("inputImage");
   var outputImage = document.getElementById("outputImage");
+
   var downloadInputImage = document.getElementById("downloadInputImage");
   var downloadOutputImage = document.getElementById("downloadOutputImage");
-  var imageComparisonSeparador = document.getElementById("separador");
-  var imageComparisonContenedor = document.getElementById("contenedor")
+
+  var beforeImage = document.getElementById("beforeImage")
+  var afterImage = document.getElementById("afterImage")
 
   inputImage.src = URL.createObjectURL(file);
   outputImage.src = URL.createObjectURL(file);
-  console.log( URL.createObjectURL(file))
-  
-  downloadInputImage.setAttribute("href",inputImage.src)
-  downloadOutputImage.setAttribute("href",inputImage.src)
 
-  downloadInputImage.setAttribute("download",file.name)
-  downloadOutputImage.setAttribute("download",file.name + "-compressed")
+  beforeImage.src= URL.createObjectURL(file);
+  afterImage.src = URL.createObjectURL(file);
 
-  imageComparisonSeparador.style.backgroundImage = "url("+inputImage.src+")"
-  imageComparisonContenedor.style.backgroundImage = "url("+inputImage.src+")"
+  downloadInputImage.setAttribute("href", inputImage.src);
+  downloadOutputImage.setAttribute("href", inputImage.src);
 
-  console.log(imageComparisonContenedor)
-  
+  downloadInputImage.setAttribute("download", file.name);
+  downloadOutputImage.setAttribute("download", file.name + "-compressed");
+
   console.log(inputImage.clientWidth);
   console.log(inputImage.clientHeight);
 }

@@ -19,7 +19,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharebuttonComponent } from './components/sharebutton/sharebutton.component';
 import { DeadlineanimationComponent } from './components/deadlineanimation/deadlineanimation.component';
 
-import {ToastrModule} from "ngx-toastr"
+import {ToastrModule} from "ngx-toastr";
+import { ComparisonimageComponent } from './components/comparisonimage/comparisonimage.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {ToastrModule} from "ngx-toastr"
     NavbarComponent,
     SharebuttonComponent,
     DeadlineanimationComponent,
+    ComparisonimageComponent,
   ],
   imports: [
     BrowserModule, 

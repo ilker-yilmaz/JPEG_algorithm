@@ -1,0 +1,21 @@
+<body>
+  <div class="card" v-if="inputURL && outputURL">
+    <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+    <div class="card-body">
+      <div class="vci-container">
+        <img-comparison-slider>
+          <img
+          id="beforeImage"
+            slot="before"
+            src="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
+          />
+          <img
+          id="afterImage"
+            slot="after"
+            src="https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg"
+          />
+        </img-comparison-slider>
+      </div>
+    </div>
+  </div>
+</body>
