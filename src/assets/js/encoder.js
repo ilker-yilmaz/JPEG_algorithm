@@ -1323,7 +1323,7 @@ function JPEGEncoder(quality) {
     console.log("Encoding time: " + duration + "ms");
 
     var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
-    console.log(jpegDataUri);
+    //console.log(jpegDataUri);
     
 	
 	
@@ -1403,9 +1403,11 @@ function encode(imgData, qu) {
   console.log("kalite kaybı: %" + qu);
   console.log(encoder)
   console.log(data);
+
+  
+  //var image = decode(imgData, {data: true});
  
-  var dataSize = data.size;
-  console.log(dataSize);
+  //console.log(image);
   //document.getElementById("uint8Array(611)").innerHTML=data;
 
   return {

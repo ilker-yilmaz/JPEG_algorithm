@@ -1089,7 +1089,7 @@ if (typeof module !== 'undefined') {
 }
 
 function decode(jpegData, userOpts = {}) {
-  console.log(jpegData.Uint8Array)
+  console.log(jpegData)
   console.log(userOpts)
   var defaultOpts = {
     // "undefined" means "Choose whether to transform colors based on the image’s color model."

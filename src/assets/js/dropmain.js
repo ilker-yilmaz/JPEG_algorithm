@@ -1,3 +1,4 @@
+
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -12,9 +13,6 @@ function dropdrag() {
         inputElement.files[0].type.startsWith("image/")
       ) {
         var file = inputElement.files[0];
-        //updateThumbnail(dropZoneElement, file);
-
-        
 
         changeInputImage(file);
         writeInputFileInformation(file);
@@ -47,7 +45,7 @@ function dropdrag() {
         e.dataTransfer.files.length &&
         e.dataTransfer.files[0].type.startsWith("image/")
       ) {
-        console.log(e.dataTransfer.files);
+        //console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
 
         var file = e.dataTransfer.files[0];
@@ -56,7 +54,6 @@ function dropdrag() {
 
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
-        //updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
 
         dropZoneElement.classList.remove("drop-zone--over");
       } else {
@@ -74,36 +71,8 @@ function dropdrag() {
  *
  * @param {HTMLElement} dropZoneElement
  * @param {File} file
+ * @param {Buffer} buffer
  */
-function updateThumbnail(dropZoneElement, file) {
-  let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-
-  // First time - remove the prompt
-  if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-    dropZoneElement.querySelector(".drop-zone__prompt").remove();
-  }
-
-  // First time - there is no thumbnail element, so lets create it
-  if (!thumbnailElement) {
-    //console.log("ilk şart sağlandı");
-    thumbnailElement = document.createElement("div");
-    thumbnailElement.classList.add("drop-zone__thumb");
-    dropZoneElement.appendChild(thumbnailElement);
-  }
-
-  thumbnailElement.dataset.label = file.name;
-
-  // resim dosyaları için küçük resim göster
-  if (file.type.startsWith("image/")) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-    };
-  } else {
-    thumbnailElement.style.backgroundImage = null;
-  }
-}
 
 function prettySize(size) {
   var kilobyte = 1024;
@@ -118,11 +87,6 @@ function prettySize(size) {
   }
 
   return "N/A";
-}
-
-function beforeAfter() {
-  document.getElementById("separador").style.width =
-    document.getElementById("deslizador").value + "%";
 }
 
 function writeInputFileInformation(file) {
@@ -149,7 +113,7 @@ function fileAndSettingsSendToEncode(file) {
   var selectedQuality = quality.options[quality.selectedIndex].value;
   // console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
-  console.log(imageData);
+  //console.log(imageData);
 
   quality.addEventListener("change", function () {
     var quality = document.getElementById("inputQuality");
@@ -159,6 +123,8 @@ function fileAndSettingsSendToEncode(file) {
 
     var imageData = encode(file, newSelectedQuality);
     console.log(imageData);
+
+   
   });
 }
 
@@ -172,18 +138,20 @@ function changeInputImage(file) {
   var beforeImage = document.getElementById("beforeImage")
   var afterImage = document.getElementById("afterImage")
 
-  inputImage.src = URL.createObjectURL(file);
-  outputImage.src = URL.createObjectURL(file);
+  var url = URL.createObjectURL(file);
 
-  beforeImage.src= URL.createObjectURL(file);
-  afterImage.src = URL.createObjectURL(file);
+  inputImage.src = url;
+  outputImage.src = url;
 
-  downloadInputImage.setAttribute("href", inputImage.src);
-  downloadOutputImage.setAttribute("href", inputImage.src);
+  beforeImage.src= url;
+  afterImage.src = url;
+
+  downloadInputImage.setAttribute("href", url);
+  downloadOutputImage.setAttribute("href", url);
 
   downloadInputImage.setAttribute("download", file.name);
   downloadOutputImage.setAttribute("download", file.name + "-compressed");
 
-  console.log(inputImage.clientWidth);
-  console.log(inputImage.clientHeight);
+  // console.log(inputImage.clientWidth);
+  // console.log(inputImage.clientHeight);
 }

@@ -4,20 +4,20 @@ var $ = jQuery;
 var date1 = new Date();
 var date2 = new Date("06/01/2021");
   
-// To calculate the time difference of two dates
+// İki tarihin saat farkını hesaplamak için
 var Difference_In_Time = date2.getTime() - date1.getTime();
   
 // To calculate the no. of days between two dates
 var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
-var animationTime = Difference_In_Time,
-  days = Difference_In_Days;
+var animationTime = 60,
+  days = 15;
 
   function deadlineMain(){
-    console.log(date1)
-    console.log(date2)
-    console.log(Difference_In_Time)
-    console.log(Difference_In_Days)
+    // console.log(date1)
+    // console.log(date2)
+    // console.log(Difference_In_Time)
+    // console.log(Difference_In_Days)
     $(document).ready(function () {
   // timer arguments:
   //   #1 - time of animation in mileseconds,
