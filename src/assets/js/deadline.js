@@ -1,6 +1,6 @@
 // Init
 var $ = jQuery;
-var animationTime = 1209600,
+var animationTime = 120,
   days = 14;
 
   function deadlineMain(){

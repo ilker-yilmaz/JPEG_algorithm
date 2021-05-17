@@ -5,9 +5,7 @@ html {
 
 html,
 body {
-    height: 380%;
-    display: block;
-    
+    height: 370%;
 }
 
 body {
@@ -15,14 +13,7 @@ body {
     padding: 0;
     background: #000;
 }
-.animation{
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 60px;
-  }
+
 
 #deadline {
     width:581px;
@@ -37,7 +28,7 @@ body {
 }
 
 #deadline svg {
-    width: 100%;
+    width: 150%;
 }
 
 #progress-time-fill {
