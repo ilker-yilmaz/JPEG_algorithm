@@ -141,7 +141,7 @@ function changeInputImage(file) {
   var url = URL.createObjectURL(file);
 
   inputImage.src = url;
-  //outputImage.src = url;
+  outputImage.src = url;
 
   beforeImage.src = url;
   afterImage.src = url;
