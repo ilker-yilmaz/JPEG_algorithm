@@ -54,7 +54,7 @@ function JPEGEncoder(quality) {
   var YAC_HT;
   var UVAC_HT;
 
-  // console.log("fround: "+fround)
+  // console.log("fround : "+fround)
   // console.log("ffloor: "+ffloor)
   // console.log("YTable: "+YTable)
   // console.log("UVTable: "+UVTable)
