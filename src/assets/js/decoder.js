@@ -57,6 +57,7 @@ var JpegImage = (function jpegImage() {
   }
 
   function buildHuffmanTable(codeLengths, values) {
+    console.log("decoder buildHuffmanTable")
     var k = 0, code = [], i, j, length = 16;
     while (length > 0 && !codeLengths[length - 1])
       length--;
@@ -94,6 +95,8 @@ var JpegImage = (function jpegImage() {
                       frame, components, resetInterval,
                       spectralStart, spectralEnd,
                       successivePrev, successive, opts) {
+
+                        console.log("decoder decodeScan")
     var precision = frame.precision;
     var samplesPerLine = frame.samplesPerLine;
     var scanLines = frame.scanLines;
@@ -103,6 +106,7 @@ var JpegImage = (function jpegImage() {
 
     var startOffset = offset, bitsData = 0, bitsCount = 0;
     function readBit() {
+      console.log("decoder decodeScan readBit")
       if (bitsCount > 0) {
         bitsCount--;
         return (bitsData >> bitsCount) & 1;
@@ -119,6 +123,7 @@ var JpegImage = (function jpegImage() {
       return bitsData >>> 7;
     }
     function decodeHuffman(tree) {
+      console.log("decoder decodeHuffman")
       var node = tree, bit;
       while ((bit = readBit()) !== null) {
         node = node[bit];
@@ -987,9 +992,12 @@ var JpegImage = (function jpegImage() {
         default:
           throw new Error('Unsupported color mode');
       }
+      console.log(data)
       return data;
     },
     copyToImageData: function copyToImageData(imageData, formatAsRGBA) {
+      console.log(imageData)
+      console.log(formatAsRGBA)
       var width = imageData.width, height = imageData.height;
       var imageDataArray = imageData.data;
       var data = this.getData(width, height);
@@ -1136,7 +1144,9 @@ function decode(jpegData, userOpts = {}) {
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
 
-  console.log(image.data)
+  
+  //document.getElementById("outputImage").src=image
+  console.log(image)
 
   return image;
 }

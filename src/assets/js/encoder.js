@@ -54,16 +54,8 @@ function JPEGEncoder(quality) {
   var YAC_HT;
   var UVAC_HT;
 
-  // console.log("fround : "+fround)
-  // console.log("ffloor: "+ffloor)
-  // console.log("YTable: "+YTable)
-  // console.log("UVTable: "+UVTable)
-  // console.log("fdtbl_Y: "+fdtbl_Y)
-  // console.log("fdtbl_UV: "+fdtbl_UV)
-  // console.log("YDC_HT: "+YDC_HT)
-  // console.log("UVDC_HT: "+UVDC_HT)
-  // console.log("YAC_HT: "+YAC_HT)
-  // console.log("UVAC_HT: "+UVAC_HT)
+  //Math.floor() Fonksiyonu daha az büyük tam sayıyı döndüren veya belirli bir sayıya eşittir.
+  //Math.round()Fonksiyon döner bir sayısının değeri en yakın tamsayıya yuvarlanır.
 
   var bitcode = new Array(65535);
   var category = new Array(65535);
@@ -72,6 +64,7 @@ function JPEGEncoder(quality) {
   var byteout = [];
   var bytenew = 0;
   var bytepos = 7;
+
 
   var YDU = new Array(64);
   var UDU = new Array(64);
@@ -93,6 +86,7 @@ function JPEGEncoder(quality) {
 
   //console.log(ZigZag);
 
+  //based on luminance: parlaklığa dayalı
   var std_dc_luminance_nrcodes = [0,0,1,5,1,1,1,1,1,1,0,0,0,0,0,0,0];
 	var std_dc_luminance_values = [0,1,2,3,4,5,6,7,8,9,10,11];
 	var std_ac_luminance_nrcodes = [0,0,2,1,3,3,2,4,3,5,5,4,4,0,0,1,0x7d];
@@ -120,6 +114,7 @@ function JPEGEncoder(quality) {
 			0xf9,0xfa
 		];
 	
+    //chrominance : renklilik
 	var std_dc_chrominance_nrcodes = [0,0,3,1,1,1,1,1,1,1,1,1,0,0,0,0,0];
 	var std_dc_chrominance_values = [0,1,2,3,4,5,6,7,8,9,10,11];
 	var std_ac_chrominance_nrcodes = [0,0,2,1,2,4,4,3,4,7,5,4,4,0,1,2,0x77];
@@ -148,8 +143,17 @@ function JPEGEncoder(quality) {
 		];
 
   //Nicelik Tablolarını başlat
+
   function initQuantTables(sf) {
     console.log("initQuantTables");
+
+      //Niceleme matrisindeki öğeler , 
+  //sıkıştırma oranını kontrol eder ve 
+  //daha büyük değerler daha fazla sıkıştırma 
+  //üretir. Tipik bir niceleme matrisi 
+  //(orijinal JPEG Standardında 
+  //belirtildiği gibi% 50 kalite için) 
+  //aşağıdaki gibidir:
     var YQT = [
       16, 11, 10, 16, 24, 40, 51, 61,
       12, 12, 14, 19, 26, 58, 60, 55,
@@ -169,6 +173,7 @@ function JPEGEncoder(quality) {
         t = 255;
       }
       YTable[ZigZag[i]] = t;
+      console.log(t)
     }
     
 			var UVQT = [
@@ -190,8 +195,9 @@ function JPEGEncoder(quality) {
         u = 255;
       }
       UVTable[ZigZag[j]] = u;
-	  //console.log(UVTable[ZigZag[j]])
-    }
+	 
+    } 
+    
 
     var aasf = [
       1.0,
@@ -212,7 +218,15 @@ function JPEGEncoder(quality) {
 		//console.log(k)
       }
     }
-	//console.log(YQT)
+
+    console.log("YTable")
+    console.log(YTable)
+    console.log("UVTable")
+    console.log(UVTable)
+    console.log("YQT")
+    console.log(YQT)
+    console.log("UVQT")
+    console.log(UVQT)
   }
 
   //huffman tablolarını hesapla
@@ -236,7 +250,7 @@ function JPEGEncoder(quality) {
 	// console.log(std_table)
 	// console.log("codevalue: "+codevalue)
 	// console.log("pos_in_table: "+pos_in_table)
-	// console.log(HT)
+	console.log(HT)
 
     return HT;
   }
@@ -260,7 +274,11 @@ function JPEGEncoder(quality) {
       std_ac_chrominance_nrcodes,
       std_ac_chrominance_values
     );
-	//console.log(YDC_HT)
+	console.log(YDC_HT)
+  console.log(UVDC_HT)
+  console.log(YAC_HT)
+  console.log(UVAC_HT)
+
   }
 
   //kategori numarasını başlat
@@ -269,14 +287,14 @@ function JPEGEncoder(quality) {
     var nrlower = 1;
     var nrupper = 2;
     for (var cat = 1; cat <= 15; cat++) {
-      //Positive numbers
+      //Pozitif numaralar
       for (var nr = nrlower; nr < nrupper; nr++) {
         category[32767 + nr] = cat;
         bitcode[32767 + nr] = [];
         bitcode[32767 + nr][1] = cat;
         bitcode[32767 + nr][0] = nr;
       }
-      //Negative numbers
+      //Negatif numaralar
       for (var nrneg = -(nrupper - 1); nrneg <= -nrlower; nrneg++) {
         category[32767 + nrneg] = cat;
         bitcode[32767 + nrneg] = [];
@@ -286,16 +304,15 @@ function JPEGEncoder(quality) {
       nrlower <<= 1;
       nrupper <<= 1;
 
-	//   console.log("nrlower:")
-	//   console.log(nrlower)
-	//   console.log("nrupper:")
-	//   console.log(nrupper)
-
-
+	  
     }
+    console.log("nrlower:")
+	   console.log(nrlower)
+	   console.log("nrupper:")
+	   console.log(nrupper)
   }
 
-  //RGB to Y/Cb/Cr (YUV) tablo dönüşümüni başlat
+  //RGB to Y/Cb/Cr (YUV) tablo dönüşümünü başlat
   function initRGBYUVTable() {
     console.log("initRGBYUVTable");
     for (var i = 0; i < 256; i++) {
@@ -311,7 +328,7 @@ function JPEGEncoder(quality) {
 	  //console.log(RGB_YUV_TABLE)
     }
 	// console.log("RGB_YUV_TABLE")
-	 //console.log(RGB_YUV_TABLE)
+	 console.log(RGB_YUV_TABLE)
   }
 
   // IO functions
@@ -477,8 +494,12 @@ function JPEGEncoder(quality) {
       outputfDCTQuant[i] =
         fDCTQuant > 0.0 ? (fDCTQuant + 0.5) | 0 : (fDCTQuant - 0.5) | 0;
       //outputfDCTQuant[i] = fround(fDCTQuant);
+      console.log(outputfDCTQuant);
     }
-    console.log(outputfDCTQuant);
+
+    console.log(data);
+    console.log(fdtbl)
+    
     return outputfDCTQuant;
   }
 
@@ -620,10 +641,14 @@ function JPEGEncoder(quality) {
     var I63 = 63;
     var I64 = 64;
     var DU_DCT = fDCTQuant(CDU, fdtbl);
-    //ZigZag reorder
+    //ZigZag reorder (yeniden sıralama)
     for (var j = 0; j < I64; ++j) {
       DU[ZigZag[j]] = DU_DCT[j];
     }
+
+    console.log("DU_DCT")
+    console.log(DU_DCT)
+
     var Diff = DU[0] - DC;
     DC = DU[0];
     //Encode DC
@@ -662,6 +687,9 @@ function JPEGEncoder(quality) {
     if (end0pos != I63) {
       writeBits(EOB);
     }
+    
+    
+    console.log(CDU, fdtbl, DC, HTDC, HTAC)
     return DC;
   }
 
@@ -671,9 +699,9 @@ function JPEGEncoder(quality) {
     for (var i = 0; i < 256; i++) {
       ///// ACHTUNG // 255
       clt[i] = sfcc(i);
-	  //console.log(clt[i])
+	  
     }
-	
+	console.log(clt)
   }
 
   this.encode = function (
@@ -681,6 +709,7 @@ function JPEGEncoder(quality) {
     quality // image data object
   ) {
     console.log("this.encode = function(image,quality)");
+
     var time_start = new Date().getTime();
 
 	
@@ -714,7 +743,7 @@ function JPEGEncoder(quality) {
     var width = image.width;
     var height = image.height;
 
-	
+	  console.log(imageData)
 
     var quadWidth = width * 4;
     var tripleWidth = width * 3;
@@ -783,6 +812,9 @@ function JPEGEncoder(quality) {
         x += 32;
       }
       y += 8;
+      console.log(DCY)
+      console.log(DCU)
+      console.log(DCV)
     }
 
     ////////////////////////////////////////////////////////////////
@@ -801,10 +833,13 @@ function JPEGEncoder(quality) {
     document.getElementById("encodingTime").innerHTML = duration + " ms";
     console.log("Encoding time: " + duration + "ms");
 
-    var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
-    //console.log(jpegDataUri);
-    
+   // var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
+   // console.log(jpegDataUri);
+    //console.log(jpegUrl)
+    //console.log(image)
+    console.log(quality)
 	
+
 	
     if (typeof module === "undefined") return new Uint8Array(byteout);
     return Buffer.from(byteout);
@@ -856,7 +891,7 @@ function JPEGEncoder(quality) {
 
     setQuality(quality);
     var duration = new Date().getTime() - time_start;
-    console.log("Initialization " + duration + "ms");
+    console.log("Initialization (başlatma) " + duration + "ms");
   }
 
   init();
@@ -877,8 +912,11 @@ function encode(imgData, qu) {
   
   console.log("kalite kaybı: %" + qu);
   console.log(encoder)
+  console.log(imgData)
   console.log(data);
 
+ var myimage = decode(data, {useTArray:true})
+ console.log(myimage)
 
   return {
     data: data,
