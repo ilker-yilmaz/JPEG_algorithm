@@ -18,8 +18,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const fs = require('fs');
-const zlib = require('zlib');
+//const fs = require('fs');
+//const zlib = require('zlib');
 
 module.exports = class PNG {
   static decode(path, fn) {
