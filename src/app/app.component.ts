@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -9,15 +8,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AppComponent {
 
-  todo = this.store.collection('todo').valueChanges({idField:'id'});
-  inProgress=this.store.collection('inProgress').valueChanges({idField:'id'});
-  done=this.store.collection('done').valueChanges({idField:'id'});
-
+  
   title = 'jpegAlgorithm';
 
 
   
-  constructor(private store: AngularFirestore){}
+  constructor(){}
 
    
 }

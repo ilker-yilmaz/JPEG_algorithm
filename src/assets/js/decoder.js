@@ -1136,7 +1136,7 @@ function decode(jpegData, userOpts = {}) {
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
 
-  console.log(image)
+  console.log(image.data)
 
   return image;
 }

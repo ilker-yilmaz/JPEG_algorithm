@@ -5,13 +5,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DropComponent } from './components/drop/drop.component';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharebuttonComponent } from './components/sharebutton/sharebutton.component';
 import { DeadlineanimationComponent } from './components/deadlineanimation/deadlineanimation.component';
@@ -34,8 +32,6 @@ import { ComparisonimageComponent } from './components/comparisonimage/compariso
     BrowserModule, 
     FormsModule, 
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
