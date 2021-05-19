@@ -1,11 +1,23 @@
 img-comparison-slider {
-    --divider-width: 1px;
-    --divider-color: #c0c0c0;
-    --handle-opacity: 0.4;
-  }
-  .vci-container{
-	box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  --divider-width: 1px;
+  --divider-color: #e9e9dbe0;
+  --handle-opacity: 0.4;
+}
+
+.slider-with-custom-relative-handle {
+  --handle-size: clamp(10px, 8.5vw, 100px);
+  --handle-opacity: 0.4;
+  --handle-opacity-active: 0.5;
+}
+
+.custom-relative-handle {
+  width: var(--handle-size);
+  height: var(--handle-size);
+}
+
+.vci-container {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
