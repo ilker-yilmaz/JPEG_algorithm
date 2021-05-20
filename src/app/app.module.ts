@@ -50,8 +50,8 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
 
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: environment.AUTH0_DOMAIN,
-      clientId: environment.AUTH0_CLIENT_ID
+      domain: environment.API_URL_AUTH0_DOMAIN,
+      clientId: environment.API_URL_AUTH0_CLIENT_ID
     }),
   ],
   providers: [],

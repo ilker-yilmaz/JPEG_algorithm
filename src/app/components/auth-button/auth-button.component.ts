@@ -18,9 +18,9 @@ export class AuthButtonComponent {
   constructor(@Inject(DOCUMENT) public document: Document,public auth: AuthService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
-    if(this.auth.isAuthenticated$){
-      this.toastrService.success("Hoşgeldiniz")
-        }
+    // if(this.auth.isAuthenticated$){
+    //   this.toastrService.success("Hoşgeldiniz")
+    //     }
   }
 
 }

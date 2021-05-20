@@ -7,8 +7,8 @@ import {AuthModule} from '@auth0/auth0-angular';
 
 export const environment = {
   production: false,
-  AUTH0_DOMAIN:"",
-  AUTH0_CLIENT_ID:"",
+  API_URL_AUTH0_DOMAIN:"ilker-blog.us.auth0.com",
+  API_URL_AUTH0_CLIENT_ID:"LzyqXLpMqz35iZXhNLWtXnWieVjKerJD",
    
 };
 
