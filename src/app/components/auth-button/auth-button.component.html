@@ -9,5 +9,5 @@
   ></ng-template
 >
 <ul *ngIf="auth.user$ | async as user">
-  <li>{{ user.name }}</li>
+  {{ user.name }}
 </ul>
