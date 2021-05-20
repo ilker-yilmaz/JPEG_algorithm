@@ -7,8 +7,8 @@ import {AuthModule} from '@auth0/auth0-angular';
 
 export const environment = {
   production: false,
-  AUTH0_DOMAIN,
-  AUTH0_CLIENT_ID,
+  AUTH0_DOMAIN:"",
+  AUTH0_CLIENT_ID:"",
    
 };
 
