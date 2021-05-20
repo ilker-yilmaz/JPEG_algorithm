@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,5 +14,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     
     this.toastrService.success("Hoşgeldiniz")
+    this.toastrService.info("Görüntülerinizi çevrimiçi ve ücretsiz olarak sıkıştırabilirsiniz. Bu sayede depolama alanınızda yer açabilirsiniz.","Hakkında")
+    
+
   }
 }

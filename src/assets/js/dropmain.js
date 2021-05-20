@@ -119,7 +119,7 @@ function fileAndSettingsSendToEncode(file) {
   var selectedQuality = quality.options[quality.selectedIndex].value;
   console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
-  //console.log(imageData);
+  console.log(imageData);
 
   console.log(file)
    
@@ -131,7 +131,7 @@ function fileAndSettingsSendToEncode(file) {
     console.log("seçilen kalite: " + newSelectedQuality);
 
      var imageData = encode(file, newSelectedQuality);
-     //console.log(imageData);
+     console.log(imageData);
 
       //document.getElementById("outputImage").src = URL.createObjectURL(new Blob[imageData.buffer], {type:'image/png'});
 

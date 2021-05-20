@@ -20,6 +20,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { InputimageComponent } from './components/inputimage/inputimage.component';
 import { OutputimageComponent } from './components/outputimage/outputimage.component';
 
+import {AuthModule} from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component'
+
 
 @NgModule({
   declarations: [
@@ -33,15 +36,23 @@ import { OutputimageComponent } from './components/outputimage/outputimage.compo
     SettingsComponent,
     InputimageComponent,
     OutputimageComponent,
+    AuthButtonComponent,
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
     AppRoutingModule,
     BrowserAnimationsModule,
+
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
+    }),
+
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: environment.AUTH0_DOMAIN,
+      clientId: environment.AUTH0_CLIENT_ID
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

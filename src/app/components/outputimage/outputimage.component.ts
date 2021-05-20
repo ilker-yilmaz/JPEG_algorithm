@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import fileInformation from 'src/app/fileInformation';
 
+declare const fileAndSettingsSendToEncode:any
 
 @Component({
   selector: 'app-outputimage',
@@ -40,6 +41,7 @@ export class OutputimageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResultFileInformation(this.resultFileOutputs);
+    ///fileAndSettingsSendToEncode(this.resultFileOutputs,50)
   }
 
 }

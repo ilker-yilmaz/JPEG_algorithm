@@ -11,7 +11,7 @@ var Difference_In_Time = date2.getTime() - date1.getTime();
 var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
 var animationTime = 60,
-  days = 14;
+  days = 10;
 
   function deadlineMain(){
     // console.log(date1)
@@ -78,7 +78,7 @@ var animationTime = 60,
     $el.html(html);
   };
 
-  deadlineText();
+  //deadlineText();
 
   deadlineAnimation();
   timer(animationTime, days);
