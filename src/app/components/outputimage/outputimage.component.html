@@ -1,0 +1,67 @@
+<div class="card">
+    <h5
+      class="
+        card-header
+        d-flex
+        align-items-center
+        justify-content-between
+      "
+    >
+      <span
+        >Çıktı Görüntüsü
+        <small class="text-secondary"
+          >(sıkıştırılmış görüntü)</small
+        ></span
+      >
+      <app-sharebutton></app-sharebutton>
+      <a
+        class="btn btn-sm btn-blocks btn-outline-primary"
+        download="before.jpg"
+        href="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
+        title="sıkıştırılmış görüntüyü indir"
+        id="downloadOutputImage"
+        >İndir</a
+      >
+    </h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 d-flex mb-3">
+          <div class="w-100 text-center" v-if="outputURL">
+            <img
+              class="mw-100"
+              :src="https://jpeg-algorithm.vercel.app/assets/img/afterimg.jpg"
+              alt="picture.jpg"
+              id="outputImage"
+            />
+          </div>
+          <!-- <div v-else class="w-100 bg-light"></div> -->
+        </div>
+        <div class="col-md-8">
+          <dl class="row" *ngFor="let character of resultFileOutputs">
+            <dt class="col-5">son değişiklik:</dt>
+            <dd class="col-7" id="outputLastModified">
+              {{ character.lastModified }}
+            </dd>
+            <dt class="col-5">son değişiklik tarihi:</dt>
+            <dd class="col-7">
+              <td id="outputLastModifiedDate">
+                {{ character.lastModifiedDate }}
+              </td>
+            </dd>
+            <dt class="col-5">isim:</dt>
+            <dd class="col-7" id="outputName">{{ character.name }}</dd>
+            <dt class="col-5">türü:</dt>
+            <dd class="col-7" id="outputType">{{ character.type }}</dd>
+            <dt class="col-5">boyut:</dt>
+            <dd class="col-7" id="outputSize">{{ character.size }}</dd>
+            <dt class="col-5">sıkıştırma süresi:</dt>
+            <dd class="col-7" id="encodingTime">
+              {{ character.encodingTime }}
+            </dd>
+            <!-- <dt class="col-5">huffmanTable</dt>
+            <dd class="col-7" id="huffmanTable"></dd> -->
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>

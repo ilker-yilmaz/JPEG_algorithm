@@ -16,6 +16,9 @@ import { DeadlineanimationComponent } from './components/deadlineanimation/deadl
 
 import {ToastrModule} from "ngx-toastr";
 import { ComparisonimageComponent } from './components/comparisonimage/comparisonimage.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { InputimageComponent } from './components/inputimage/inputimage.component';
+import { OutputimageComponent } from './components/outputimage/outputimage.component';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { ComparisonimageComponent } from './components/comparisonimage/compariso
     SharebuttonComponent,
     DeadlineanimationComponent,
     ComparisonimageComponent,
+    SettingsComponent,
+    InputimageComponent,
+    OutputimageComponent,
   ],
   imports: [
     BrowserModule, 

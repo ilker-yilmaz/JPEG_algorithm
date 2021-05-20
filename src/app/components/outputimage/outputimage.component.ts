@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+
 import fileInformation from 'src/app/fileInformation';
 
-//declare const JPEGEncoder:any;
-//declare const jpegImage:any;
-//declare const encode:any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-outputimage',
+  templateUrl: './outputimage.component.html',
+  styleUrls: ['./outputimage.component.css']
 })
-export class HomeComponent implements OnInit {
+export class OutputimageComponent implements OnInit {
+
   date = new Date();
 
   resultFileOutputs: fileInformation[] = [
@@ -25,9 +23,9 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  constructor(private toastrService:ToastrService) {}
+  constructor() { }
 
-
+  
   getResultFileInformation(file: object) {
     
     var date = new Date();
@@ -41,13 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.getResultFileInformation(this.resultFileOutputs);
-
-    
-
-    //JPEGEncoder(5);
-    //jpegImage();
-    //encode(this.fileInputs,30)
   }
+
 }

@@ -1,0 +1,56 @@
+<div class="card mb-4">
+    <h5
+      class="
+        card-header
+        d-flex
+        align-items-center
+        justify-content-between
+      "
+    >
+      <span
+        >Giriş Görüntüsü
+        <small class="text-secondary">(orijinal görüntü)</small></span
+      >
+      <a
+        class="btn btn-sm btn-blocks btn-outline-primary"
+        download="after.jpg"
+        href="https://jpeg-algorithm.vercel.app/assets/img/beforeimg.jpg"
+        title="yüklenen görüntüyü indir"
+        id="downloadInputImage"
+        >İndir</a
+      >
+    </h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 d-flex mb-3">
+          <div class="w-100 text-center" v-if="inputURL">
+            <img
+              class="mw-100"
+              :src="/assets/img/beforeimg.jpg"
+              alt="image"
+              id="inputImage"
+            />
+          </div>
+          <!-- <div v-else class="w-100 bg-light"></div> -->
+        </div>
+        <div class="col-md-8">
+          <dl class="row" *ngFor="let character of fileInputs">
+            <dt class="col-5">son değişiklik:</dt>
+            <dd class="col-7" id="inputLastModified">
+              {{ character.lastModified }}
+            </dd>
+            <dt class="col-5">son değişiklik tarihi:</dt>
+            <dd class="col-7" id="inputLastModifiedDate">
+              <td>{{ character.lastModifiedDate }}</td>
+            </dd>
+            <dt class="col-5">isim:</dt>
+            <dd class="col-7" id="inputName">{{ character.name }}</dd>
+            <dt class="col-5">türü:</dt>
+            <dd class="col-7" id="inputType">{{ character.type }}</dd>
+            <dt class="col-5">boyut:</dt>
+            <dd class="col-7" id="inputSize">{{ character.size }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
