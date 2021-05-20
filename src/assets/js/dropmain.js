@@ -1,5 +1,6 @@
 
 function dropdrag() {
+  
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -19,8 +20,10 @@ function dropdrag() {
         writeOutputFileInformation(file);
 
         
+        for(i=0; i<inputElement.files.length;i++){
+          fileAndSettingsSendToEncode(inputElement.files);
+        }
         
-        fileAndSettingsSendToEncode(file);
 
       } else {
         window.alert("Lütfen geçerli dosya tipini seçiniz...");
@@ -116,8 +119,9 @@ function fileAndSettingsSendToEncode(file) {
   var selectedQuality = quality.options[quality.selectedIndex].value;
   console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
-  console.log(imageData);
+  //console.log(imageData);
 
+  console.log(file)
    
 
   quality.addEventListener("change", function () {
@@ -127,7 +131,7 @@ function fileAndSettingsSendToEncode(file) {
     console.log("seçilen kalite: " + newSelectedQuality);
 
      var imageData = encode(file, newSelectedQuality);
-     console.log(imageData);
+     //console.log(imageData);
 
       //document.getElementById("outputImage").src = URL.createObjectURL(new Blob[imageData.buffer], {type:'image/png'});
 

@@ -23,6 +23,7 @@
     "@stencil/core": "^2.5.2",
     "bootstrap": "^5.0.0-beta2",
     "buffer": "^6.0.3",
+    "compressorjs": "^1.0.7",
     "image-comparison-slider": "^1.0.4",
     "img-comparison-slider": "^3.0.4",
     "jpeg-js": "^0.4.3",
