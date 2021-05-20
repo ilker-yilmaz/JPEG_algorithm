@@ -16,6 +16,7 @@
    limitations under the License.
 */
 
+/*
 // - The JPEG specification can be found in the ITU CCITT Recommendation T.81
 //   (www.w3.org/Graphics/JPEG/itu-t81.pdf)
 // - The JFIF specification can be found in the JPEG File Interchange Format
@@ -23,6 +24,7 @@
 // - The Adobe Application-Specific JPEG markers in the Supporting the DCT Filters
 //   in PostScript Level 2, Technical Note #5116
 //   (partners.adobe.com/public/developer/en/ps/sdk/5116.DCT_Filter.pdf)
+*/
 
 var JpegImage = (function jpegImage() {
   "use strict";
@@ -58,6 +60,11 @@ var JpegImage = (function jpegImage() {
 
   function buildHuffmanTable(codeLengths, values) {
     console.log("decoder buildHuffmanTable")
+    console.log("decoder buildHuffmanTable codeLengths")
+    console.log(codeLengths)
+    console.log("decoder buildHuffmanTable values")
+    console.log(values)
+
     var k = 0, code = [], i, j, length = 16;
     while (length > 0 && !codeLengths[length - 1])
       length--;
@@ -88,6 +95,10 @@ var JpegImage = (function jpegImage() {
         p = q;
       }
     }
+
+    console.log("DECODER buildHuffmanTable return code[0].children")
+    console.log(code[0].children)
+    
     return code[0].children;
   }
 
@@ -96,7 +107,30 @@ var JpegImage = (function jpegImage() {
                       spectralStart, spectralEnd,
                       successivePrev, successive, opts) {
 
-                        console.log("decoder decodeScan")
+    console.log("decoder decodeScan")
+    console.log("decoder decodeScan data")
+    console.log(data)
+    console.log("decoder decodeScan offset")
+    console.log(offset)
+    console.log("decoder decodeScan frame")
+    console.log(frame)
+    console.log("decoder decodeScan frame")
+    console.log(frame.components)
+    console.log("decoder decodeScan frame components")
+    console.log(components)
+    console.log("decoder decodeScan resetInterval")
+    console.log(resetInterval)
+    console.log("decoder decodeScan spectralStart")
+    console.log(spectralStart)
+    console.log("decoder decodeScan spectralEnd")
+    console.log(spectralEnd)
+    console.log("decoder decodeScan successivePrev")
+    console.log(successivePrev)
+    console.log("decoder decodeScan successive")
+    console.log(successive)
+    console.log("decoder decodeScan opts")
+    console.log(opts)
+
     var precision = frame.precision;
     var samplesPerLine = frame.samplesPerLine;
     var scanLines = frame.scanLines;
@@ -124,6 +158,7 @@ var JpegImage = (function jpegImage() {
     }
     function decodeHuffman(tree) {
       console.log("decoder decodeHuffman")
+      //console.log(tree)
       var node = tree, bit;
       while ((bit = readBit()) !== null) {
         node = node[bit];
@@ -135,6 +170,7 @@ var JpegImage = (function jpegImage() {
       return null;
     }
     function receive(length) {
+      //console.log(length)
       var n = 0;
       while (length > 0) {
         var bit = readBit();
@@ -151,6 +187,7 @@ var JpegImage = (function jpegImage() {
       return n + (-1 << length) + 1;
     }
     function decodeBaseline(component, zz) {
+      console.log("DECODER decodeBaseLine")
       var t = decodeHuffman(component.huffmanTableDC);
       var diff = t === 0 ? 0 : receiveAndExtend(t);
       zz[0]= (component.pred += diff);
@@ -360,6 +397,13 @@ var JpegImage = (function jpegImage() {
   }
 
   function buildComponentData(frame, component) {
+    console.log("DECODER buildComponentData")
+    console.log("DECODER buildComponentData frame")
+    console.log(frame)
+    console.log("DECODER buildComponentData component")
+    console.log(component)
+    //console.log(frame)
+    //console.log(component)
     var lines = [];
     var blocksPerLine = component.blocksPerLine;
     var blocksPerColumn = component.blocksPerColumn;
@@ -373,6 +417,10 @@ var JpegImage = (function jpegImage() {
     //   IEEE Intl. Conf. on Acoustics, Speech & Signal Processing, 1989,
     //   988-991.
     function quantizeAndInverse(zz, dataOut, dataIn) {
+      console.log("DECODER quantizeAndInverse")
+      console.log(zz)
+      console.log(dataOut)
+      console.log(dataIn)
       var qt = component.quantizationTable;
       var v0, v1, v2, v3, v4, v5, v6, v7, t;
       var p = dataIn;
@@ -535,6 +583,7 @@ var JpegImage = (function jpegImage() {
       for (i = 0; i < 8; i++)
         lines.push(new Uint8Array(samplesPerLine));
       for (var blockCol = 0; blockCol < blocksPerLine; blockCol++) {
+        //console.log("DÖNGÜ")
         quantizeAndInverse(component.blocks[blockRow][blockCol], r, R);
 
         var offset = 0, sample = blockCol << 3;
@@ -545,6 +594,8 @@ var JpegImage = (function jpegImage() {
         }
       }
     }
+    console.log("DECODER buildComponentData return lines:")
+    console.log(lines)
     return lines;
   }
 
@@ -1101,6 +1152,7 @@ function decode(jpegData, userOpts = {}) {
   console.log(userOpts)
   var defaultOpts = {
     // "undefined" means "Choose whether to transform colors based on the image’s color model."
+    //"tanımsız", "Görüntünün renk modeline göre renkleri dönüştürüp dönüştürmeyeceğinizi seçin" anlamına gelir.
     colorTransform: undefined,
     useTArray: false,
     formatAsRGBA: true,

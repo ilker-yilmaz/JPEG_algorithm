@@ -38,6 +38,7 @@ Basic GUI blocking jpeg encoder
 var btoa =
   btoa ||
   function (buf) {
+    console.log("buf çalıştı mı???")
     return Buffer.from(buf).toString("base64");
   };
 
@@ -744,6 +745,8 @@ function JPEGEncoder(quality) {
     var height = image.height;
 
 	  console.log(imageData)
+    console.log(width)
+    console.log(height)
 
     var quadWidth = width * 4;
     var tripleWidth = width * 3;
@@ -833,9 +836,11 @@ function JPEGEncoder(quality) {
     document.getElementById("encodingTime").innerHTML = duration + " ms";
     console.log("Encoding time: " + duration + "ms");
 
-   // var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
-   // console.log(jpegDataUri);
-    //console.log(jpegUrl)
+    // var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
+    // console.log(jpegDataUri);
+    //  var output = document.getElementById("outputImage")
+    // output.src = jpegDataUri
+     //console.log(jpegUrl)
     //console.log(image)
     console.log(quality)
 	
@@ -917,6 +922,7 @@ function encode(imgData, qu) {
 
  var myimage = decode(data, {useTArray:true})
  console.log(myimage)
+
 
   return {
     data: data,

@@ -18,9 +18,9 @@ function dropdrag() {
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
+        
+        
         fileAndSettingsSendToEncode(file);
-
-    
 
       } else {
         window.alert("Lütfen geçerli dosya tipini seçiniz...");
@@ -30,6 +30,8 @@ function dropdrag() {
 
     dropZoneElement.addEventListener("dragover", (e) => {
       e.preventDefault();
+
+      //console.log("dragover-resim sürükleniyor")
 
       dropZoneElement.classList.add("drop-zone--over");
     });
@@ -116,14 +118,7 @@ function fileAndSettingsSendToEncode(file) {
   var imageData = encode(file, selectedQuality);
   console.log(imageData);
 
-  //var theImg = document.getElementById("outputImage")
-
-  // var blob = new Blob([imageData.buffer],{type: 'image/jpeg'});
-  // var jpegURI = URL.createObjectURL(blob)
-  // console.log(jpegURI)
-  // theImg.src = jpegURI;
-
-  console.log(file.size)
+   
 
   quality.addEventListener("change", function () {
     var quality = document.getElementById("inputQuality");
