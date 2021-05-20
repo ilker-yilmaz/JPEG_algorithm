@@ -156,7 +156,7 @@ function changeInputImage(file) {
   downloadOutputImage.setAttribute("href", url);
 
   downloadInputImage.setAttribute("download", file.name);
-  downloadOutputImage.setAttribute("download", file.name + "-compressed");
+  downloadOutputImage.setAttribute("download", file.name);
 
   // console.log(inputImage.clientWidth);
   // console.log(inputImage.clientHeight);
