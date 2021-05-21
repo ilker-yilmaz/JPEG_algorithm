@@ -42,13 +42,14 @@ export class DropComponent implements OnInit {
   localCompressedURl: any;
   sizeOfOriginalImage: number | undefined;
   sizeOFCompressedImage: number | undefined;
-
+  isHidden: boolean | undefined
 
   selectFile(event: any) {
     var fileName: any;
     this.file = event.target.files[0];
     fileName = this.file['name'];
     if (event.target.files && event.target.files[0]) {
+      this.isHidden=true
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.localUrl = event.target.result;
