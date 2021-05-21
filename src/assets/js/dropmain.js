@@ -111,7 +111,7 @@ function writeOutputFileInformation(file) {
     new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
-  document.getElementById("outputSize").innerHTML = prettySize(file.size);
+  //document.getElementById("outputSize").innerHTML = prettySize(file.size);
 }
 
 function fileAndSettingsSendToEncode(file) {
@@ -151,7 +151,7 @@ function changeInputImage(file) {
   var url = URL.createObjectURL(file);
 
   inputImage.src = url;
-  outputImage.src = url;
+  //outputImage.src = url;
 
   beforeImage.src = url;
   afterImage.src = url;

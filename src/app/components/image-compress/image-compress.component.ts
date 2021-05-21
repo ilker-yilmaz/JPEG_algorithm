@@ -1,40 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxImageCompressService } from 'ngx-image-compress';
-import fileInformation from 'src/app/fileInformation';
 
-declare const dropdrag: any;
-//declare const changeBeforeAfter: any;
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
-  selector: 'app-drop',
-  templateUrl: './drop.component.html',
-  styleUrls: ['./drop.component.css'],
+  selector: 'app-image-compress',
+  templateUrl: './image-compress.component.html',
+  styleUrls: ['./image-compress.component.css'],
 })
-export class DropComponent implements OnInit {
-  date = new Date();
-
-  resultFileOutputs: fileInformation[] = [
-    {
-      lastModified: this.date.getTime(),
-      lastModifiedDate: new Date(),
-      name: 'after.jpg',
-      size: '1161',
-      type: 'image/jpeg',
-      encodingTime: '2 ms',
-    },
-  ];
-
-  fileInputs: fileInformation[] = [
-    {
-      lastModified: 1616406870666,
-      lastModifiedDate: new Date(),
-      name: '1.png',
-      size: '1161',
-      type: 'image/png',
-      encodingTime: '2 ms',
-    },
-  ];
-
+export class ImageCompressComponent implements OnInit {
   constructor(private imageCompress: NgxImageCompressService) {}
 
   file: any;
@@ -50,7 +23,6 @@ export class DropComponent implements OnInit {
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.localUrl = event.target.result;
-        console.log(this.localCompressedURl)
         this.compressFile(this.localUrl, fileName);
       };
       reader.readAsDataURL(event.target.files[0]);
@@ -95,28 +67,5 @@ export class DropComponent implements OnInit {
     return blob;
   }
 
-  getResultFileInformation(file: object) {
-    var date = new Date();
-    this.resultFileOutputs[0].lastModified = date.getTime();
-    (this.resultFileOutputs[0].lastModifiedDate = date),
-      (this.resultFileOutputs[0].name = 'after.jpg'),
-      (this.resultFileOutputs[0].size = '284.45 KB'),
-      (this.resultFileOutputs[0].type = 'image/jpeg');
-    this.resultFileOutputs[0].encodingTime = '2 ms';
-    //console.log(file);
-  }
-  getFileInformation(file: object) {
-    this.fileInputs[0].lastModified = 1619199497885;
-    (this.fileInputs[0].lastModifiedDate = new Date()),
-      (this.fileInputs[0].name = 'before.png'),
-      (this.fileInputs[0].size = '611.72 KB'),
-      (this.fileInputs[0].type = 'image/png');
-    //console.log(this.fileInputs[0]);
-  }
-  ngOnInit(): void {
-    dropdrag();
-    this.getResultFileInformation(this.resultFileOutputs);
-    //changeBeforeAfter();
-    this.getResultFileInformation(this.resultFileOutputs);
-  }
+  ngOnInit(): void {}
 }

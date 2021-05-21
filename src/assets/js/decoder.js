@@ -393,6 +393,8 @@ var JpegImage = (function jpegImage() {
         break;
     }
 
+    console.log(offset-startOffset)
+
     return offset - startOffset;
   }
 

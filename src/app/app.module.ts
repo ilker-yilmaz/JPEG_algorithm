@@ -21,8 +21,10 @@ import { InputimageComponent } from './components/inputimage/inputimage.componen
 import { OutputimageComponent } from './components/outputimage/outputimage.component';
 
 import {AuthModule} from '@auth0/auth0-angular';
-import { AuthButtonComponent } from './components/auth-button/auth-button.component'
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { ImageCompressComponent } from './components/image-compress/image-compress.component'
 
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
     InputimageComponent,
     OutputimageComponent,
     AuthButtonComponent,
+    ImageCompressComponent,
   ],
   imports: [
     BrowserModule, 
@@ -54,7 +57,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
       clientId: environment.API_URL_AUTH0_CLIENT_ID
     }),
   ],
-  providers: [],
+  providers: [NgxImageCompressService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

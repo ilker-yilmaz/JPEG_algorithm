@@ -923,6 +923,9 @@ function encode(imgData, qu) {
  var myimage = decode(data, {useTArray:true})
  console.log(myimage)
 
+ var outputımg = document.getElementById("outputImage")
+ getImageDataFromImage(outputımg)
+ console.log(outputımg)
 
   return {
     data: data,
@@ -932,19 +935,23 @@ function encode(imgData, qu) {
 }
 
 // helper function to get the imageData of an existing image on the current page.
-function getImageDataFromImage(idOrElement) {
-  console.log(idOrElement);
-  var theImg =
-    typeof idOrElement == "string"
-      ? document.getElementById(idOrElement)
-      : idOrElement;
-  var cvs = document.createElement("canvas");
-  cvs.width = theImg.width;
-  cvs.height = theImg.height;
-  var ctx = cvs.getContext("2d");
-  ctx.drawImage(theImg, 0, 0);
+function getImageDataFromImage(idOrElement){
+  console.log(idOrElement)
+	var theImg = (typeof(idOrElement)=='string')? document.getElementById(idOrElement):idOrElement;
+	var cvs = document.createElement('canvas');
+	cvs.width = theImg.width;
+	cvs.height = theImg.height;
+	var ctx = cvs.getContext("2d");
+	ctx.drawImage(theImg,0,0);
+	
+  console.log(cvs)
 
-  return ctx.getImageData(0, 0, cvs.width, cvs.height);
+  console.log(theImg)
+
+  console.log(ctx.drawImage(theImg,0,0))
+  console.log(ctx.getImageData(0, 0, cvs.width, cvs.height))
+
+	return (ctx.getImageData(0, 0, cvs.width, cvs.height));
 }
 
 function prettySize(size) {
