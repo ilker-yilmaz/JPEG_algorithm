@@ -42,6 +42,8 @@ export class DropComponent implements OnInit {
   localCompressedURl: any;
   sizeOfOriginalImage: number | undefined;
   sizeOFCompressedImage: number | undefined;
+
+
   selectFile(event: any) {
     var fileName: any;
     this.file = event.target.files[0];
@@ -55,6 +57,7 @@ export class DropComponent implements OnInit {
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+    
   }
   imgResultBeforeCompress: string | undefined;
   imgResultAfterCompress: string | undefined;

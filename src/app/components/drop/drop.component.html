@@ -84,7 +84,7 @@
           <a
             class="btn btn-sm btn-blocks btn-outline-primary"
             download="before.jpg"
-            href="localCompressedURl"
+            [href]="localCompressedURl"
             title="sıkıştırılmış görüntüyü indir"
             id="downloadOutputImage"
             >İndir</a
@@ -121,7 +121,7 @@
                 <dd class="col-7" id="outputType">{{ character.type }}</dd>
                 <dt class="col-5">boyut:</dt>
                 <dd class="col-7" id="outputSize">
-                  {{ sizeOFCompressedImage | number: "1.2-2" }}MB
+                  {{ sizeOFCompressedImage | number: "1.2-2" }} MB
                 </dd>
                 <dt class="col-5">sıkıştırma süresi:</dt>
                 <dd class="col-7" id="encodingTime">
@@ -133,6 +133,35 @@
         </div>
       </div>
     </div>
+    <body>
+      <div class="card">
+        <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+        <div class="card-body">
+          <div class="vci-container">
+            <img-comparison-slider class="slider-with-custom-relative-handle">
+              <img
+                id="beforeImage"
+                slot="before"
+                width="100%"
+                [src]="localUrl"
+              />
+              <img
+                id="afterImage"
+                slot="after"
+                width="100%"
+                [src]="localCompressedURl"
+              />
+              <img
+                slot="handle"
+                class="custom-relative-handle"
+                src="https://raw.githubusercontent.com/sneas/img-comparison-slider/7bb700e56d078da2288539c3e6beb892a3790312/src/demo/images/arrows-handle.svg"
+              />
+            </img-comparison-slider>
+          </div>
+        </div>
+      </div>
+    </body>
+    
   </div>
 </body>
 <br />

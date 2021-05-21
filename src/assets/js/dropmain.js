@@ -102,7 +102,7 @@ function writeInputFileInformation(file) {
   document.getElementById("inputLastModifiedDate").innerHTML =
     file.lastModifiedDate;
   document.getElementById("inputType").innerHTML = file.type;
-  document.getElementById("inputSize").innerHTML = prettySize(file.size);
+  //document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
 function writeOutputFileInformation(file) {
@@ -122,6 +122,7 @@ function fileAndSettingsSendToEncode(file) {
   console.log(imageData);
 
   console.log(file)
+  console.log(prettySize(file[0].size))
    
 
   quality.addEventListener("change", function () {
@@ -150,14 +151,14 @@ function changeInputImage(file) {
 
   var url = URL.createObjectURL(file);
 
-  inputImage.src = url;
+  //inputImage.src = url;
   //outputImage.src = url;
 
-  beforeImage.src = url;
+  ////beforeImage.src = url;
   afterImage.src = url;
 
-  downloadInputImage.setAttribute("href", url);
-  downloadOutputImage.setAttribute("href", url);
+  //downloadInputImage.setAttribute("href", url);
+  //downloadOutputImage.setAttribute("href", url);
 
   downloadInputImage.setAttribute("download", file.name);
   downloadOutputImage.setAttribute("download", file.name);
