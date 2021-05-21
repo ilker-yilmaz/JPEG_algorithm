@@ -26,7 +26,7 @@ function dropdrag() {
         
 
       } else {
-        window.alert("Lütfen geçerli dosya tipini seçiniz...");
+        //window.alert("Lütfen geçerli dosya tipini seçiniz...");
         dropZoneElement.classList.remove("drop-zone--over");
       }
     });

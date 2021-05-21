@@ -49,22 +49,22 @@
               <!-- <div v-else class="w-100 bg-light"></div> -->
             </div>
             <div class="col-md-8">
-              <dl class="row" *ngFor="let character of fileInputs">
+              <dl class="row">
                 <dt class="col-5">son değişiklik:</dt>
                 <dd class="col-7" id="inputLastModified">
-                  {{ character.lastModified }}
+                  
                 </dd>
                 <dt class="col-5">son değişiklik tarihi:</dt>
                 <dd class="col-7" id="inputLastModifiedDate">
-                  <td>{{ character.lastModifiedDate }}</td>
+                  <td></td>
                 </dd>
                 <dt class="col-5">isim:</dt>
-                <dd class="col-7" id="inputName">{{ character.name }}</dd>
+                <dd class="col-7" id="inputName"></dd>
                 <dt class="col-5">türü:</dt>
-                <dd class="col-7" id="inputType">{{ character.type }}</dd>
+                <dd class="col-7" id="inputType"></dd>
                 <dt class="col-5">boyut:</dt>
                 <dd class="col-7" id="inputSize">
-                  {{ sizeOfOriginalImage | number: "1.2-2" }}MB
+                  {{ sizeOfOriginalImage | number: "1.2-2" }} MB
                 </dd>
               </dl>
             </div>
@@ -104,28 +104,28 @@
               <!-- <div v-else class="w-100 bg-light"></div> -->
             </div>
             <div class="col-md-8">
-              <dl class="row" *ngFor="let character of resultFileOutputs">
+              <dl class="row">
                 <dt class="col-5">son değişiklik:</dt>
                 <dd class="col-7" id="outputLastModified">
-                  {{ character.lastModified }}
+                  
                 </dd>
                 <dt class="col-5">son değişiklik tarihi:</dt>
                 <dd class="col-7">
                   <td id="outputLastModifiedDate">
-                    {{ character.lastModifiedDate }}
+                   
                   </td>
                 </dd>
                 <dt class="col-5">isim:</dt>
-                <dd class="col-7" id="outputName">{{ character.name }}</dd>
+                <dd class="col-7" id="outputName"></dd>
                 <dt class="col-5">türü:</dt>
-                <dd class="col-7" id="outputType">{{ character.type }}</dd>
+                <dd class="col-7" id="outputType"></dd>
                 <dt class="col-5">boyut:</dt>
                 <dd class="col-7" id="outputSize">
                   {{ sizeOFCompressedImage | number: "1.2-2" }} MB
                 </dd>
                 <dt class="col-5">sıkıştırma süresi:</dt>
                 <dd class="col-7" id="encodingTime">
-                  {{ character.encodingTime }}
+                  
                 </dd>
               </dl>
             </div>
@@ -143,13 +143,13 @@
                 id="beforeImage"
                 slot="before"
                 width="100%"
-                [src]="localUrl"
+                [src]="localCompressedURl"
               />
               <img
                 id="afterImage"
                 slot="after"
                 width="100%"
-                [src]="localCompressedURl"
+                [src]="localUrl"
               />
               <img
                 slot="handle"

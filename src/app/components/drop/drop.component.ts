@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import fileInformation from 'src/app/fileInformation';
+import { ToastrService } from 'ngx-toastr';
 
 declare const dropdrag: any;
 //declare const changeBeforeAfter: any;
@@ -11,64 +11,64 @@ declare const dropdrag: any;
   styleUrls: ['./drop.component.css'],
 })
 export class DropComponent implements OnInit {
-  date = new Date();
-
-  resultFileOutputs: fileInformation[] = [
-    {
-      lastModified: this.date.getTime(),
-      lastModifiedDate: new Date(),
-      name: 'after.jpg',
-      size: '1161',
-      type: 'image/jpeg',
-      encodingTime: '2 ms',
-    },
-  ];
-
-  fileInputs: fileInformation[] = [
-    {
-      lastModified: 1616406870666,
-      lastModifiedDate: new Date(),
-      name: '1.png',
-      size: '1161',
-      type: 'image/png',
-      encodingTime: '2 ms',
-    },
-  ];
-
-  constructor(private imageCompress: NgxImageCompressService) {}
+  constructor(
+    private imageCompress: NgxImageCompressService,
+    private toastrService: ToastrService
+  ) {}
 
   file: any;
   localUrl: any;
   localCompressedURl: any;
   sizeOfOriginalImage: number | undefined;
   sizeOFCompressedImage: number | undefined;
-  isHidden: boolean | undefined
+  isHidden: boolean | undefined;
+  myquality:number | undefined
 
   selectFile(event: any) {
     var fileName: any;
     this.file = event.target.files[0];
     fileName = this.file['name'];
-    if (event.target.files && event.target.files[0]) {
-      this.isHidden=true
+    if (
+      event.target.files &&
+      event.target.files[0] &&
+      event.target.files[0].type.startsWith('image/')
+    ) {
+      this.isHidden = true;
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.localUrl = event.target.result;
-        console.log(this.localCompressedURl)
+        console.log(this.localCompressedURl);
         this.compressFile(this.localUrl, fileName);
       };
       reader.readAsDataURL(event.target.files[0]);
-    }
-    
+    } else this.toastrService.error('Lütfen geçerli bir dosya seçiniz');
   }
   imgResultBeforeCompress: string | undefined;
   imgResultAfterCompress: string | undefined;
+
   compressFile(image: string, fileName: any) {
+    var quality = document.getElementById('inputQuality') as HTMLSelectElement;
+
+    //console.log(this.quality)
     var orientation = -1;
+
     this.sizeOfOriginalImage =
       this.imageCompress.byteCount(image) / (1024 * 1024);
+
     console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
+
+     var newquality;
+    this.myquality = newquality
+    
+    quality?.addEventListener('change', function () {
+      var selectedQuality = quality.selectedIndex*10;
+      newquality = selectedQuality
+      console.log(selectedQuality);
+      console.log(newquality)
+    });
+    
     this.imageCompress
-      .compressFile(image, orientation, 50, 50)
+      .compressFile(image, orientation, 50, this.myquality)
       .then((result) => {
         this.imgResultAfterCompress = result;
         this.localCompressedURl = result;
@@ -99,28 +99,15 @@ export class DropComponent implements OnInit {
     return blob;
   }
 
-  getResultFileInformation(file: object) {
-    var date = new Date();
-    this.resultFileOutputs[0].lastModified = date.getTime();
-    (this.resultFileOutputs[0].lastModifiedDate = date),
-      (this.resultFileOutputs[0].name = 'after.jpg'),
-      (this.resultFileOutputs[0].size = '284.45 KB'),
-      (this.resultFileOutputs[0].type = 'image/jpeg');
-    this.resultFileOutputs[0].encodingTime = '2 ms';
-    //console.log(file);
-  }
-  getFileInformation(file: object) {
-    this.fileInputs[0].lastModified = 1619199497885;
-    (this.fileInputs[0].lastModifiedDate = new Date()),
-      (this.fileInputs[0].name = 'before.png'),
-      (this.fileInputs[0].size = '611.72 KB'),
-      (this.fileInputs[0].type = 'image/png');
-    //console.log(this.fileInputs[0]);
-  }
   ngOnInit(): void {
     dropdrag();
-    this.getResultFileInformation(this.resultFileOutputs);
+    //this.getResultFileInformation(this.resultFileOutputs);
     //changeBeforeAfter();
-    this.getResultFileInformation(this.resultFileOutputs);
+    //this.getResultFileInformation(this.resultFileOutputs);
+    //this.toastrService.success("Hoşgeldiniz")
+    this.toastrService.info(
+      'Görüntülerinizi çevrimiçi ve ücretsiz olarak sıkıştırabilirsiniz. Bu sayede depolama alanınızda yer açabilirsiniz.',
+      'Hakkında'
+    );
   }
 }
