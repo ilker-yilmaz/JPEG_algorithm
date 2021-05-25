@@ -1,15 +1,22 @@
 <body>
   <div>
-    <div class="row">
-      <div class="col-lg-4 mb-4">
-        <app-settings></app-settings>
+    <div   class="row">
+      <app-drop-and-drag></app-drop-and-drag>
+      <div class="hiddenElementBeforeCompress" >
+        <div class="col-lg-4 mb-4">
+          <app-settings></app-settings>
+        </div>
+  
+        <div class="col-lg-8 mb-4">
+          <app-inputimage></app-inputimage>
+          <app-outputimage></app-outputimage>
+        </div>
+        <app-comparisonimage></app-comparisonimage>
       </div>
-
-      <div class="col-lg-8 mb-4">
-        <app-inputimage></app-inputimage>
-        <app-outputimage></app-outputimage>
-      </div>
-      <app-comparisonimage></app-comparisonimage>
+     
+      <!-- <img id="scream" src="assets/img/before.jpg" alt="The Scream" width="300" height="300">
+      <canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.</canvas> -->
     </div>
   </div>
 </body>

@@ -25,6 +25,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
 import { ImageCompressComponent } from './components/image-compress/image-compress.component'
 
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { DropAndDragComponent } from './components/drop-and-drag/drop-and-drag.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     OutputimageComponent,
     AuthButtonComponent,
     ImageCompressComponent,
+    DropAndDragComponent,
   ],
   imports: [
     BrowserModule, 

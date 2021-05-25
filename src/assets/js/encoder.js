@@ -836,8 +836,8 @@ function JPEGEncoder(quality) {
     document.getElementById("encodingTime").innerHTML = duration + " ms";
     console.log("Encoding time: " + duration + "ms");
 
-    // var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
-    // console.log(jpegDataUri);
+    //  var jpegDataUri = "data:image/jpeg;base64," + btoa(byteout.join(""));
+    //  console.log(jpegDataUri); 
     //  var output = document.getElementById("outputImage")
     // output.src = jpegDataUri
      //console.log(jpegUrl)

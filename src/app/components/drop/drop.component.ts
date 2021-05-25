@@ -20,7 +20,9 @@ export class DropComponent implements OnInit {
   localUrl: any;
   localCompressedURl: any;
   sizeOfOriginalImage: number | undefined;
+  mySizeOfOriginalImage: string | undefined;
   sizeOFCompressedImage: number | undefined;
+  mySizeOFCompressedImage: string | undefined;
   isHidden: boolean | undefined;
   myquality:number | undefined
 
@@ -98,6 +100,8 @@ export class DropComponent implements OnInit {
     const blob = new Blob([int8Array], { type: 'image/jpeg' });
     return blob;
   }
+
+   
 
   ngOnInit(): void {
     dropdrag();

@@ -19,15 +19,34 @@ function dropdrag() {
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
+        $(".hiddenElementBeforeCompress").show();
+        
+          // console.log("get img çalıştı")
+          // var c = document.getElementById("myCanvas");
+          
+          // var ctx = c.getContext("2d");
+          // var img = document.getElementById("scream");
+          // //img.src=URL.createObjectURL(file)
+          // ctx.drawImage(img, 0, 0);
+          // var imgData = ctx.getImageData(0, 0, c.width, c.height);
+          // // invert colors
+          // var i;
+          // for (i = 0; i < imgData.data.length; i += 4) {
+          //   imgData.data[i] = 255 - imgData.data[i];
+          //   imgData.data[i+1] = 255 - imgData.data[i+1];
+          //   imgData.data[i+2] = 255 - imgData.data[i+2];
+          //   imgData.data[i+3] = 255;
+          // }
+          // ctx.putImageData(imgData, 0, 0);
+       
         
         for(i=0; i<inputElement.files.length;i++){
           fileAndSettingsSendToEncode(inputElement.files);
         }
         
-
       } else {
         //window.alert("Lütfen geçerli dosya tipini seçiniz...");
-        dropZoneElement.classList.remove("drop-zone--over");
+        //dropZoneElement.classList.remove("drop-zone--over");
       }
     });
 
@@ -55,6 +74,7 @@ function dropdrag() {
         //console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
 
+        
         var file = e.dataTransfer.files[0];
         changeInputImage(file);
         fileAndSettingsSendToEncode(file);
@@ -62,13 +82,13 @@ function dropdrag() {
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
 
-        dropZoneElement.classList.remove("drop-zone--over");
+         
       } else {
         window.alert("Lütfen geçerli dosya tipini seçiniz...");
         dropZoneElement.classList.remove("drop-zone--over");
       }
 
-      dropZoneElement.classList.remove("drop-zone--over");
+      //dropZoneElement.classList.remove("drop-zone--over");
     });
   });
 }
@@ -102,7 +122,7 @@ function writeInputFileInformation(file) {
   document.getElementById("inputLastModifiedDate").innerHTML =
     file.lastModifiedDate;
   document.getElementById("inputType").innerHTML = file.type;
-  //document.getElementById("inputSize").innerHTML = prettySize(file.size);
+  document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
 function writeOutputFileInformation(file) {
@@ -111,7 +131,7 @@ function writeOutputFileInformation(file) {
     new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
-  //document.getElementById("outputSize").innerHTML = prettySize(file.size);
+  document.getElementById("outputSize").innerHTML = prettySize(file.size);
 }
 
 function fileAndSettingsSendToEncode(file) {
@@ -151,18 +171,27 @@ function changeInputImage(file) {
 
   var url = URL.createObjectURL(file);
 
-  //inputImage.src = url;
-  //outputImage.src = url;
+  inputImage.src = url;
+  outputImage.src = url;
 
-  ////beforeImage.src = url;
+  beforeImage.src = url;
   afterImage.src = url;
 
-  //downloadInputImage.setAttribute("href", url);
-  //downloadOutputImage.setAttribute("href", url);
+  downloadInputImage.setAttribute("href", url);
+  downloadOutputImage.setAttribute("href", url);
 
   downloadInputImage.setAttribute("download", file.name);
   downloadOutputImage.setAttribute("download", file.name);
 
   // console.log(inputImage.clientWidth);
   // console.log(inputImage.clientHeight);
+}
+
+function hidden(boolean){
+  if(boolean==true){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
