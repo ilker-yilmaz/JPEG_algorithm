@@ -20,32 +20,32 @@ function dropdrag() {
         writeOutputFileInformation(file);
 
         $(".hiddenElementBeforeCompress").show();
-        
-          // console.log("get img çalıştı")
-          // var c = document.getElementById("myCanvas");
+
+        /*
+           console.log("get img çalıştı")
+           var c = document.getElementById("myCanvas");
           
-          // var ctx = c.getContext("2d");
-          // var img = document.getElementById("scream");
-          // //img.src=URL.createObjectURL(file)
-          // ctx.drawImage(img, 0, 0);
-          // var imgData = ctx.getImageData(0, 0, c.width, c.height);
-          // // invert colors
-          // var i;
-          // for (i = 0; i < imgData.data.length; i += 4) {
-          //   imgData.data[i] = 255 - imgData.data[i];
-          //   imgData.data[i+1] = 255 - imgData.data[i+1];
-          //   imgData.data[i+2] = 255 - imgData.data[i+2];
-          //   imgData.data[i+3] = 255;
-          // }
+           var ctx = c.getContext("2d");
+           var img = document.getElementById("scream");
+          img.src=URL.createObjectURL(file)
+           ctx.drawImage(img, 0, 0);
+           var imgData = ctx.getImageData(0, 0, c.width, c.height);
+           invert colors
+           var i;
+           for (i = 0; i < imgData.data.length; i += 4) {
+             imgData.data[i] = 255 - imgData.data[i];
+             imgData.data[i+1] = 255 - imgData.data[i+1];
+             imgData.data[i+2] = 255 - imgData.data[i+2];
+             imgData.data[i+3] = 255;
+           }
           // ctx.putImageData(imgData, 0, 0);
-       
-        
-        for(i=0; i<inputElement.files.length;i++){
+       */
+
+        for (i = 0; i < inputElement.files.length; i++) {
           fileAndSettingsSendToEncode(inputElement.files);
         }
-        
       } else {
-        //window.alert("Lütfen geçerli dosya tipini seçiniz...");
+        window.alert("Lütfen geçerli dosya tipini seçiniz...");
         //dropZoneElement.classList.remove("drop-zone--over");
       }
     });
@@ -81,8 +81,8 @@ function dropdrag() {
 
         writeInputFileInformation(e.dataTransfer.files[0]);
         writeOutputFileInformation(e.dataTransfer.files[0]);
-
-         
+        $(".hiddenElementBeforeCompress").show();
+        dropZoneElement.classList.remove("drop-zone--over");
       } else {
         window.alert("Lütfen geçerli dosya tipini seçiniz...");
         dropZoneElement.classList.remove("drop-zone--over");
@@ -142,7 +142,7 @@ function fileAndSettingsSendToEncode(file) {
   console.log(imageData);
 
   console.log(file)
-  console.log(prettySize(file[0].size))
+  //console.log(prettySize(file[0].size))
    
 
   quality.addEventListener("change", function () {
@@ -174,8 +174,27 @@ function changeInputImage(file) {
   inputImage.src = url;
   outputImage.src = url;
 
+  var inputHeight = document.getElementById("inputHeight");
+  var inputWidth = document.getElementById("inputWidth");
+
+  inputHeight.addEventListener("change", function () {
+   newInputHeight = inputHeight.value
+   if(newInputHeight){
+     console.log(newInputHeight)
+  outputImage.height=newInputHeight;
+   }
+  
+
+  });
+  inputWidth.addEventListener("change", function () {
+    newInputWidth = inputWidth.value
+   outputImage.width=newInputWidth
+ 
+   });
+
   beforeImage.src = url;
   afterImage.src = url;
+  
 
   downloadInputImage.setAttribute("href", url);
   downloadOutputImage.setAttribute("href", url);
@@ -185,13 +204,4 @@ function changeInputImage(file) {
 
   // console.log(inputImage.clientWidth);
   // console.log(inputImage.clientHeight);
-}
-
-function hidden(boolean){
-  if(boolean==true){
-    return true;
-  }
-  else{
-    return false;
-  }
 }
