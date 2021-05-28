@@ -1,0 +1,146 @@
+Date : 2021-05-28 17:53:12
+Directory : c:\JPEG_algorithm
+Total : 93 files,  47199 codes, 1352 comments, 1496 blanks, all 50047 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          8 |     21,157 |         28 |          7 |     21,192 |
+| CSS        |         13 |     18,443 |         32 |         93 |     18,568 |
+| JavaScript |         15 |      5,778 |      1,128 |      1,079 |      7,985 |
+| HTML       |         15 |        826 |         74 |         40 |        940 |
+| TypeScript |         38 |        781 |         90 |        250 |      1,121 |
+| SCSS       |          2 |        199 |          0 |         13 |        212 |
+| Markdown   |          1 |         14 |          0 |         14 |         28 |
+| YAML       |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                          |         93 |     47,199 |      1,352 |      1,496 |     50,047 |
+| e2e                                                                                        |          4 |         68 |          8 |         11 |         87 |
+| e2e\src                                                                                    |          2 |         27 |          1 |          8 |         36 |
+| src                                                                                        |         79 |     25,934 |      1,311 |      1,463 |     28,708 |
+| src\app                                                                                    |         59 |     20,170 |        122 |        359 |     20,651 |
+| src\app\components                                                                         |         52 |     20,031 |        120 |        318 |     20,469 |
+| src\app\components\auth-button                                                             |          4 |         83 |          0 |         20 |        103 |
+| src\app\components\comparisonimage                                                         |          4 |         79 |          0 |         16 |         95 |
+| src\app\components\deadlineanimation                                                       |          4 |        421 |         22 |         76 |        519 |
+| src\app\components\drop                                                                    |          4 |        336 |         11 |         42 |        389 |
+| src\app\components\drop-and-drag                                                           |          4 |         91 |          0 |         19 |        110 |
+| src\app\components\footer                                                                  |          4 |        205 |         60 |         26 |        291 |
+| src\app\components\home                                                                    |          4 |      9,069 |         11 |         23 |      9,103 |
+| src\app\components\image-compress                                                          |          4 |         84 |          8 |         12 |        104 |
+| src\app\components\inputimage                                                              |          4 |        106 |          2 |         21 |        129 |
+| src\app\components\navbar                                                                  |          4 |         85 |          2 |         14 |        101 |
+| src\app\components\outputimage                                                             |          4 |        117 |          3 |         20 |        140 |
+| src\app\components\settings                                                                |          4 |      9,202 |          1 |         15 |      9,218 |
+| src\app\components\sharebutton                                                             |          4 |        153 |          0 |         14 |        167 |
+| src\assets                                                                                 |         13 |      5,712 |      1,116 |      1,075 |      7,903 |
+| src\assets\dist                                                                            |          4 |      1,892 |        561 |        462 |      2,915 |
+| src\assets\js                                                                              |          9 |      3,820 |        555 |        613 |      4,988 |
+| src\environments                                                                           |          2 |          9 |         11 |          8 |         28 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                   | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\JPEG_algorithm\README.md                                                                | Markdown   |         14 |          0 |         14 |         28 |
+| c:\JPEG_algorithm\_config.yml                                                              | YAML       |          1 |          0 |          0 |          1 |
+| c:\JPEG_algorithm\angular.json                                                             | JSON       |        128 |         24 |          0 |        152 |
+| c:\JPEG_algorithm\e2e\protractor.conf.js                                                   | JavaScript |         29 |          6 |          2 |         37 |
+| c:\JPEG_algorithm\e2e\src\app.e2e-spec.ts                                                  | TypeScript |         18 |          1 |          5 |         24 |
+| c:\JPEG_algorithm\e2e\src\app.po.ts                                                        | TypeScript |          9 |          0 |          3 |         12 |
+| c:\JPEG_algorithm\e2e\tsconfig.json                                                        | JSON       |         12 |          1 |          1 |         14 |
+| c:\JPEG_algorithm\karma.conf.js                                                            | JavaScript |         37 |          6 |          2 |         45 |
+| c:\JPEG_algorithm\package-lock.json                                                        | JSON       |     20,738 |          0 |          1 |     20,739 |
+| c:\JPEG_algorithm\package.json                                                             | JSON       |         67 |          0 |          1 |         68 |
+| c:\JPEG_algorithm\src\app\app-routing.module.ts                                            | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\app.component.css                                                | CSS        |          7 |          1 |          0 |          8 |
+| c:\JPEG_algorithm\src\app\app.component.html                                               | HTML       |         13 |          0 |          9 |         22 |
+| c:\JPEG_algorithm\src\app\app.component.spec.ts                                            | TypeScript |         31 |          0 |          5 |         36 |
+| c:\JPEG_algorithm\src\app\app.component.ts                                                 | TypeScript |         10 |          0 |         11 |         21 |
+| c:\JPEG_algorithm\src\app\app.module.ts                                                    | TypeScript |         59 |          1 |         10 |         70 |
+| c:\JPEG_algorithm\src\app\components\auth-button\auth-button.component.css                 | CSS        |         34 |          0 |          1 |         35 |
+| c:\JPEG_algorithm\src\app\components\auth-button\auth-button.component.html                | HTML       |         14 |          0 |          3 |         17 |
+| c:\JPEG_algorithm\src\app\components\auth-button\auth-button.component.spec.ts             | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\auth-button\auth-button.component.ts                  | TypeScript |         15 |          0 |         10 |         25 |
+| c:\JPEG_algorithm\src\app\components\comparisonimage\comparisonimage.component.css         | CSS        |         20 |          0 |          4 |         24 |
+| c:\JPEG_algorithm\src\app\components\comparisonimage\comparisonimage.component.html        | HTML       |         28 |          0 |          1 |         29 |
+| c:\JPEG_algorithm\src\app\components\comparisonimage\comparisonimage.component.spec.ts     | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\comparisonimage\comparisonimage.component.ts          | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\components\deadlineanimation\deadlineanimation.component.css     | CSS        |        244 |         22 |         58 |        324 |
+| c:\JPEG_algorithm\src\app\components\deadlineanimation\deadlineanimation.component.html    | HTML       |        144 |          0 |          5 |        149 |
+| c:\JPEG_algorithm\src\app\components\deadlineanimation\deadlineanimation.component.spec.ts | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\deadlineanimation\deadlineanimation.component.ts      | TypeScript |         13 |          0 |          7 |         20 |
+| c:\JPEG_algorithm\src\app\components\drop-and-drag\drop-and-drag.component.css             | CSS        |         43 |          0 |          5 |         48 |
+| c:\JPEG_algorithm\src\app\components\drop-and-drag\drop-and-drag.component.html            | HTML       |         15 |          0 |          1 |         16 |
+| c:\JPEG_algorithm\src\app\components\drop-and-drag\drop-and-drag.component.spec.ts         | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\drop-and-drag\drop-and-drag.component.ts              | TypeScript |         13 |          0 |          7 |         20 |
+| c:\JPEG_algorithm\src\app\components\drop\drop.component.css                               | CSS        |         63 |          0 |         14 |         77 |
+| c:\JPEG_algorithm\src\app\components\drop\drop.component.html                              | HTML       |        159 |          2 |          7 |        168 |
+| c:\JPEG_algorithm\src\app\components\drop\drop.component.spec.ts                           | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\drop\drop.component.ts                                | TypeScript |         94 |          9 |         15 |        118 |
+| c:\JPEG_algorithm\src\app\components\footer\footer.component.html                          | HTML       |         76 |         60 |          5 |        141 |
+| c:\JPEG_algorithm\src\app\components\footer\footer.component.scss                          | SCSS       |         98 |          0 |         10 |        108 |
+| c:\JPEG_algorithm\src\app\components\footer\footer.component.spec.ts                       | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\footer\footer.component.ts                            | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\components\home\home.component.css                               | CSS        |      9,016 |          7 |          3 |      9,026 |
+| c:\JPEG_algorithm\src\app\components\home\home.component.html                              | HTML       |         16 |          3 |          3 |         22 |
+| c:\JPEG_algorithm\src\app\components\home\home.component.spec.ts                           | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\home\home.component.ts                                | TypeScript |         17 |          1 |         11 |         29 |
+| c:\JPEG_algorithm\src\app\components\image-compress\image-compress.component.css           | CSS        |          0 |          0 |          1 |          1 |
+| c:\JPEG_algorithm\src\app\components\image-compress\image-compress.component.html          | HTML       |          0 |          5 |          0 |          5 |
+| c:\JPEG_algorithm\src\app\components\image-compress\image-compress.component.spec.ts       | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\image-compress\image-compress.component.ts            | TypeScript |         64 |          3 |          5 |         72 |
+| c:\JPEG_algorithm\src\app\components\inputimage\inputimage.component.css                   | CSS        |          0 |          0 |          1 |          1 |
+| c:\JPEG_algorithm\src\app\components\inputimage\inputimage.component.html                  | HTML       |         55 |          1 |          0 |         56 |
+| c:\JPEG_algorithm\src\app\components\inputimage\inputimage.component.spec.ts               | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\inputimage\inputimage.component.ts                    | TypeScript |         31 |          1 |         14 |         46 |
+| c:\JPEG_algorithm\src\app\components\navbar\navbar.component.css                           | CSS        |          0 |          0 |          1 |          1 |
+| c:\JPEG_algorithm\src\app\components\navbar\navbar.component.html                          | HTML       |         54 |          2 |          2 |         58 |
+| c:\JPEG_algorithm\src\app\components\navbar\navbar.component.spec.ts                       | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\navbar\navbar.component.ts                            | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\components\outputimage\outputimage.component.css                 | CSS        |          0 |          0 |          1 |          1 |
+| c:\JPEG_algorithm\src\app\components\outputimage\outputimage.component.html                | HTML       |         63 |          1 |          1 |         65 |
+| c:\JPEG_algorithm\src\app\components\outputimage\outputimage.component.spec.ts             | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\outputimage\outputimage.component.ts                  | TypeScript |         34 |          2 |         12 |         48 |
+| c:\JPEG_algorithm\src\app\components\settings\settings.component.css                       | CSS        |      9,016 |          1 |          3 |      9,020 |
+| c:\JPEG_algorithm\src\app\components\settings\settings.component.html                      | HTML       |        155 |          0 |          1 |        156 |
+| c:\JPEG_algorithm\src\app\components\settings\settings.component.spec.ts                   | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\settings\settings.component.ts                        | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\components\sharebutton\sharebutton.component.html                | HTML       |         21 |          0 |          0 |         21 |
+| c:\JPEG_algorithm\src\app\components\sharebutton\sharebutton.component.scss                | SCSS       |        101 |          0 |          3 |        104 |
+| c:\JPEG_algorithm\src\app\components\sharebutton\sharebutton.component.spec.ts             | TypeScript |         20 |          0 |          6 |         26 |
+| c:\JPEG_algorithm\src\app\components\sharebutton\sharebutton.component.ts                  | TypeScript |         11 |          0 |          5 |         16 |
+| c:\JPEG_algorithm\src\app\fileInformation.ts                                               | TypeScript |          8 |          0 |          1 |          9 |
+| c:\JPEG_algorithm\src\assets\dist\compressor.common.js                                     | JavaScript |        629 |        184 |        154 |        967 |
+| c:\JPEG_algorithm\src\assets\dist\compressor.esm.js                                        | JavaScript |        628 |        184 |        153 |        965 |
+| c:\JPEG_algorithm\src\assets\dist\compressor.js                                            | JavaScript |        634 |        184 |        155 |        973 |
+| c:\JPEG_algorithm\src\assets\dist\compressor.min.js                                        | JavaScript |          1 |          9 |          0 |         10 |
+| c:\JPEG_algorithm\src\assets\js\compressor.js                                              | JavaScript |        635 |        175 |        154 |        964 |
+| c:\JPEG_algorithm\src\assets\js\deadline.js                                                | JavaScript |         61 |         13 |         23 |         97 |
+| c:\JPEG_algorithm\src\assets\js\decoder.js                                                 | JavaScript |      1,041 |         78 |         88 |      1,207 |
+| c:\JPEG_algorithm\src\assets\js\dropmain.js                                                | JavaScript |        131 |         33 |         40 |        204 |
+| c:\JPEG_algorithm\src\assets\js\encoder.js                                                 | JavaScript |        736 |        126 |        131 |        993 |
+| c:\JPEG_algorithm\src\assets\js\main.js                                                    | JavaScript |         80 |          0 |         15 |         95 |
+| c:\JPEG_algorithm\src\assets\js\png-node.js                                                | JavaScript |        313 |         43 |         47 |        403 |
+| c:\JPEG_algorithm\src\assets\js\png.js                                                     | JavaScript |        440 |         48 |         73 |        561 |
+| c:\JPEG_algorithm\src\assets\js\zlib.js                                                    | JavaScript |        383 |         39 |         42 |        464 |
+| c:\JPEG_algorithm\src\environments\environment.prod.ts                                     | TypeScript |          3 |          0 |          2 |          5 |
+| c:\JPEG_algorithm\src\environments\environment.ts                                          | TypeScript |          6 |         11 |          6 |         23 |
+| c:\JPEG_algorithm\src\index.html                                                           | HTML       |         13 |          0 |          2 |         15 |
+| c:\JPEG_algorithm\src\main.ts                                                              | TypeScript |         11 |          0 |          6 |         17 |
+| c:\JPEG_algorithm\src\polyfills.ts                                                         | TypeScript |          1 |         57 |          8 |         66 |
+| c:\JPEG_algorithm\src\styles.css                                                           | CSS        |          0 |          1 |          1 |          2 |
+| c:\JPEG_algorithm\src\test.ts                                                              | TypeScript |         18 |          4 |          4 |         26 |
+| c:\JPEG_algorithm\tsconfig.app.json                                                        | JSON       |         14 |          1 |          1 |         16 |
+| c:\JPEG_algorithm\tsconfig.json                                                            | JSON       |         29 |          1 |          1 |         31 |
+| c:\JPEG_algorithm\tsconfig.spec.json                                                       | JSON       |         17 |          1 |          1 |         19 |
+| c:\JPEG_algorithm\tslint.json                                                              | JSON       |        152 |          0 |          1 |        153 |
+| Total                                                                                      |            |     47,199 |      1,352 |      1,496 |     50,047 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

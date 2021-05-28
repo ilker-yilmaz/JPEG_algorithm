@@ -17,29 +17,7 @@ function dropdrag() {
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
-        
-
         $(".hiddenElementBeforeCompress").show();
-
-        /*
-           console.log("get img çalıştı")
-           var c = document.getElementById("myCanvas");
-          
-           var ctx = c.getContext("2d");
-           var img = document.getElementById("scream");
-          img.src=URL.createObjectURL(file)
-           ctx.drawImage(img, 0, 0);
-           var imgData = ctx.getImageData(0, 0, c.width, c.height);
-           invert colors
-           var i;
-           for (i = 0; i < imgData.data.length; i += 4) {
-             imgData.data[i] = 255 - imgData.data[i];
-             imgData.data[i+1] = 255 - imgData.data[i+1];
-             imgData.data[i+2] = 255 - imgData.data[i+2];
-             imgData.data[i+3] = 255;
-           }
-          // ctx.putImageData(imgData, 0, 0);
-       */
 
         for (i = 0; i < inputElement.files.length; i++) {
           fileAndSettingsSendToEncode(inputElement.files);
@@ -136,7 +114,11 @@ function fileAndSettingsSendToEncode(file) {
   var selectedQuality = quality.options[quality.selectedIndex].value;
   console.log("seçilen kalite: " + selectedQuality);
   var imageData = encode(file, selectedQuality);
-  console.log(imageData);
+ // var arr = imageData.data;
+  //console.log(arr);
+  //console.log(content)
+
+  //document.getElementById('outputImage').src=URL.createObjectURL(new Blob([content.buffer],{type:'image/png'}))
 
   console.log(file);
   //console.log(prettySize(file[0].size))

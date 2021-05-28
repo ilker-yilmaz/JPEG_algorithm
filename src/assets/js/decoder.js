@@ -1189,18 +1189,21 @@ function decode(jpegData, userOpts = {}) {
     }
   } catch (err){
     if (err instanceof RangeError){
+      console.log(err)
       throw new Error("Could not allocate enough memory for the image. " +
                       "Required: " + bytesNeeded);
+                      
     } else {
       throw err;
     }
   }
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
-
+console.log(decoder.jfif.thumbData)
   
   //document.getElementById("outputImage").src=image
-  console.log(image)
+  console.log(image.Uint8Array)
+
 
   return image;
 }

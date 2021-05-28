@@ -250,7 +250,7 @@ function JPEGEncoder(quality) {
 	// console.log(std_table)
 	// console.log("codevalue: "+codevalue)
 	// console.log("pos_in_table: "+pos_in_table)
-	console.log(HT)
+	//console.log(HT)
 
     return HT;
   }
@@ -274,10 +274,10 @@ function JPEGEncoder(quality) {
       std_ac_chrominance_nrcodes,
       std_ac_chrominance_values
     );
-	console.log(YDC_HT)
-  console.log(UVDC_HT)
-  console.log(YAC_HT)
-  console.log(UVAC_HT)
+	//console.log(YDC_HT)
+  //console.log(UVDC_HT)
+  //console.log(YAC_HT)
+  //console.log(UVAC_HT)
 
   }
 
@@ -306,10 +306,10 @@ function JPEGEncoder(quality) {
 
 	  
     }
-    console.log("nrlower:")
-	   console.log(nrlower)
-	   console.log("nrupper:")
-	   console.log(nrupper)
+    //console.log("nrlower:")
+	  // console.log(nrlower)
+	  // console.log("nrupper:")
+	  // console.log(nrupper)
   }
 
   //RGB to Y/Cb/Cr (YUV) tablo dönüşümünü başlat
@@ -701,13 +701,10 @@ function JPEGEncoder(quality) {
       clt[i] = sfcc(i);
 	  
     }
-	console.log(clt)
+	//console.log(clt)
   }
 
-  this.encode = function (
-    image,
-    quality // image data object
-  ) {
+  this.encode = function (image,quality) {
     console.log("this.encode = function(image,quality)");
 
     var time_start = new Date().getTime();
@@ -852,7 +849,7 @@ function JPEGEncoder(quality) {
     console.log(jpegDataUri);
     byteout = [];
 
-    // benchmarking //kıyaslama
+    // benchmarking - kıyaslama
 
     //
 
@@ -924,7 +921,9 @@ function encode(imgData, qu) {
 
  var outputımg = document.getElementById("outputImage")
  getImageDataFromImage(outputımg)
- console.log(outputımg)
+ //console.log(outputımg)
+
+ console.log(data)
 
   return {
     data: data,
@@ -934,47 +933,41 @@ function encode(imgData, qu) {
 }
 
 // helper function to get the imageData of an existing image on the current page.
+
 function getImageDataFromImage(idOrElement){
-  console.log(idOrElement);
-  var theImg =
-    typeof idOrElement == "string"
-      ? document.getElementById(idOrElement)
-      : idOrElement;
-  var cvs = document.createElement("canvas");
-  cvs.width = theImg.width;
-  cvs.height = theImg.height;
-  var ctx = cvs.getContext("2d");
-  ctx.drawImage(theImg, 0, 0);
+	var theImg = (typeof(idOrElement)=='string')? document.getElementById(idOrElement):idOrElement;
+	var cvs = document.createElement('canvas');
+	cvs.width = theImg.width;
+	cvs.height = theImg.height;
+	var ctx = cvs.getContext("2d");
+	ctx.drawImage(theImg,0,0);
+	
 
-  console.log(cvs);
+  console.log(cvs)
+  console.log(theImg)
 
-  console.log(theImg);
-
-  console.log(ctx.drawImage(theImg, 0, 0));
-  console.log(ctx.getImageData(0, 0, cvs.width, cvs.height));
-
-  return ctx.getImageData(0, 0, cvs.width, cvs.height);
-
-  /*
-           console.log("get img çalıştı")
-           var c = document.getElementById("myCanvas");
-          
-           var ctx = c.getContext("2d");
-           var img = document.getElementById("scream");
-          img.src=URL.createObjectURL(file)
-           ctx.drawImage(img, 0, 0);
-           var imgData = ctx.getImageData(0, 0, c.width, c.height);
-           invert colors - renkleri tersine çevirmek
-           var i;
-           for (i = 0; i < imgData.data.length; i += 4) {
-             imgData.data[i] = 255 - imgData.data[i];
-             imgData.data[i+1] = 255 - imgData.data[i+1];
-             imgData.data[i+2] = 255 - imgData.data[i+2];
-             imgData.data[i+3] = 255;
-           }
-          // ctx.putImageData(imgData, 0, 0);
-       */
+	return (ctx.getImageData(0, 0, cvs.width, cvs.height));
 }
+
+/*
+console.log("get img çalıştı")
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var img = document.getElementById("scream");
+img.src=URL.createObjectURL(file)
+ctx.drawImage(img, 0, 0);
+var imgData = ctx.getImageData(0, 0, c.width, c.height);
+//invert colors - renkleri tersine çevirmek
+var i;
+for (i = 0; i < imgData.data.length; i += 4) {
+imgData.data[i] = 255 - imgData.data[i];
+imgData.data[i+1] = 255 - imgData.data[i+1];
+imgData.data[i+2] = 255 - imgData.data[i+2];
+imgData.data[i+3] = 255;
+}
+ctx.putImageData(imgData, 0, 0);
+*/
+
 
 function prettySize(size) {
   var kilobyte = 1024;
