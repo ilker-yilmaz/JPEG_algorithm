@@ -26,6 +26,7 @@ import { ImageCompressComponent } from './components/image-compress/image-compre
 
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { DropAndDragComponent } from './components/drop-and-drag/drop-and-drag.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DropAndDragComponent } from './components/drop-and-drag/drop-and-drag.c
     AuthButtonComponent,
     ImageCompressComponent,
     DropAndDragComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule, 

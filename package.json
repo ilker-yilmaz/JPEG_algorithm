@@ -34,6 +34,7 @@
     "ngx-toastr": "^13.2.1",
     "png-js": "^1.0.0",
     "rxjs": "~6.6.0",
+    "tinypng2": "0.0.3",
     "tslib": "^2.0.0",
     "vue-compare-image": "^0.2.0",
     "zone.js": "~0.11.3"

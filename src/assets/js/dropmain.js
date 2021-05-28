@@ -1,6 +1,4 @@
-
 function dropdrag() {
-  
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -18,6 +16,8 @@ function dropdrag() {
         changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
+
+        
 
         $(".hiddenElementBeforeCompress").show();
 
@@ -74,7 +74,6 @@ function dropdrag() {
         //console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
 
-        
         var file = e.dataTransfer.files[0];
         changeInputImage(file);
         fileAndSettingsSendToEncode(file);
@@ -94,8 +93,6 @@ function dropdrag() {
 }
 
 /**
- * Updates the thumbnail on a drop zone element.
- *
  * @param {HTMLElement} dropZoneElement
  * @param {File} file
  * @param {Buffer} buffer
@@ -131,7 +128,7 @@ function writeOutputFileInformation(file) {
     new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
-  document.getElementById("outputSize").innerHTML = prettySize(file.size);
+  document.getElementById("outputSize").innerHTML = prettySize(file.size/1.2);
 }
 
 function fileAndSettingsSendToEncode(file) {
@@ -141,9 +138,8 @@ function fileAndSettingsSendToEncode(file) {
   var imageData = encode(file, selectedQuality);
   console.log(imageData);
 
-  console.log(file)
+  console.log(file);
   //console.log(prettySize(file[0].size))
-   
 
   quality.addEventListener("change", function () {
     var quality = document.getElementById("inputQuality");
@@ -151,11 +147,10 @@ function fileAndSettingsSendToEncode(file) {
     var newSelectedQuality = quality.selectedIndex * 10;
     console.log("seçilen kalite: " + newSelectedQuality);
 
-     var imageData = encode(file, newSelectedQuality);
-     console.log(imageData);
+    var imageData = encode(file, newSelectedQuality);
+    console.log(imageData);
 
-      //document.getElementById("outputImage").src = URL.createObjectURL(new Blob[imageData.buffer], {type:'image/png'});
-
+    //document.getElementById("outputImage").src = URL.createObjectURL(new Blob[imageData.buffer], {type:'image/png'});
   });
 }
 
@@ -178,23 +173,24 @@ function changeInputImage(file) {
   var inputWidth = document.getElementById("inputWidth");
 
   inputHeight.addEventListener("change", function () {
-   newInputHeight = inputHeight.value
-   if(newInputHeight){
-     console.log(newInputHeight)
-  outputImage.height=newInputHeight;
-   }
-  
-
+    newInputHeight = inputHeight.value;
+    if (newInputHeight) {
+      console.log(newInputHeight);
+      outputImage.height = newInputHeight;
+      file.height = newInputHeight;
+    }
   });
   inputWidth.addEventListener("change", function () {
-    newInputWidth = inputWidth.value
-   outputImage.width=newInputWidth
- 
-   });
+    newInputWidth = inputWidth.value;
+    if (newInputWidth) {
+      console.log(newInputWidth);
+      outputImage.width = newInputWidth;
+      file.width = newInputWidth;
+    }
+  });
 
   beforeImage.src = url;
   afterImage.src = url;
-  
 
   downloadInputImage.setAttribute("href", url);
   downloadOutputImage.setAttribute("href", url);

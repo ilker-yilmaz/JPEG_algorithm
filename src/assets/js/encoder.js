@@ -28,8 +28,7 @@
   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-/*
+
 JPEG encoder ported to JavaScript and optimized by Andreas Ritter, www.bytestrom.eu, 11/2009
 
 Basic GUI blocking jpeg encoder
@@ -853,7 +852,7 @@ function JPEGEncoder(quality) {
     console.log(jpegDataUri);
     byteout = [];
 
-    // benchmarking
+    // benchmarking //kıyaslama
 
     //
 
@@ -936,22 +935,45 @@ function encode(imgData, qu) {
 
 // helper function to get the imageData of an existing image on the current page.
 function getImageDataFromImage(idOrElement){
-  console.log(idOrElement)
-	var theImg = (typeof(idOrElement)=='string')? document.getElementById(idOrElement):idOrElement;
-	var cvs = document.createElement('canvas');
-	cvs.width = theImg.width;
-	cvs.height = theImg.height;
-	var ctx = cvs.getContext("2d");
-	ctx.drawImage(theImg,0,0);
-	
-  console.log(cvs)
+  console.log(idOrElement);
+  var theImg =
+    typeof idOrElement == "string"
+      ? document.getElementById(idOrElement)
+      : idOrElement;
+  var cvs = document.createElement("canvas");
+  cvs.width = theImg.width;
+  cvs.height = theImg.height;
+  var ctx = cvs.getContext("2d");
+  ctx.drawImage(theImg, 0, 0);
 
-  console.log(theImg)
+  console.log(cvs);
 
-  console.log(ctx.drawImage(theImg,0,0))
-  console.log(ctx.getImageData(0, 0, cvs.width, cvs.height))
+  console.log(theImg);
 
-	return (ctx.getImageData(0, 0, cvs.width, cvs.height));
+  console.log(ctx.drawImage(theImg, 0, 0));
+  console.log(ctx.getImageData(0, 0, cvs.width, cvs.height));
+
+  return ctx.getImageData(0, 0, cvs.width, cvs.height);
+
+  /*
+           console.log("get img çalıştı")
+           var c = document.getElementById("myCanvas");
+          
+           var ctx = c.getContext("2d");
+           var img = document.getElementById("scream");
+          img.src=URL.createObjectURL(file)
+           ctx.drawImage(img, 0, 0);
+           var imgData = ctx.getImageData(0, 0, c.width, c.height);
+           invert colors - renkleri tersine çevirmek
+           var i;
+           for (i = 0; i < imgData.data.length; i += 4) {
+             imgData.data[i] = 255 - imgData.data[i];
+             imgData.data[i+1] = 255 - imgData.data[i+1];
+             imgData.data[i+2] = 255 - imgData.data[i+2];
+             imgData.data[i+3] = 255;
+           }
+          // ctx.putImageData(imgData, 0, 0);
+       */
 }
 
 function prettySize(size) {
