@@ -97,7 +97,7 @@ function writeInputFileInformation(file) {
   document.getElementById("inputLastModifiedDate").innerHTML =
     file.lastModifiedDate;
   document.getElementById("inputType").innerHTML = file.type;
-  document.getElementById("inputSize").innerHTML = prettySize(file.size);
+  //document.getElementById("inputSize").innerHTML = prettySize(file.size);
 }
 
 function writeOutputFileInformation(file) {
@@ -106,7 +106,7 @@ function writeOutputFileInformation(file) {
     new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
-  document.getElementById("outputSize").innerHTML = prettySize(file.size/1.2);
+ // document.getElementById("outputSize").innerHTML = prettySize(file.size/1.2);
 }
 
 function fileAndSettingsSendToEncode(file) {
@@ -149,7 +149,7 @@ function changeInputImage(file) {
   var url = URL.createObjectURL(file);
 
   inputImage.src = url;
-  outputImage.src = url;
+  //outputImage.src = url;
 
   var inputHeight = document.getElementById("inputHeight");
   var inputWidth = document.getElementById("inputWidth");
