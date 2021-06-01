@@ -1,7 +1,7 @@
 # JPEG COMPRESSOR
 
 
-## KURULUM
+## Kendi Bilgisayarınızda Çalıştırmanın Yöntemi
 
 1. bu repoyu klonlayın.
 <pre> git clone https://github.com/ilkerylmaz/JPEG_algorithm </pre>
