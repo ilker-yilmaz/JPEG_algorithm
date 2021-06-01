@@ -924,7 +924,11 @@ function encode(imgData, qu) {
  //console.log(outputımg)
 
  console.log(data)
+ console.log(imgData.height)
+ console.log(encoder)
+ console.log(myimage)
 
+ 
   return {
     data: data,
     width: imgData.width,

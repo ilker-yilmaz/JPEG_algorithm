@@ -1199,10 +1199,12 @@ function decode(jpegData, userOpts = {}) {
   }
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
-console.log(decoder.jfif.thumbData)
-  
+  console.log(decoder.jfif.thumbData);
+
+
   //document.getElementById("outputImage").src=image
-  console.log(image.Uint8Array)
+  console.log(image.Uint8Array);
+  console.log(decoder);
 
 
   return image;

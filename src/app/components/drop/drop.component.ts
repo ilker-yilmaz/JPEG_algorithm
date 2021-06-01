@@ -39,7 +39,7 @@ export class DropComponent implements OnInit {
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.localUrl = event.target.result;
-        console.log(this.localCompressedURl);
+        //console.log(this.localCompressedURl);
         this.compressFile(this.localUrl, fileName);
       };
       reader.readAsDataURL(event.target.files[0]);

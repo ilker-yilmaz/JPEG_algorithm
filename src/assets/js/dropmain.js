@@ -1,3 +1,4 @@
+
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -16,6 +17,8 @@ function dropdrag() {
         changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
+
+        
 
         $(".hiddenElementBeforeCompress").show();
 
