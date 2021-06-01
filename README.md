@@ -14,4 +14,4 @@
 <pre>ng serve --open --port 4200</pre>
 
 5. Artık Hazır.
-6. <p>Tarayıcınızdan <a href="http://localhost:4200" rel="nofollow">http://localhost:4200</a>'e girin</p>
+6. <p>Tarayıcınızdan <a href="http://localhost:4200" rel="nofollow" target="blank">http://localhost:4200</a>'e girin</p>
