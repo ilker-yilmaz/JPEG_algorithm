@@ -3,7 +3,8 @@
 
 ## KURULUM
 
-bu repoyu klonlayın: git clone https://github.com/ilkerylmaz/JPEG_algorithm
+bu repoyu klonlayın: 
+<pre> git clone https://github.com/ilkerylmaz/JPEG_algorithm </pre>
 
 sistem gerekliliklerini yükleyin: npm install
 
