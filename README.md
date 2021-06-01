@@ -11,11 +11,7 @@
 <pre>npm install</pre>
 
 4. çalıştırın.
-<pre>ng serve --open</pre>
+<pre>ng serve --open --port 4200</pre>
 
 5. Artık Hazır.
-<p>
-  "Tarayıcınızdan"
- <a href="localhost:4200">http://localhost:4200</a>
-  "'e girin"
-</p>
+6. <p>Tarayıcınızdan <a href="http://localhost:4200" rel="nofollow">http://localhost:4200</a>'e girin</p>
