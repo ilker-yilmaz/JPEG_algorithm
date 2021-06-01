@@ -6,6 +6,8 @@
 bu repoyu klonlayın: 
 <pre> git clone https://github.com/ilkerylmaz/JPEG_algorithm </pre>
 
-sistem gerekliliklerini yükleyin: npm install
+sistem gerekliliklerini yükleyin: 
+<pre>npm install</pre>
 
-çalıştırın: ng serve --open
+çalıştırın: 
+<pre>ng serve --open</pre>
