@@ -186,3 +186,10 @@ function changeInputImage(file) {
   // console.log(inputImage.clientWidth);
   // console.log(inputImage.clientHeight);
 }
+
+function calculatePSNRandBPP(imageWidth, imageHeight, imageSize){
+  var bpp=imageSize/(imageWidth*imageHeight);
+  var bppElement = document.getElementById("bpp");
+  bppElement.innerHTML()=bpp
+  
+}

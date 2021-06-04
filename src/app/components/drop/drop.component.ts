@@ -49,7 +49,9 @@ export class DropComponent implements OnInit {
   imgResultAfterCompress: string | undefined;
 
   compressFile(image: string, fileName: any) {
-    var quality = document.getElementById('inputQuality') as HTMLSelectElement;
+   
+    var inputImage = document.getElementById("inputImage");
+  var outputImage = document.getElementById("outputImage");
 
     //console.log(this.quality)
     var orientation = -1;
@@ -57,28 +59,43 @@ export class DropComponent implements OnInit {
     this.sizeOfOriginalImage =
       this.imageCompress.byteCount(image) / (1024 * 1024);
 
-    console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
+      //görüntü boyutu: satır*sütun*bpp
+      //bpp: görüntü boyutu / satır*sütun
+      var inputWidth=inputImage?.clientWidth;
+      var inputHeight=inputImage?.clientHeight;
+      var outputSize=this.sizeOfOriginalImage*1024*1024;
+
+      //calculatePSNRandBPP(inputWidth,inputHeight,outputSize)
+
+     
+    console.warn('Size in bytes is now:', this.sizeOfOriginalImage*1024*1024);
+
+    var quality = document.getElementById('inputQuality') as HTMLSelectElement;
+    var ourQuality=quality.selectedIndex
 
      var newquality;
     this.myquality = newquality
     
     quality?.addEventListener('change', function () {
-      var selectedQuality = quality.selectedIndex*10;
-      newquality = selectedQuality
-      console.log(selectedQuality);
-      console.log(newquality)
+       var selectedQuality = quality.selectedIndex*10;
+      // newquality = selectedQuality
+      // console.warn(selectedQuality);
+      // console.warn(newquality)
+      ourQuality=selectedQuality
+      
     });
     
     this.imageCompress
-      .compressFile(image, orientation, 50, this.myquality)
+      .compressFile(image, orientation, 50, 50)
       .then((result) => {
+        console.log(this.myquality)
         this.imgResultAfterCompress = result;
         this.localCompressedURl = result;
         this.sizeOFCompressedImage =
           this.imageCompress.byteCount(result) / (1024 * 1024);
         console.warn(
           'Size in bytes after compression:',
-          this.sizeOFCompressedImage
+          this.sizeOFCompressedImage*1024*1024
         );
         // create file from byte
         const imageName = fileName;
@@ -115,3 +132,7 @@ export class DropComponent implements OnInit {
     );
   }
 }
+function calculatePSNRandBPP(inputWidth: number | undefined, inputHeight: number | undefined, outputSize: number) {
+  throw new Error('Function not implemented.');
+}
+
