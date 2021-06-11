@@ -115,6 +115,7 @@ export class DropComponent implements OnInit {
       int8Array[i] = byteString.charCodeAt(i);
     }
     const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    console.log(blob)
     return blob;
   }
 
