@@ -86,7 +86,7 @@ export class DropComponent implements OnInit {
     });
     
     this.imageCompress
-      .compressFile(image, orientation, 50, 50)
+      .compressFile(image, orientation, 50, 60)
       .then((result) => {
         console.log(this.myquality)
         this.imgResultAfterCompress = result;
