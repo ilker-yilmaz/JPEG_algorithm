@@ -885,7 +885,7 @@ function encode(imgData, qu) {
  console.log(myimage)
 
  var outputımg = document.getElementById("outputImage")
- getImageDataFromImage(outputımg)
+ //getImageDataFromImage(outputımg)
  //console.log(outputımg)
 
  console.log(data)
