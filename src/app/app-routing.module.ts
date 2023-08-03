@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ImageCompressComponent } from './components/image-compress/image-compress.component'
 
 
-const routes: Routes = [{path:'home',component:ImageCompressComponent},
+const routes: Routes = [
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: '**', redirectTo: 'home', pathMatch: 'full' }];
 

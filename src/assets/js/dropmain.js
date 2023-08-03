@@ -190,6 +190,6 @@ function changeInputImage(file) {
 function calculatePSNRandBPP(imageWidth, imageHeight, imageSize){
   var bpp=imageSize/(imageWidth*imageHeight);
   var bppElement = document.getElementById("bpp");
-  bppElement.innerHTML()=bpp
+  //bppElement.innerHTML()=bpp
   
 }
