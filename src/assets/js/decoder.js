@@ -16,7 +16,6 @@
    limitations under the License.
 */
 
-/*
 // - The JPEG specification can be found in the ITU CCITT Recommendation T.81
 //   (www.w3.org/Graphics/JPEG/itu-t81.pdf)
 // - The JFIF specification can be found in the JPEG File Interchange Format
@@ -24,7 +23,6 @@
 // - The Adobe Application-Specific JPEG markers in the Supporting the DCT Filters
 //   in PostScript Level 2, Technical Note #5116
 //   (partners.adobe.com/public/developer/en/ps/sdk/5116.DCT_Filter.pdf)
-*/
 
 var JpegImage = (function jpegImage() {
   "use strict";
@@ -59,12 +57,6 @@ var JpegImage = (function jpegImage() {
   }
 
   function buildHuffmanTable(codeLengths, values) {
-    console.log("decoder buildHuffmanTable")
-    console.log("decoder buildHuffmanTable codeLengths")
-    console.log(codeLengths)
-    console.log("decoder buildHuffmanTable values")
-    console.log(values)
-
     var k = 0, code = [], i, j, length = 16;
     while (length > 0 && !codeLengths[length - 1])
       length--;
@@ -95,10 +87,6 @@ var JpegImage = (function jpegImage() {
         p = q;
       }
     }
-
-    console.log("DECODER buildHuffmanTable return code[0].children")
-    console.log(code[0].children)
-    
     return code[0].children;
   }
 
@@ -106,41 +94,11 @@ var JpegImage = (function jpegImage() {
                       frame, components, resetInterval,
                       spectralStart, spectralEnd,
                       successivePrev, successive, opts) {
-
-    console.log("decoder decodeScan")
-    console.log("decoder decodeScan data")
-    console.log(data)
-    console.log("decoder decodeScan offset")
-    console.log(offset)
-    console.log("decoder decodeScan frame")
-    console.log(frame)
-    console.log("decoder decodeScan frame")
-    console.log(frame.components)
-    console.log("decoder decodeScan frame components")
-    console.log(components)
-    console.log("decoder decodeScan resetInterval")
-    console.log(resetInterval)
-    console.log("decoder decodeScan spectralStart")
-    console.log(spectralStart)
-    console.log("decoder decodeScan spectralEnd")
-    console.log(spectralEnd)
-    console.log("decoder decodeScan successivePrev")
-    console.log(successivePrev)
-    console.log("decoder decodeScan successive")
-    console.log(successive)
-    console.log("decoder decodeScan opts")
-    console.log(opts)
-
-    var precision = frame.precision;
-    var samplesPerLine = frame.samplesPerLine;
-    var scanLines = frame.scanLines;
     var mcusPerLine = frame.mcusPerLine;
     var progressive = frame.progressive;
-    var maxH = frame.maxH, maxV = frame.maxV;
 
     var startOffset = offset, bitsData = 0, bitsCount = 0;
     function readBit() {
-      console.log("decoder decodeScan readBit")
       if (bitsCount > 0) {
         bitsCount--;
         return (bitsData >> bitsCount) & 1;
@@ -157,8 +115,6 @@ var JpegImage = (function jpegImage() {
       return bitsData >>> 7;
     }
     function decodeHuffman(tree) {
-      console.log("decoder decodeHuffman")
-      //console.log(tree)
       var node = tree, bit;
       while ((bit = readBit()) !== null) {
         node = node[bit];
@@ -170,7 +126,6 @@ var JpegImage = (function jpegImage() {
       return null;
     }
     function receive(length) {
-      //console.log(length)
       var n = 0;
       while (length > 0) {
         var bit = readBit();
@@ -187,7 +142,6 @@ var JpegImage = (function jpegImage() {
       return n + (-1 << length) + 1;
     }
     function decodeBaseline(component, zz) {
-      console.log("DECODER decodeBaseLine")
       var t = decodeHuffman(component.huffmanTableDC);
       var diff = t === 0 ? 0 : receiveAndExtend(t);
       zz[0]= (component.pred += diff);
@@ -393,19 +347,10 @@ var JpegImage = (function jpegImage() {
         break;
     }
 
-    console.log(offset-startOffset)
-
     return offset - startOffset;
   }
 
-  function buildComponentData(frame, component) {
-    console.log("DECODER buildComponentData")
-    console.log("DECODER buildComponentData frame")
-    console.log(frame)
-    console.log("DECODER buildComponentData component")
-    console.log(component)
-    //console.log(frame)
-    //console.log(component)
+  function buildComponentData(component) {
     var lines = [];
     var blocksPerLine = component.blocksPerLine;
     var blocksPerColumn = component.blocksPerColumn;
@@ -419,10 +364,6 @@ var JpegImage = (function jpegImage() {
     //   IEEE Intl. Conf. on Acoustics, Speech & Signal Processing, 1989,
     //   988-991.
     function quantizeAndInverse(zz, dataOut, dataIn) {
-      console.log("DECODER quantizeAndInverse")
-      console.log(zz)
-      console.log(dataOut)
-      console.log(dataIn)
       var qt = component.quantizationTable;
       var v0, v1, v2, v3, v4, v5, v6, v7, t;
       var p = dataIn;
@@ -585,7 +526,6 @@ var JpegImage = (function jpegImage() {
       for (i = 0; i < 8; i++)
         lines.push(new Uint8Array(samplesPerLine));
       for (var blockCol = 0; blockCol < blocksPerLine; blockCol++) {
-        //console.log("DÖNGÜ")
         quantizeAndInverse(component.blocks[blockRow][blockCol], r, R);
 
         var offset = 0, sample = blockCol << 3;
@@ -596,8 +536,6 @@ var JpegImage = (function jpegImage() {
         }
       }
     }
-    console.log("DECODER buildComponentData return lines:")
-    console.log(lines)
     return lines;
   }
 
@@ -634,7 +572,9 @@ var JpegImage = (function jpegImage() {
         return array;
       }
       function prepareComponents(frame) {
-        var maxH = 0, maxV = 0;
+        // According to the JPEG standard, the sampling factor must be between 1 and 4
+        // See https://github.com/libjpeg-turbo/libjpeg-turbo/blob/9abeff46d87bd201a952e276f3e4339556a403a3/libjpeg.txt#L1138-L1146
+        var maxH = 1, maxV = 1;
         var component, componentId;
         for (componentId in frame.components) {
           if (frame.components.hasOwnProperty(componentId)) {
@@ -676,7 +616,6 @@ var JpegImage = (function jpegImage() {
       }
       var jfif = null;
       var adobe = null;
-      var pixels = null;
       var frame, resetInterval;
       var quantizationTables = [], frames = [];
       var huffmanTablesAC = [], huffmanTablesDC = [];
@@ -689,7 +628,7 @@ var JpegImage = (function jpegImage() {
 
       fileMarker = readUint16();
       while (fileMarker != 0xFFD9) { // EOI (End of image)
-        var i, j, l;
+        var i, j;
         switch(fileMarker) {
           case 0xFF00: break;
           case 0xFFE0: // APP0 (Application Specific)
@@ -797,12 +736,16 @@ var JpegImage = (function jpegImage() {
             }
 
             var componentsCount = data[offset++], componentId;
-            var maxH = 0, maxV = 0;
             for (i = 0; i < componentsCount; i++) {
               componentId = data[offset];
               var h = data[offset + 1] >> 4;
               var v = data[offset + 1] & 15;
               var qId = data[offset + 2];
+
+              if ( h <= 0 || v <= 0 ) {
+                throw new Error('Invalid sampling factor, expected values above 0');
+              }
+
               frame.componentsOrder.push(componentId);
               frame.components[componentId] = {
                 h: h,
@@ -917,7 +860,7 @@ var JpegImage = (function jpegImage() {
       for (var i = 0; i < frame.componentsOrder.length; i++) {
         var component = frame.components[frame.componentsOrder[i]];
         this.components.push({
-          lines: buildComponentData(frame, component),
+          lines: buildComponentData(component),
           scaleX: component.h / frame.maxH,
           scaleY: component.v / frame.maxV
         });
@@ -1045,12 +988,9 @@ var JpegImage = (function jpegImage() {
         default:
           throw new Error('Unsupported color mode');
       }
-      console.log(data)
       return data;
     },
     copyToImageData: function copyToImageData(imageData, formatAsRGBA) {
-      console.log(imageData)
-      console.log(formatAsRGBA)
       var width = imageData.width, height = imageData.height;
       var imageDataArray = imageData.data;
       var data = this.getData(width, height);
@@ -1150,11 +1090,8 @@ if (typeof module !== 'undefined') {
 }
 
 function decode(jpegData, userOpts = {}) {
-  console.log(jpegData)
-  console.log(userOpts)
   var defaultOpts = {
     // "undefined" means "Choose whether to transform colors based on the image’s color model."
-    //"tanımsız", "Görüntünün renk modeline göre renkleri dönüştürüp dönüştürmeyeceğinizi seçin" anlamına gelir.
     colorTransform: undefined,
     useTArray: false,
     formatAsRGBA: true,
@@ -1187,25 +1124,22 @@ function decode(jpegData, userOpts = {}) {
     if(decoder.comments.length > 0) {
       image["comments"] = decoder.comments;
     }
-  } catch (err){
-    if (err instanceof RangeError){
-      console.log(err)
+  } catch (err) {
+    if (err instanceof RangeError) {
       throw new Error("Could not allocate enough memory for the image. " +
                       "Required: " + bytesNeeded);
-                      
-    } else {
-      throw err;
+    } 
+    
+    if (err instanceof ReferenceError) {
+      if (err.message === "Buffer is not defined") {
+        throw new Error("Buffer is not globally defined in this environment. " +
+                        "Consider setting useTArray to true");
+      }
     }
+    throw err;
   }
 
   decoder.copyToImageData(image, opts.formatAsRGBA);
-  console.log(decoder.jfif.thumbData);
-
-
-  //document.getElementById("outputImage").src=image
-  console.log(image.Uint8Array);
-  console.log(decoder);
-
 
   return image;
 }

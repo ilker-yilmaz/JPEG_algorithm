@@ -1,4 +1,3 @@
-
 function dropdrag() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
@@ -13,12 +12,14 @@ function dropdrag() {
         inputElement.files[0].type.startsWith("image/")
       ) {
         var file = inputElement.files[0];
+        console.log("width of file:", file.lastModified);
+
 
         changeInputImage(file);
         writeInputFileInformation(file);
         writeOutputFileInformation(file);
 
-        
+
 
         $(".hiddenElementBeforeCompress").show();
 
@@ -54,13 +55,16 @@ function dropdrag() {
       ) {
         //console.log(e.dataTransfer.files);
         inputElement.files = e.dataTransfer.files;
+        console.log("width of file:", file.width);
+        console.log("width of height:", file.height);
+
 
         var file = e.dataTransfer.files[0];
         changeInputImage(file);
         fileAndSettingsSendToEncode(file);
 
-        writeInputFileInformation(e.dataTransfer.files[0]);
-        writeOutputFileInformation(e.dataTransfer.files[0]);
+        // writeInputFileInformation(e.dataTransfer.files[0]);
+        // writeOutputFileInformation(e.dataTransfer.files[0]);
         $(".hiddenElementBeforeCompress").show();
         dropZoneElement.classList.remove("drop-zone--over");
       } else {
@@ -109,17 +113,21 @@ function writeOutputFileInformation(file) {
     new Date().getTime();
   document.getElementById("outputLastModifiedDate").innerHTML = new Date();
   document.getElementById("outputType").innerHTML = file.type;
- // document.getElementById("outputSize").innerHTML = prettySize(file.size/1.2);
+  // document.getElementById("outputSize").innerHTML = prettySize(file.size/1.2);
 }
 
 function fileAndSettingsSendToEncode(file) {
-  var quality = document.getElementById("inputQuality");
-  var selectedQuality = quality.options[quality.selectedIndex].value;
-  console.log("seçilen kalite: " + selectedQuality);
-  var imageData = encode(file, selectedQuality);
- // var arr = imageData.data;
-  //console.log(arr);
-  //console.log(content)
+
+  console.log("son eklenen dosya:", file);
+
+  
+
+  var imageData = encode(file, 100);
+  var arr = imageData.data;
+  console.log("arr son: ", arr);
+
+  var decodeData = decode(arr);
+  console.log("decode dizi:", decodeData);
 
   //document.getElementById('outputImage').src=URL.createObjectURL(new Blob([content.buffer],{type:'image/png'}))
 
@@ -127,12 +135,9 @@ function fileAndSettingsSendToEncode(file) {
   //console.log(prettySize(file[0].size))
 
   quality.addEventListener("change", function () {
-    var quality = document.getElementById("inputQuality");
-    //var selectedQuality = quality.options[quality.selectedIndex].value;
-    var newSelectedQuality = quality.selectedIndex * 10;
-    console.log("seçilen kalite: " + newSelectedQuality);
+    
 
-    var imageData = encode(file, newSelectedQuality);
+    var imageData = encode(file, 10);
     console.log(imageData);
 
     //document.getElementById("outputImage").src = URL.createObjectURL(new Blob[imageData.buffer], {type:'image/png'});
@@ -157,22 +162,22 @@ function changeInputImage(file) {
   var inputHeight = document.getElementById("inputHeight");
   var inputWidth = document.getElementById("inputWidth");
 
-  inputHeight.addEventListener("change", function () {
-    newInputHeight = inputHeight.value;
-    if (newInputHeight) {
-      console.log(newInputHeight);
-      outputImage.height = newInputHeight;
-      file.height = newInputHeight;
-    }
-  });
-  inputWidth.addEventListener("change", function () {
-    newInputWidth = inputWidth.value;
-    if (newInputWidth) {
-      console.log(newInputWidth);
-      outputImage.width = newInputWidth;
-      file.width = newInputWidth;
-    }
-  });
+  // inputHeight.addEventListener("change", function () {
+  //   newInputHeight = inputHeight.value;
+  //   if (newInputHeight) {
+  //     console.log("newInputHeight",newInputHeight);
+  //     outputImage.height = newInputHeight;
+  //     file.height = newInputHeight;
+  //   }
+  // });
+  // inputWidth.addEventListener("change", function () {
+  //   newInputWidth = inputWidth.value;
+  //   if (newInputWidth) {
+  //     console.log(newInputWidth);
+  //     outputImage.width = newInputWidth;
+  //     file.width = newInputWidth;
+  //   }
+  // });
 
   beforeImage.src = url;
   afterImage.src = url;
@@ -187,9 +192,9 @@ function changeInputImage(file) {
   // console.log(inputImage.clientHeight);
 }
 
-function calculatePSNRandBPP(imageWidth, imageHeight, imageSize){
-  var bpp=imageSize/(imageWidth*imageHeight);
+function calculatePSNRandBPP(imageWidth, imageHeight, imageSize) {
+  var bpp = imageSize / (imageWidth * imageHeight);
   var bppElement = document.getElementById("bpp");
-  //bppElement.innerHTML()=bpp
-  
+  bppElement.innerHTML() = bpp
+
 }

@@ -1,0 +1,162 @@
+<body>
+  <div class="drop-zone">
+    <span class="drop-zone__prompt"
+      >Görüntüyü buraya sürükleyin veya yüklemek için tıklayın</span
+    >
+    <input
+      type="file"
+      name="myFile"
+      accept=".jpg,.png,.jpeg"
+      id="image-input"
+      (change)="selectFile($event)"
+      class="drop-zone__input"
+    />
+  </div>
+  <br />
+  <div *ngIf="isHidden" class="row">
+    
+    <div class="col-lg-6 mb-4">
+      <div class="card mb-4">
+        <h5
+          class="card-header d-flex align-items-center justify-content-between"
+        >
+          <span
+            >Giriş Görüntüsü
+            <small class="text-secondary">(orijinal görüntü)</small></span
+          >
+          <a
+            class="btn btn-sm btn-blocks btn-outline-primary"
+            download="after.jpg"
+            href="localUrl"
+            title="yüklenen görüntüyü indir"
+            id="downloadInputImage"
+            >İndir</a
+          >
+        </h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 d-flex mb-3">
+              <div class="w-100 text-center" v-if="inputURL">
+                <img
+                  class="mw-100"
+                  [src]="localUrl"
+                  alt="image"
+                  id="inputImage"
+                />
+              </div>
+              <!-- <div v-else class="w-100 bg-light"></div> -->
+            </div>
+            <div class="col-md-8">
+              <dl class="row">
+                <dt class="col-5">son değişiklik:</dt>
+                <dd class="col-7" id="inputLastModified">
+
+                </dd>
+                <dt class="col-5">son değişiklik tarihi:</dt>
+                <dd class="col-7" id="inputLastModifiedDate">
+                  <td></td>
+                </dd>
+                <dt class="col-5">isim:</dt>
+                <dd class="col-7" id="inputName"></dd>
+                <dt class="col-5">türü:</dt>
+                <dd class="col-7" id="inputType"></dd>
+                <dt class="col-5">boyut:</dt>
+                <dd class="col-7" id="inputSize">
+                  {{ sizeOfOriginalImage | number: "1.2-2" }} MB
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card">
+        <h5
+          class="card-header d-flex align-items-center justify-content-between"
+        >
+          <span
+            >Çıktı Görüntüsü
+            <small class="text-secondary">(sıkıştırılmış görüntü)</small></span
+          >
+          <a
+            class="btn btn-sm btn-blocks btn-outline-primary"
+            download="before.jpg"
+            [href]="localCompressedURl"
+            title="sıkıştırılmış görüntüyü indir"
+            id="downloadOutputImage"
+            >İndir</a
+          >
+        </h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 d-flex mb-3">
+              <div class="w-100 text-center" v-if="outputURL">
+                <img
+                  class="mw-100"
+                  [src]="localCompressedURl"
+                  alt="picture.jpg"
+                  id="outputImage"
+                />
+              </div>
+              <!-- <div v-else class="w-100 bg-light"></div> -->
+            </div>
+            <div class="col-md-8">
+              <dl class="row">
+                <dt class="col-5">son değişiklik:</dt>
+                <dd class="col-7" id="outputLastModified">
+
+                </dd>
+                <dt class="col-5">son değişiklik tarihi:</dt>
+                <dd class="col-7">
+                  <td id="outputLastModifiedDate">
+
+                  </td>
+                </dd>
+                <dt class="col-5">isim:</dt>
+                <dd class="col-7" id="outputName"></dd>
+                <dt class="col-5">türü:</dt>
+                <dd class="col-7" id="outputType"></dd>
+                <dt class="col-5">boyut:</dt>
+                <dd class="col-7" id="outputSize">
+                  {{ sizeOFCompressedImage | number: "1.2-2" }} MB
+                </dd>
+
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <body>
+      <div class="card ">
+        <h4 class="card-header">Görüntüleri Karşılaştırma</h4>
+        <div class="card-body">
+          <div class="vci-container">
+            <img-comparison-slider class="slider-with-custom-relative-handle">
+              <img
+                id="beforeImage"
+                slot="before"
+                width="50%"
+                [src]="localCompressedURl"
+              />
+              <img
+                id="afterImage"
+                slot="after"
+                width="50%"
+                [src]="localUrl"
+              />
+              <img
+                slot="handle"
+                class="custom-relative-handle"
+                src="https://raw.githubusercontent.com/sneas/img-comparison-slider/7bb700e56d078da2288539c3e6beb892a3790312/src/demo/images/arrows-handle.svg"
+              />
+            </img-comparison-slider>
+          </div>
+        </div>
+      </div>
+    </body>
+
+  </div>
+</body>
+<br />
